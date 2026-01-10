@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 确保移动设备正确显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联众国</title>
+	<link rel="icon" type="image/png" href="/LZGArchivo/image/LZGLOGO.png">
+    <!-- 引用本地CSS文件 - 不引用外部资源 -->
+    <link rel="stylesheet" href="/LZGArchivo/webpage/Homepages/wiki.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+		 <!-- 新增顶部蓝色横杠 -->
+    <div class="top-blue-bar"></div>
+    
+        <div class="container">
+            <!-- 顶部导航 -->
+            <div class="header-top">
+                <!-- Logo区域 -->
+                <div class="logo">
+                    <div class="logo-icon"><img src="/LZGArchivo/image/LZSYlogo.jpg" width="100%" height="100%" alt=""/></div>
+                    <div class="logo-text">联众国档案部</div>
+					<div class="logo-text-1"> | 联合，自由与梦想</div>
+                </div>
+ 
+                <!-- 主导航链接 - 无登录功能 -->
+                <ul class="nav-links">
+                </ul>
+                
+                <!-- 移动端菜单按钮 -->
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+            
+            <!-- 次级导航 -->
+            <div class="header-bottom">
+                <ul class="subnav-links">
+                    <li><a href="#">联众国概念</a></li>
+                    <li><a href="/LZGArchivo/webpage/Homepages/country.html">联众成员国</a></li>
+                    <li><a href="#">活动与新闻</a></li>
+                    <li><a href="/LZGArchivo/webpage/Homepages/officialaccount.html">关注我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+	<!-- 主要内容区 -->
+        <main class="content">
+            <div class="image-container">
+                <img src="/LZGArchivo/image/LZGSYQP.jpg" width="100%" height="100%" alt="联众国旗帜" class="main-image">
+            </div>
+            <div class="text-container">
+                <div class="category">联众国档案部</div>
+                <h1>联众国档案管理记录部</h1>
+                <div class="divider"></div>
+                <p>
+                    档案部占据着至关重要且不可或缺的地位，为联众国各项事务的推进提供着坚实的信息支撑与历史依据。
+                </p>
+				 其档案部为记录自身国际事务运作而生。收集整理联众国各部门文件、成员国提案等资料，为开展研究并为联众国决策提供支持，助力其在国际合作与发展中发挥独特作用，是联众国事务推进的重要信息支撑。
+
+                <p>
+                    
+                </p>
+                <div class="action-button">
+                    <a href="#" class="btn"></a>
+                </div>
+            </div>
+        </main>
+
+    <!-- 页面容器 -->
+    <div class="container">
+        <!-- 页面标题部分 -->
+        <header class="page-header">
+            <h1 class="main-title">系统机构</h1>
+            <p class="intro-text">
+                联众国设六个主要机关：联众理事议会部、档案管理记录部、维稳联军部、文化规划部、国际法院及托管审查部，均由联众国大会选任成立。
+            </p>
+        </header>
+
+        <!-- 机构卡片容器 -->
+        <main class="organs-container">
+            <!-- 大会卡片 -->
+            <div class="organ-card" onclick="navigateTo('general-assembly')">
+                <!-- 图标使用CSS绘制 -->
+                <div class="organ-icon gavel-icon"></div>
+                <h2 class="organ-title">联众理事议会部</h2>
+                <p class="organ-description">
+                    大会是联合国的主要审议、决策和代表性机关，由联合国全部193个会员国组成，是唯一具有普遍代表性的机关。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+
+            <!-- 安全理事会卡片 -->
+            <div class="organ-card" onclick="navigateTo('security-council')">
+                <div class="organ-icon council-icon"></div>
+                <h2 class="organ-title">档案管理记录部</h2>
+                <p class="organ-description">
+                    根据《联合国宪章》，安全理事会负有维护国际和平与安全的首要责任。安理会有15个理事国（五个常任理事国和十个非常任理事国），每个理事国有一个投票权。《宪章》规定，所有理事国都有义务履行安理会的决定。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+
+            <!-- 经济及社会理事会卡片 -->
+            <div class="organ-card" onclick="navigateTo('economic-council')">
+                <div class="organ-icon economic-icon"></div>
+                <h2 class="organ-title">维稳联军部</h2>
+                <p class="organ-description">
+                    经济及社会理事会就是经济、社会和环境问题进行协调、政策审查和政策对话并提出建议，以及落实国际发展目标的主要机关。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+
+            <!-- 托管理事会卡片 -->
+            <div class="organ-card" onclick="navigateTo('trusteeship-council')">
+                <div class="organ-icon trust-icon"></div>
+                <h2 class="organ-title">国际法院</h2>
+                <p class="organ-description">
+                    托管理事会是联合国的主要机关之一，负责监督置于托管制度之下的领土的管理。随着托管领土逐渐取得独立或自治，托管理事会的活动已经大幅减少。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+
+            <!-- 国际法院卡片 -->
+            <div class="organ-card" onclick="navigateTo('international-court')">
+                <div class="organ-icon court-icon"></div>
+                <h2 class="organ-title">托管审查部</h2>
+                <p class="organ-description">
+                    国际法院是联合国的主要司法机关，位于荷兰海牙。它负责依照国际法解决各国向其提交的法律争端，并就正式认可的联合国机关和专门机构提交的法律问题提供咨询意见。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+
+            <!-- 秘书处卡片 -->
+            <div class="organ-card" onclick="navigateTo('secretariat')">
+                <div class="organ-icon secretariat-icon"></div>
+                <h2 class="organ-title">文化规划部</h2>
+                <p class="organ-description">
+                    秘书处由秘书长和联合国工作人员组成，负责执行大会、安全理事会和其他主要机关制定的方案和政策。秘书长是联合国的最高行政长官。
+                </p>
+                <span class="read-more">了解更多 →</span>
+            </div>
+        </main>
+
+        <!-- 详情部分，点击卡片后显示 -->
+        <section id="details-section" class="details-section">
+            <div class="back-button" onclick="goBack()">← 返回</div>
+            <div id="details-content" class="details-content">
+                <!-- 详情内容将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript代码 -->
+    <script>
+        // 获取DOM元素
+        const organsContainer = document.querySelector('.organs-container');
+        const detailsSection = document.querySelector('#details-section');
+        const detailsContent = document.querySelector('#details-content');
+        
+        // 机构详情数据
+        const organDetails = {
+            'general-assembly': {
+                title: '大会',
+                content: `
+                    <p>联合国大会是联合国的主要审议、决策和代表性机关，由联合国全部193个会员国组成，是唯一具有普遍代表性的机关。</p>
+                    <p>大会每年9月至12月举行常会，必要时可在其他时间举行特别会议或紧急特别会议。</p>
+                    <p>大会有权讨论《宪章》范围内的任何问题或事项，并向会员国和安理会提出建议。</p>
+                `
+            },
+            'security-council': {
+                title: '安全理事会',
+                content: `
+                    <p>安全理事会负有维护国际和平与安全的首要责任，由五个常任理事国（中国、法国、俄罗斯联邦、联合王国和美国）和十个非常任理事国组成。</p>
+                    <p>非常任理事国由大会选举产生，任期两年。</p>
+                    <p>安理会作出的决定，对所有联合国会员国都具有约束力。</p>
+                `
+            },
+            'economic-council': {
+                title: '经济及社会理事会',
+                content: `
+                    <p>经济及社会理事会负责协调联合国及各专门机构的经济和社会工作，由54个理事国组成，任期三年，每年由大会选举产生。</p>
+                    <p>经社理事会是联合国关于经济、社会、发展、文化、教育、卫生和有关事项的主要机构。</p>
+                    <p>它通过或发起关于国际经济、社会、文化、教育、卫生及其他有关事项的研究和报告，并向大会、会员国和专门机构提出建议案。</p>
+                `
+            },
+            'trusteeship-council': {
+                title: '托管理事会',
+                content: `
+                    <p>托管理事会是联合国的主要机关之一，负责监督置于托管制度之下的领土的管理。</p>
+                    <p>随着托管领土逐渐取得独立或自治，托管理事会的活动已经大幅减少。</p>
+                    <p>托管理事会由安全理事会的五个常任理事国组成。</p>
+                `
+            },
+            'international-court': {
+                title: '国际法院',
+                content: `
+                    <p>国际法院是联合国的主要司法机关，位于荷兰海牙。</p>
+                    <p>法院由15名法官组成，任期9年，由大会和安理会分别选举产生。</p>
+                    <p>它负责依照国际法解决各国向其提交的法律争端，并就正式认可的联合国机关和专门机构提交的法律问题提供咨询意见。</p>
+                `
+            },
+            'secretariat': {
+                title: '秘书处',
+                content: `
+                    <p>秘书处由秘书长和联合国工作人员组成，负责执行大会、安全理事会和其他主要机关制定的方案和政策。</p>
+                    <p>秘书长是联合国的最高行政长官，由大会根据安全理事会的推荐任命，任期五年，可以连任。</p>
+                    <p>秘书处的工作人员来自世界各地，根据地域分配原则任用。</p>
+                `
+            }
+        };
+
+        // 导航到详情页
+        function navigateTo(organId) {
+            // 隐藏机构卡片容器
+            organsContainer.classList.add('hidden');
+            // 显示详情部分
+            detailsSection.classList.remove('hidden');
+            // 添加动画类
+            detailsSection.classList.add('fade-in');
+            
+            // 填充详情内容
+            const details = organDetails[organId];
+            detailsContent.innerHTML = `
+                <h2>${details.title}</h2>
+                <div class="detail-text">${details.content}</div>
+            `;
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 返回机构列表
+        function goBack() {
+            // 隐藏详情部分
+            detailsSection.classList.add('hidden');
+            detailsSection.classList.remove('fade-in');
+            // 显示机构卡片容器
+            organsContainer.classList.remove('hidden');
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取所有卡片元素
+            const cards = document.querySelectorAll('.organ-card');
+            
+            // 为每个卡片添加延迟出现的动画
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, 100 * index);
+            });
+        });
+    </script>
+	
+	<div class="container">
+        <div class="main-content">
+            <!-- 左侧边栏 -->
+            <aside class="sidebar-left">
+                <!-- 语言选择模块 - 不要填内容 -->
+                <div class="sidebar-module">
+                    <h3>重要页面</h3>
+                    <ul class="toc">
+                        <li><a href="/LZGArchivo/webpage/Homepages/times.html">史历线</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                
+                <!-- 信息框模块 - 不要填内容 -->
+                <div class="sidebar-module">
+                    <h3>新闻</h3>
+                    <div class="info-box">
+                        <div class="info-image">图片位置</div>
+                        <table class="info-table">
+                            <tr><td>属性1</td><td>值1</td></tr>
+                            <tr><td>属性2</td><td>值2</td></tr>
+                            <tr><td>属性3</td><td>值3</td></tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 目录模块 - 不要填内容 -->
+                <div class="sidebar-module">
+                    <h3>目录</h3>
+                    <ul class="toc">
+                        <li><a href="#section1">1. 章节一</a></li>
+                        <li><a href="#section2">2. 章节二</a>
+                            <ul>
+                                <li><a href="#section2-1">2.1 子章节</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#section3">3. 章节三</a></li>
+                    </ul>
+                </div>
+            </aside>
+            
+            <!-- 中间内容区域 -->
+            <main class="content-area">
+                <!-- 页面标题 -->
+                <h1 class="page-title">页面标题</h1>
+                <!-- 消歧义说明 - 不要填内容 -->
+                <div class="disambiguation">
+                    关于其他用法，请参见「<a href="#">页面标题 (消歧义)</a>」。
+                </div>
+                
+                <!-- 引言部分 - 不要填内容 -->
+                <div class="section intro">
+                    <p>这是引言部分，简要介绍页面主题的基本信息。</p>
+                </div>
+                
+                <!-- 章节一 - 不要填内容 -->
+                <div id="section1" class="section">
+                    <h2>1. 章节一</h2>
+                    <p>章节一的内容段落。</p>
+                </div>
+                
+                <!-- 章节二 - 不要填内容 -->
+                <div id="section2" class="section">
+                    <h2>2. 章节二</h2>
+                    <p>章节二的内容段落。</p>
+                    
+                    <!-- 子章节 - 不要填内容 -->
+                    <div id="section2-1">
+                        <h3>2.1 子章节</h3>
+                        <p>子章节的内容段落。</p>
+                        <ul>
+                            <li>列表项1</li>
+                            <li>列表项2</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- 右侧边栏 -->
+            <aside class="sidebar-right">
+                <!-- 页面工具 - 不要填内容 -->
+                <div class="sidebar-module">
+                    <h3>页面工具</h3>
+                    <ul class="toc">
+                        <li><a href="#">查看源代码</a></li>
+                        <li><a href="#">页面历史</a></li>
+                        <li><a href="#">相关更改</a></li>
+                        <li><a href="#">打印版本</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 相关条目 - 不要填内容 -->
+                <div class="sidebar-module">
+                    <h3>相关条目</h3>
+                    <ul class="toc">
+                        <li><a href="#">相关条目1</a></li>
+                        <li><a href="#">相关条目2</a></li>
+                        <li><a href="#">相关条目3</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+	
+	<!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <!-- 底部链接 - 不要填内容 -->
+            <ul class="footer-links">
+                <li><a href="#">免责声明</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            
+            <!-- 版权信息 - 不要填内容 -->
+            <div class="copyright">
+                © 2025 未经允许 · 禁止转载
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+    

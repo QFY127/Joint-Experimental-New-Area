@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 确保页面在移动设备上正确显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关注我们</title>
+	<link rel="icon" type="image/png" href="/LZGArchivo/image/LZGLOGO.png">
+    <!-- 引入外部CSS文件 -->
+    <link rel="stylesheet" href="officialaccount.css">
+</head>
+<body>
+    <!-- 背景图容器 - 用于放置背景图片 -->
+    <div class="background-image"><img src="../../image/xuancb.jpg" width="100%" height="100%" alt=""/></div>
+    
+    <!-- 主容器 - 包含二维码和名称文本 -->
+    <div class="main-container">
+        <!-- 二维码容器 -->
+        <div class="qrcode-container">
+            <!-- 二维码元素 -->
+            <div class="qrcode"><img src="../../image/gzh.jpg" width="100%" height="100%" alt=""/></div>
+        </div>
+        
+        <!-- 公众号名称文本 -->
+        <div class="wechat-name">联众国官方公众号<br><a href="/LZGArchivo/webpage/Homepages/Homepage.html">返回主页</a>
+		</div>
+		
+    </div>
+
+    <!-- JavaScript代码 - 用于触发页面加载动画 -->
+    <script>
+        // 等待页面完全加载
+        window.addEventListener('load', function() {
+            // 获取主容器元素
+            const mainContainer = document.querySelector('.main-container');
+            // 添加动画类以触发动画效果
+            mainContainer.classList.add('animate-in');
+        });
+    </script>
+</body>
+</html>
+    

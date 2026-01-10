@@ -1,0 +1,393 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 头部样式 */
+.site-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #a2a9b1;
+    padding: 10px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.wiki-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #0645ad;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.wiki-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-box {
+    display: flex;
+    flex: 0 0 300px;
+    margin: 0 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #a2a9b1;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+}
+
+.search-btn {
+    background-color: #0645ad;
+    color: white;
+    border: none;
+    padding: 0 12px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #0b66d9;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 15px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid #a2a9b1;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.secondary-nav {
+    border-top: 1px solid #a2a9b1;
+    padding-top: 8px;
+}
+
+.secondary-nav ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.secondary-nav li {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+/* 主要内容区样式 */
+.main-content {
+    display: flex;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.sidebar-left {
+    flex: 0 0 250px;
+}
+
+.sidebar-right {
+    flex: 0 0 200px;
+}
+
+.content-area {
+    flex: 1;
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #a2a9b1;
+    border-radius: 3px;
+}
+
+.sidebar-module {
+    background-color: white;
+    border: 1px solid #a2a9b1;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.sidebar-module h3 {
+    font-size: 16px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.language-list, .toc, .page-tools, .related-articles {
+    list-style: none;
+    font-size: 14px;
+}
+
+.language-list li, .toc li, .page-tools li, .related-articles li {
+    margin-bottom: 5px;
+}
+
+.toc ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.info-box {
+    font-size: 14px;
+}
+
+.info-image-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a2a9b1;
+    margin-bottom: 5px;
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table td {
+    padding: 5px;
+    border-top: 1px solid #eaecee;
+}
+
+.info-table td:first-child {
+    font-weight: bold;
+    width: 40%;
+}
+
+/* 内容区域样式 */
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.disambiguation {
+    font-size: 14px;
+    font-style: italic;
+    color: #54595d;
+}
+
+.intro-content {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.note-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0645ad;
+    padding: 10px 15px;
+    margin: 15px 0;
+}
+
+.note-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.content-section {
+    margin-bottom: 25px;
+}
+
+.content-section h2 {
+    font-size: 24px;
+    margin: 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.content-section h3 {
+    font-size: 20px;
+    margin: 12px 0;
+}
+
+.content-section p {
+    margin-bottom: 10px;
+}
+
+.content-section ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.content-table th, .content-table td {
+    border: 1px solid #a2a9b1;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.content-table th {
+    background-color: #f0f0f0;
+}
+
+.references-list, .external-links-list {
+    margin-left: 20px;
+}
+
+/* 页脚样式 */
+.site-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #a2a9b1;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.footer-content {
+    font-size: 14px;
+}
+
+.footer-links ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.footer-links li {
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.copyright {
+    color: #54595d;
+}
+
+/* 响应式样式 */
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar-right {
+        order: -1;
+        flex: none;
+    }
+    
+    .sidebar-left, .sidebar-right {
+        flex: none;
+        width: 100%;
+    }
+    
+    .main-nav {
+        display: none;
+    }
+    
+    .main-nav.show-mobile {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-bottom: 1px solid #a2a9b1;
+        padding: 10px;
+        z-index: 100;
+    }
+    
+    .main-nav.show-mobile ul {
+        flex-direction: column;
+    }
+    
+    .main-nav.show-mobile li {
+        margin: 5px 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .search-box {
+        flex: 0 0 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .search-box {
+        order: 3;
+        width: 100%;
+        margin: 10px 0 0 0;
+        flex: none;
+    }
+    
+    .wiki-title {
+        display: none;
+    }
+}
+    
