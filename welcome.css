@@ -1,95 +1,229 @@
-/* 清除默认样式 */
+/* ================= 全局样式重置 ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* 统一字体，提升兼容性 */
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* 页面基础设置 */
-html, body {
+/* 页面主体：隐藏滚动条，防止轮播时出现滚动 */
+body {
+    overflow: hidden;
+    background-color: #000; /* 备用背景色 */
+}
+
+/* ================= 轮播核心样式 ================= */
+/* 轮播容器：全屏显示 */
+.carousel-wrapper {
+    position: relative;
+    width: 100vw;  /* 视口宽度 */
+    height: 100vh; /* 视口高度 */
+    overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* 轮播图片容器：横向排列所有轮播项 */
+.carousel-inner {
+    display: flex;
+    width: 100%;
     height: 100%;
-    overflow: hidden; /* 隐藏滚动条 */
+    /* 轮播过渡动画：平滑切换 */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 全屏背景样式 */
-.fullscreen-bg {
-    position: fixed;
+/* 单个轮播项：占满全屏 */
+.carousel-item {
+    flex: 0 0 100%; /* 固定宽度100%，不缩放 */
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 默认透明 */
+    transition: opacity 0.8s ease;
+}
+
+/* 激活状态的轮播项：显示 */
+.carousel-item.active {
+    opacity: 1;
+}
+
+/* 轮播图片：全屏覆盖，保持比例 */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 覆盖容器，裁剪多余部分 */
+    object-position: center; /* 图片居中显示 */
+}
+
+/* ================= 轮播控制样式 ================= */
+/* 左右切换按钮基础样式 */
+.carousel-control {
+    position: absolute;
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色 */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* 圆形按钮 */
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10; /* 层级高于背景，低于内容 */
+    transition: all 0.3s ease; /* 悬停动画 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 毛玻璃效果，提升视觉层次 */
+    backdrop-filter: blur(5px);
+}
+
+/* 上一张按钮位置 */
+.prev-btn {
+    left: 20px;
+}
+
+/* 下一张按钮位置 */
+.next-btn {
+    right: 20px;
+}
+
+/* 按钮悬停效果 */
+.carousel-control:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transform: translateY(-50%) scale(1.1); /* 轻微放大 */
+}
+
+/* 轮播指示器容器：底部居中 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px; /* 指示器间距 */
+    z-index: 10;
+}
+
+/* 指示器样式 */
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* 圆形 */
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
+    cursor: pointer;
+    transition: all 0.4s ease; /* 过渡动画 */
+}
+
+/* 激活状态的指示器 */
+.indicator.active {
+    background-color: #fff; /* 纯白色 */
+    width: 30px; /* 变长为椭圆 */
+    border-radius: 5px;
+}
+
+/* ================= 页面内容样式（Logo + 按钮） ================= */
+/* 内容容器：居中显示 */
+.page-content {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #f0f4f8; /* 背景色 - 无实际内容 */
-    z-index: -1; /* 确保在内容下方 */
-	
-}
-
-/* 内容容器 - 居中显示所有元素 */
-.welcome-container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px; /* 元素间间距 */
+    justify-content: center; /* 垂直居中 */
+    align-items: center;     /* 水平居中 */
+    z-index: 5; /* 层级：轮播图之上，控制按钮之下 */
+    text-align: center;
+    padding: 0 20px;
 }
 
 /* Logo样式 */
 .logo {
-    width: 150px;
-    height: 150px;
-    background-color: #335c81; /* Logo占位色 */
-    border-radius: 8px; /* 轻微圆角 */
-    
-    /* 初始状态：透明且偏移 */
-    opacity: 0;
-    transform: translateY(50px);
-    /* 动画：1秒上浮显示 */
-    animation: floatUp 1s forwards;
-}
-
-/* 网站名称样式 */
-.site-name {
-	width: 280px;
-	height: 40px;
-	background-color: #2a4365; /* 名称占位色 */
-	border-radius: 4px; /* 轻微圆角 */
-	/* 初始状态：透明且偏移，延迟动画 */
-	opacity: 0;
-	transform: translateY(50px);
-	/* 动画：1秒上浮显示，延迟0.3秒 */
-	animation: floatUp 1s 0.3s forwards;
-	text-align: center;
-	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-	font-size: 24px;
-	color: #FFFFFF;
+    color: #fff; /* 白色文字 */
+    font-size: 60px; /* 大号字体 */
+    font-weight: 700; /* 加粗 */
+    letter-spacing: 2px; /* 字母间距 */
+    /* 文字阴影：增强可读性 */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 40px; /* 与按钮间距 */
+    user-select: none; /* 禁止选中文字 */
 }
 
 /* 跳转按钮样式 */
-.enter-btn {
-	width: 160px;
-	height: 50px;
-	background-color: #4299e1; /* 按钮颜色 */
-	border: none;
-	border-radius: 6px; /* 轻微圆角 */
-	cursor: pointer; /* 鼠标悬停时显示手型 */
-	/* 初始状态：透明且偏移，延迟动画 */
-	opacity: 0;
-	transform: translateY(50px);
-	/* 动画：1秒上浮显示，延迟0.6秒 */
-	animation: floatUp 1s 0.6s forwards;
-	color: #FFFCFC;
-	font-size: 24px;
+.jump-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 40px;
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明白色 */
+    color: #fff;
+    text-decoration: none; /* 去除下划线 */
+    font-size: 18px;
+    font-weight: 600;
+    border: 2px solid #fff; /* 白色边框 */
+    border-radius: 50px; /* 圆角按钮 */
+    cursor: pointer;
+    transition: all 0.3s ease; /* 悬停动画 */
+    backdrop-filter: blur(8px); /* 毛玻璃效果 */
+    user-select: none; /* 禁止选中文字 */
 }
 
-/* 上浮动画定义 */
-@keyframes floatUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px); /* 从下方50px开始 */
+/* 按钮箭头样式 */
+.arrow {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+.jump-btn:hover {
+    background-color: #fff; /* 白色背景 */
+    color: #333; /* 深色文字 */
+    transform: translateY(-5px); /* 轻微上移 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 阴影增强 */
+}
+
+/* 箭头悬停动画 */
+.jump-btn:hover .arrow {
+    transform: translateX(5px); /* 箭头右移 */
+}
+
+/* ================= 响应式适配 ================= */
+/* 平板设备 */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 45px; /* 缩小Logo */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* 移动到正常位置 */
+    .jump-btn {
+        padding: 12px 35px; /* 缩小按钮 */
+        font-size: 16px;
+    }
+    .carousel-control {
+        width: 45px; /* 缩小控制按钮 */
+        height: 45px;
+        font-size: 20px;
     }
 }
-    
+
+/* 手机设备 */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 35px; /* 进一步缩小Logo */
+    }
+    .jump-btn {
+        padding: 10px 30px; /* 进一步缩小按钮 */
+        font-size: 14px;
+    }
+    .carousel-control {
+        width: 40px; /* 进一步缩小控制按钮 */
+        height: 40px;
+        font-size: 18px;
+    }
+    .indicator {
+        width: 8px; /* 缩小指示器 */
+        height: 8px;
+    }
+    .indicator.active {
+        width: 25px; /* 缩小激活状态指示器 */
+    }
+}
