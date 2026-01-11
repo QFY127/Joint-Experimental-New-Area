@@ -44,7 +44,7 @@ body {
     border-radius: 2px;
 }
 
-/* ================= 1. 顶部导航栏样式 ================= */
+/* ================= 1. 顶部导航栏样式（带居中LOGO） ================= */
 .header {
     position: fixed;
     top: 0;
@@ -60,6 +60,7 @@ body {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* 导航容器：flex布局，居中对齐 */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -67,26 +68,46 @@ body {
     padding: 18px 0;
 }
 
-/* Logo样式 - 白色（初始）/蓝色（滚动后） */
-.logo a {
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-/* 滚动后Logo文字颜色 - 主色调蓝色 */
-.header.scrolled .logo a {
-    color: #165DFF;
-}
-
-/* 导航菜单 */
+/* 导航菜单通用样式 */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 35px;
+    gap: 30px;
+}
+
+/* 左侧导航 */
+.left-menu {
+    justify-content: flex-start;
+}
+
+/* 右侧导航 */
+.right-menu {
+    justify-content: flex-end;
+}
+
+/* LOGO容器：居中显示 */
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* LOGO文字样式 */
+.logo a {
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+/* 滚动后LOGO文字颜色 - 主色调蓝色 */
+.header.scrolled .logo-text {
+    color: #165DFF;
 }
 
 /* 导航项链接 - 白色（初始）/深灰色（滚动后） */
@@ -331,10 +352,101 @@ body {
     line-height: 1.8;
 }
 
-/* ================= 4. 3个部门介绍区域样式 ================= */
-.department-section {
+/* ================= 4. 3大分区简介区域样式 ================= */
+.zone-section {
     padding: 90px 0;
     background-color: #F8FAFC; /* 极浅蓝背景 */
+}
+
+/* 分区卡片列表：3列布局 */
+.zone-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+/* 分区卡片样式 */
+.zone-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    height: 400px;
+}
+
+/* 卡片悬停效果 */
+.zone-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 分区背景图片 */
+.zone-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+/* 悬停时背景图片放大 */
+.zone-card:hover .zone-bg {
+    transform: scale(1.05);
+}
+
+/* 分区内容容器：半透明蓝色背景 */
+.zone-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(22, 93, 255, 0.9));
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+/* 悬停时内容上移 */
+.zone-card:hover .zone-content {
+    padding-top: 40px;
+}
+
+/* 分区标题 */
+.zone-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* 分区描述 */
+.zone-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* 分区链接 */
+.zone-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* 链接悬停效果 */
+.zone-link:hover {
+    transform: translateX(5px);
+    color: #E0F2FE;
+}
+
+/* ================= 5. 3个部门介绍区域样式 ================= */
+.department-section {
+    padding: 90px 0;
+    background-color: #fff;
 }
 
 /* 部门卡片列表：3列布局 */
@@ -346,7 +458,7 @@ body {
 
 /* 部门卡片样式 */
 .dept-card {
-    background-color: #fff;
+    background-color: #F0F7FF; /* 浅蓝背景 */
     padding: 50px 30px;
     border-radius: 12px;
     text-align: center;
@@ -361,6 +473,7 @@ body {
 .dept-card:hover {
     transform: translateY(-12px); /* 轻微上移 */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* 增强阴影 */
+    background-color: #fff;
 }
 
 /* 卡片悬停时添加蓝色渐变背景 */
@@ -402,7 +515,7 @@ body {
     line-height: 1.8;
 }
 
-/* ================= 5. 底部备案号区域样式 ================= */
+/* ================= 6. 底部备案号区域样式 ================= */
 .footer {
     background-color: #1E293B; /* 深蓝灰色背景 */
     color: #fff;
@@ -443,9 +556,17 @@ body {
 /* ================= 响应式适配 ================= */
 /* 平板设备（768px以下） */
 @media (max-width: 768px) {
-    /* 导航适配 */
+    /* 导航适配：简化布局，LOGO缩小 */
+    .logo-text {
+        font-size: 24px;
+    }
+    
     .nav-menu {
-        gap: 25px;
+        gap: 20px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
     }
     
     /* 轮播按钮适配 */
@@ -461,8 +582,9 @@ body {
         margin-bottom: 40px;
     }
     
-    /* 风景和部门区域适配 */
+    /* 各区域内边距适配 */
     .scenery-section,
+    .zone-section,
     .department-section {
         padding: 70px 0;
     }
@@ -476,27 +598,31 @@ body {
     .strip-content {
         padding: 30px;
     }
+    
+    /* 分区卡片高度适配 */
+    .zone-card {
+        height: 350px;
+    }
 }
 
 /* 手机设备（480px以下） */
 @media (max-width: 480px) {
-    /* 导航适配 */
+    /* 导航适配：隐藏左右菜单，只保留LOGO（移动端可扩展为汉堡菜单） */
+    .left-menu, .right-menu {
+        display: none;
+    }
+    
+    .logo {
+        position: static;
+        transform: none;
+    }
+    
     .navbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 15px 0;
+        justify-content: center;
     }
     
-    .logo a {
+    .logo-text {
         font-size: 22px;
-    }
-    
-    .nav-menu {
-        gap: 18px;
-    }
-    
-    .nav-link {
-        font-size: 14px;
     }
     
     /* 轮播按钮适配 */
@@ -512,8 +638,9 @@ body {
         margin-bottom: 30px;
     }
     
-    /* 风景和部门区域适配 */
+    /* 各区域内边距适配 */
     .scenery-section,
+    .zone-section,
     .department-section {
         padding: 50px 0;
     }
@@ -526,6 +653,11 @@ body {
     /* 长条内容内边距适配 */
     .strip-content {
         padding: 20px;
+    }
+    
+    /* 分区卡片高度适配 */
+    .zone-card {
+        height: 300px;
     }
     
     /* 部门卡片适配 */
