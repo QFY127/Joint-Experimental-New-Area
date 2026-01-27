@@ -1,0 +1,453 @@
+/* ==================== 全局样式重置 ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+
+/* ==================== 全局变量定义（蓝色主调） ==================== */
+:root {
+    --primary-color: #408aeb;    /* 主蓝色 - 核心色调 */
+    --primary-dark: #2c6bc0;     /* 深蓝色 - 悬停/激活 */
+    --primary-light: #6ba0f5;    /* 浅蓝色 - 辅助色 */
+    --primary-opacity: rgba(64, 138, 235, 0.1); /* 透明蓝色 - 背景 */
+    --bg-color: #f8f9fa;         /* 页面背景色 */
+    --text-color: #333;          /* 文字主色 */
+    --white-color: #ffffff;      /* 白色 */
+    --gray-color: #999999;       /* 灰色 - 次要文字 */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* 阴影色 */
+    --transition-speed: 0.3s;    /* 过渡动画速度 */
+}
+
+/* ==================== 通用容器样式 ==================== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==================== 导航栏样式 ==================== */
+.navbar {
+    position: fixed;         /* 固定在顶部 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;          /* 确保导航在最上层 */
+    padding: 10px 0;
+    transition: all var(--transition-speed) ease; /* 平滑过渡 */
+}
+
+/* 导航栏透明状态（轮播区） */
+.navbar-transparent {
+    background-color: transparent;    /* 完全透明 */
+    box-shadow: none;                 /* 无阴影 */
+}
+
+/* 导航栏实色状态（滚动后） */
+.navbar-solid {
+    background-color: var(--white-color); /* 白色背景 */
+    box-shadow: 0 2px 8px var(--shadow-color); /* 增加阴影 */
+}
+
+/* 导航容器 */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 左侧/右侧导航列表 */
+.nav-left, .nav-right {
+    display: flex;
+    list-style: none;
+}
+
+/* 导航列表项间距 */
+.nav-left li, .nav-right li {
+    margin: 0 15px;
+}
+
+/* 导航链接基础样式 */
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+}
+
+/* 透明状态下的导航文字颜色 */
+.navbar-transparent .nav-left a,
+.navbar-transparent .nav-right a {
+    color: var(--white-color); /* 白色文字（适配轮播图背景） */
+}
+
+/* 实色状态下的导航文字颜色 */
+.navbar-solid .nav-left a,
+.navbar-solid .nav-right a {
+    color: var(--text-color); /* 黑色文字（适配白色背景） */
+}
+
+/* 导航链接悬停效果 */
+.navbar-transparent .nav-left a:hover,
+.navbar-transparent .nav-right a:hover {
+    color: var(--primary-light);      /* 浅蓝文字 */
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明白色背景 */
+}
+
+.navbar-solid .nav-left a:hover,
+.navbar-solid .nav-right a:hover {
+    color: var(--primary-color);      /* 主蓝文字 */
+    background-color: var(--primary-opacity); /* 透明蓝色背景 */
+}
+
+/* Logo容器 - 居中显示 */
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Logo图片样式 */
+.nav-logo img {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+/* ==================== 轮播图样式 ==================== */
+.carousel {
+    margin-top: 0;          /* 导航固定，轮播图顶到顶部 */
+    width: 100%;
+    height: 100vh;          /* 占满视口高度 */
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* 轮播图片容器 */
+.carousel-slides {
+    width: 100%;
+    height: 100%;
+}
+
+/* 单张轮播图样式 */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;             /* 默认隐藏 */
+    transition: opacity 0.8s ease; /* 淡入淡出动画 */
+}
+
+/* 激活的轮播图 */
+.slide.active {
+    opacity: 1;             /* 显示 */
+}
+
+/* 轮播图片适配 */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* 保持比例并覆盖容器 */
+}
+
+/* 轮播切换按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    z-index: 10;
+}
+
+/* 左侧按钮 */
+.prev-btn {
+    left: 20px;
+}
+
+/* 右侧按钮 */
+.next-btn {
+    right: 20px;
+}
+
+/* 按钮悬停效果 */
+.carousel-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* 轮播指示器容器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+/* 指示器样式 */
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+/* 激活的指示器 */
+.indicator.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);  /* 放大效果 */
+}
+
+/* ==================== 区旗+区徽+简介区域样式 ==================== */
+.region-section {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+/* 区域主标题 */
+.section-main-title {
+    font-size: 38px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+/* 主标题下划线 */
+.section-main-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* 区旗区徽容器 */
+.region-icons {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* 移动端自动换行 */
+}
+
+/* 区旗容器 */
+.flag-wrapper {
+    text-align: center;
+}
+
+/* 区旗图片样式 */
+.flag-wrapper img {
+    width: 100px;
+    height: 200px;
+    /*border: 5px solid var(--primary-color);*/
+    border-radius: 8px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    object-fit: contain; /* 保证旗帜完整展示 */
+    background-color: var(--white-color);
+}
+
+/* 区徽容器 */
+.emblem-wrapper {
+    text-align: center;
+}
+
+/* 区徽图片样式 */
+.emblem-wrapper img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* 圆形展示区徽 */
+    /*border: 8px solid var(--primary-color);*/
+    box-shadow: 0 8px 20px var(--shadow-color);
+    object-fit: cover;
+}
+
+/* 标识说明文字 */
+.icon-desc {
+    margin-top: 15px;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* 区域简介容器 */
+.region-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 简介标题 */
+.intro-title {
+    font-size: 24px;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+/* 简介文字 */
+.intro-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* 简介按钮 */
+.intro-btn {
+    padding: 12px 35px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+/* 按钮悬停效果 */
+.intro-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--primary-opacity);
+}
+
+/* ==================== 风景展示区样式 ==================== */
+.scenery-section {
+    padding: 80px 0;
+    background-color: var(--white-color);
+}
+
+/* 风景图片网格布局 */
+.scenery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* 单个风景项 */
+.scenery-item {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform var(--transition-speed) ease;
+}
+
+/* 风景项悬停上浮 */
+.scenery-item:hover {
+    transform: translateY(-10px);
+}
+
+/* 风景图片适配 */
+.scenery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* 风景项文字 */
+.scenery-item p {
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* ==================== 底部样式 ==================== */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 底部信息文字 */
+.footer-info p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* ==================== 响应式适配 ==================== */
+@media (max-width: 1200px) {
+    /* 调整网格列宽 */
+    .scenery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    /* 区旗区徽间距缩小 */
+    .region-icons {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 移动端隐藏左右导航 */
+    .nav-left, .nav-right {
+        display: none;
+    }
+
+    /* 轮播按钮缩小 */
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    /* 主标题字号调整 */
+    .section-main-title {
+        font-size: 28px;
+    }
+
+    /* 区旗图片缩小 */
+    .flag-wrapper img {
+        width: 240px;
+        height: 160px;
+    }
+
+    /* 区徽图片缩小 */
+    .emblem-wrapper img {
+        width: 160px;
+        height: 160px;
+    }
+
+    /* 简介文字字号调整 */
+    .intro-text {
+        font-size: 16px;
+    }
+
+    /* 移动端网格单列 */
+    .scenery-grid {
+        grid-template-columns: 1fr;
+    }
+}

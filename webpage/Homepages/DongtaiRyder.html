@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/Joint-Experimental-New-Area/image/LZGLOGO.png">
+    <title>蓝色主题区域展示网站</title>
+    <!-- 仅引入本地CSS，无外部依赖 -->
+    <link rel="stylesheet" href="DongtaiRyder.css">
+</head>
+<body>
+    <!-- 导航栏 - 初始透明状态 -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <!-- 左侧导航链接 -->
+            <ul class="nav-left">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#region">区域介绍</a></li>
+                <li><a href="#scenery">风景展示</a></li>
+            </ul>
+            
+            <!-- 中间Logo -->
+            <div class="nav-logo">
+                <img src="Joint-Experimental-New-Area/image/logo.png" alt="网站Logo">
+            </div>
+            
+            <!-- 右侧导航链接 -->
+            <ul class="nav-right">
+                <li><a href="#service">服务</a></li>
+                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 轮播图区域 -->
+    <section class="carousel" id="home">
+        <div class="carousel-container">
+            <!-- 轮播图片容器 -->
+            <div class="carousel-slides">
+                <div class="slide active">
+                    <img src="images/slide1.jpg" alt="轮播图1">
+                </div>
+                <div class="slide">
+                    <img src="images/slide2.jpg" alt="轮播图2">
+                </div>
+                <div class="slide">
+                    <img src="images/slide3.jpg" alt="轮播图3">
+                </div>
+            </div>
+            
+            <!-- 左右切换按钮 -->
+            <button class="carousel-btn prev-btn">&lt;</button>
+            <button class="carousel-btn next-btn">&gt;</button>
+            
+            <!-- 轮播指示器 -->
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 区旗+区徽+简介区域 -->
+    <section class="region-section" id="region">
+        <div class="container">
+            <h2 class="section-main-title">分区区旗区徽</h2>
+            <!-- 区旗区徽容器 -->
+            <div class="region-icons">
+                <div class="flag-wrapper">
+                    <img src="/Joint-Experimental-New-Area/image/jing/DongtaiRyder640.png" alt="区域旗帜">
+                    <p class="icon-desc">区旗</p>
+                </div>
+                <div class="emblem-wrapper">
+                    <img src="/Joint-Experimental-New-Area/image/jing/DongtaiRyder.png" alt="区域徽标">
+                    <p class="icon-desc">区徽</p>
+                </div>
+            </div>
+            <!-- 区域简介 -->
+            <div class="region-intro">
+                <h3 class="intro-title">分区简介</h3>
+                <p class="intro-text">
+                   东台莱德分区
+该分区位于主城区北方位区域。目前由于主城区改建，其发展规划已经暂停。在未来设想中该区将是继主城区之后第二个大规模住宅区。
+                </p>
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- 风景图片展示区 -->
+    <section class="scenery-section" id="scenery">
+        <div class="container">
+            <h2 class="section-main-title">精选风景</h2>
+            <div class="scenery-grid">
+                <div class="scenery-item">
+                    <img src="images/scene1.jpg" alt="风景1">
+                    <p>山川湖海</p>
+                </div>
+                <div class="scenery-item">
+                    <img src="images/scene2.jpg" alt="风景2">
+                    <p>落日余晖</p>
+                </div>
+                <div class="scenery-item">
+                    <img src="images/scene3.jpg" alt="风景3">
+                    <p>林间小道</p>
+                </div>
+                <div class="scenery-item">
+                    <img src="images/scene4.jpg" alt="风景4">
+                    <p>海边沙滩</p>
+                </div>
+                <div class="scenery-item">
+                    <img src="images/scene5.jpg" alt="风景5">
+                    <p>雪山之巅</p>
+                </div>
+                <div class="scenery-item">
+                    <img src="images/scene6.jpg" alt="风景6">
+                    <p>古镇风情</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部备案信息 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-info">
+                <p>ICP备案号：粤ICP备20260000号-1</p>
+                <p>公安备案号：粤公网安备44010602000001号</p>
+                <p>© 2026 区域展示网 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 核心交互JS - 无外部引入 -->
+    <script>
+        // ========== 导航栏透明度控制 ==========
+        const nav = document.getElementById('mainNav');
+        
+        // 初始化导航为透明状态
+        nav.classList.add('navbar-transparent');
+        
+        // 监听滚动事件切换导航样式
+        window.addEventListener('scroll', function() {
+            // 滚动超过50px时变为实色，否则保持透明
+            if (window.scrollY > 50) {
+                nav.classList.add('navbar-solid');
+                nav.classList.remove('navbar-transparent');
+            } else {
+                nav.classList.add('navbar-transparent');
+                nav.classList.remove('navbar-solid');
+            }
+        });
+
+        // ========== 轮播图核心功能 ==========
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        let autoplayInterval;
+
+        // 显示指定索引的轮播图
+        function showSlide(index) {
+            // 边界值处理
+            if (index < 0) index = slideCount - 1;
+            if (index >= slideCount) index = 0;
+            
+            // 移除所有active类
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // 激活当前轮播项
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        // 下一张轮播图
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        // 上一张轮播图
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        // 启动自动轮播
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 5000); // 5秒切换一次
+        }
+
+        // 停止自动轮播
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // 绑定按钮点击事件
+        prevBtn.addEventListener('click', () => {
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+        });
+
+        // 绑定指示器点击事件
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                stopAutoplay();
+                showSlide(index);
+                startAutoplay();
+            });
+        });
+
+        // 鼠标悬停轮播区暂停自动播放
+        document.querySelector('.carousel').addEventListener('mouseenter', stopAutoplay);
+        document.querySelector('.carousel').addEventListener('mouseleave', startAutoplay);
+
+        // 初始化启动自动轮播
+        startAutoplay();
+    </script>
+</body>
+</html>
