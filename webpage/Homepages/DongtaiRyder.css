@@ -5,6 +5,13 @@
     box-sizing: border-box;
     font-family: "Microsoft Yahei", sans-serif;
 }
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
 
 /* ==================== 全局变量定义（蓝色主调） ==================== */
 :root {
