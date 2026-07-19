@@ -604,16 +604,25 @@ footer {
     }
 }
 
+/* 存档卡片容器，限制内部宽度+内边距，防止内容溢出 */
+.archive-card {
+    padding: 20px;
+    box-sizing: border-box; /* 关键：内边距算进容器总宽度，不会撑大盒子 */
+    max-width: 100%;
+    overflow: hidden;
+}
+/* 自适应图片盒子 */
 .single-adapt-img {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 12px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 14px 0;
 }
 .single-adapt-img img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* 可选：图片完整显示不裁切；cover是铺满裁切 */
 }
 
 /* 超小屏兼容（360px以下，老年机/小尺寸手机） */
