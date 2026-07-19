@@ -1,4 +1,4 @@
-/* 全局重置 */
+/* ===================== 全局基础重置 ===================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,23 +6,29 @@
     font-family: "Helvetica Neue", Arial, sans-serif;
     -webkit-tap-highlight-color: transparent; /* 移动端去除点击高亮 */
 }
+
 body {
     overflow: hidden;
     background-color: #000;
 }
-/* 轮播外层铺满屏幕 */
+
+/* ===================== 全屏轮播容器 ===================== */
 .carousel-wrapper {
     position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
+
+/* 轮播图片轨道容器 */
 .carousel-inner {
     display: flex;
     width: 100%;
     height: 100%;
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+/* 单张轮播项 */
 .carousel-item {
     flex: 0 0 100%;
     width: 100%;
@@ -30,16 +36,19 @@ body {
     opacity: 0;
     transition: opacity 0.8s ease;
 }
+
 .carousel-item.active {
     opacity: 1;
 }
+
 .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
-/* 左右切换按钮 */
+
+/* ===================== 轮播左右切换按钮 ===================== */
 .carousel-control {
     position: absolute;
     top: 50%;
@@ -59,18 +68,22 @@ body {
     justify-content: center;
     backdrop-filter: blur(5px);
 }
+
 .prev-btn {
     left: 20px;
 }
+
 .next-btn {
     right: 20px;
 }
+
 .carousel-control:hover {
     background-color: rgba(255, 255, 255, 0.8);
     color: #333;
     transform: translateY(-50%) scale(1.1);
 }
-/* 底部指示器永久显示 */
+
+/* ===================== 底部轮播指示器 ===================== */
 .carousel-indicators {
     position: absolute;
     bottom: 30px;
@@ -80,6 +93,7 @@ body {
     gap: 12px;
     z-index: 10;
 }
+
 .indicator {
     width: 10px;
     height: 10px;
@@ -88,12 +102,15 @@ body {
     cursor: pointer;
     transition: all 0.4s ease;
 }
+
 .indicator.active {
     background-color: #fff;
     width: 30px;
     border-radius: 5px;
 }
-/* 全屏居中容器，穿透鼠标 */
+
+/* ===================== 居中文字内容区域 ===================== */
+/* 全屏居中容器，穿透鼠标事件 */
 .page-content {
     position: absolute;
     top: 0;
@@ -109,10 +126,13 @@ body {
     transition: all 0.5s ease;
     pointer-events: none;
 }
-/* 文字交互盒子，接收hover/touch */
+
+/* 可交互文字盒子，接收hover/touch */
 .content-box {
     pointer-events: auto;
 }
+
+/* 主标题logo文字 */
 .logo {
     color: #fff;
     font-size: 60px;
@@ -122,6 +142,8 @@ body {
     margin-bottom: 40px;
     user-select: none;
 }
+
+/* 进入跳转按钮 */
 .jump-btn {
     display: inline-flex;
     align-items: center;
@@ -139,26 +161,30 @@ body {
     backdrop-filter: blur(8px);
     user-select: none;
 }
+
 .arrow {
     margin-left: 10px;
     transition: transform 0.3s ease;
 }
+
 .jump-btn:hover {
     background-color: #fff;
     color: #333;
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
 .jump-btn:hover .arrow {
     transform: translateX(5px);
 }
-/* 隐藏样式，不阻断交互 */
+
+/* UI元素隐藏类 */
 .ui-hide {
     opacity: 0 !important;
 }
 
-/* ========== 移动端响应式适配 ========== */
-/* 平板 768px以下 */
+/* ===================== 移动端响应式适配 ===================== */
+/* 平板 768px及以下 */
 @media (max-width: 768px) {
     .logo {
         font-size: 45px;
@@ -177,7 +203,8 @@ body {
         bottom: 20px;
     }
 }
-/* 手机 480px以下 */
+
+/* 手机 480px及以下 */
 @media (max-width: 480px) {
     .logo {
         font-size: 32px;
@@ -208,7 +235,8 @@ body {
         gap: 8px;
     }
 }
-/* 超小手机 360px以下 */
+
+/* 超小手机 360px及以下 */
 @media (max-width: 360px) {
     .logo {
         font-size: 26px;

@@ -1,13 +1,17 @@
+/* 全局重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Microsoft Yahei", sans-serif;
 }
+
 body {
     background-color: #f5f5f5;
     position: relative;
 }
+
+/* 页面顶部悬浮标签 */
 .page-top-tag {
     position: absolute;
     z-index: 999;
@@ -18,6 +22,7 @@ body {
     border-radius: 0;
     line-height: 0;
 }
+
 .page-top-tag img {
     width: auto;
     height: 50px;
@@ -26,6 +31,8 @@ body {
     display: block;
     object-fit: contain;
 }
+
+/* 顶部头部栏 */
 .header-top {
     background-color: white;
     display: flex;
@@ -34,34 +41,42 @@ body {
     padding: 12px 40px;
     border-bottom: 1px solid #eee;
 }
+
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .logo img {
     width: 48px;
     height: 48px;
 }
+
 .logo-text h1 {
     font-size: 24px;
     color: #222;
     line-height: 1.2;
 }
+
 .logo-text p {
     font-size: 12px;
     color: #666;
     letter-spacing: 1px;
 }
+
 .header-right {
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
 .lang-switch {
     font-size: 14px;
     color: #333;
 }
+
+/* 搜索框 */
 .search-box {
     display: flex;
     align-items: center;
@@ -69,27 +84,33 @@ body {
     border-radius: 20px;
     padding: 6px 12px;
 }
+
 .search-box input {
     border: none;
     outline: none;
     font-size: 14px;
     width: 180px;
 }
+
 .search-box button {
     background: none;
     border: none;
     cursor: pointer;
     color: #004b93;
 }
+
+/* 主导航栏 */
 .main-nav {
     background-color: #004b93;
 }
+
 .main-nav ul {
     display: flex;
     list-style: none;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .main-nav ul li a {
     display: block;
     padding: 12px 30px;
@@ -98,34 +119,41 @@ body {
     font-size: 15px;
     transition: background-color 0.2s;
 }
+
 .main-nav ul li a:hover {
     background-color: #00386f;
 }
-/* ========== 轮播样式 ========== */
+
+/* ========== 轮播模块样式 ========== */
 .carousel-section {
     width: 100%;
     overflow: hidden;
     position: relative;
 }
+
 .carousel-container {
     width: 100%;
     position: relative;
 }
+
 .carousel-track {
     width: 500%;
     display: flex;
     transition: transform 0.6s ease;
 }
+
 .carousel-item {
     width: 20%;
     position: relative;
 }
+
 .carousel-item img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
 }
+
 .carousel-item::after {
     content: "";
     position: absolute;
@@ -136,6 +164,7 @@ body {
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 0;
 }
+
 .banner-content {
     position: absolute;
     z-index: 1;
@@ -152,29 +181,35 @@ body {
     transition: opacity 1s ease;
     pointer-events: none;
 }
+
 .banner-text {
     pointer-events: auto;
 }
+
 .banner-text h2 {
     font-size: 32px;
     margin-bottom: 12px;
     color: #fff;
 }
+
 .banner-text .slogan {
     font-size: 16px;
     margin-bottom: 8px;
     letter-spacing: 1px;
     color: #fff;
 }
+
 .banner-text .desc {
     font-size: 14px;
     opacity: 0.9;
     color: #fff;
 }
+
 .text-hide {
     opacity: 0 !important;
 }
-/* 轮播左右按钮 分开定位 */
+
+/* 轮播左右切换按钮 */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -190,15 +225,20 @@ body {
     opacity: 0;
     transition: opacity 1s ease;
 }
+
 .carousel-btn.prev-btn {
     left: 20px;
 }
+
 .carousel-btn.next-btn {
     right: 20px;
 }
+
 .carousel-btn:hover {
     background: rgba(0,0,0,0.5);
 }
+
+/* 轮播指示器小点 */
 .carousel-indicators {
     position: absolute;
     bottom: 16px;
@@ -208,6 +248,7 @@ body {
     gap: 10px;
     z-index: 2;
 }
+
 .indicator {
     width: 12px;
     height: 12px;
@@ -215,10 +256,13 @@ body {
     background: rgba(255,255,255,0.4);
     cursor: pointer;
 }
+
 .indicator.active {
     background: #fff;
 }
-/* ========================== */
+/* ========== 轮播模块结束 ========== */
+
+/* 面包屑导航 */
 .breadcrumb {
     background-color: white;
     padding: 10px 120px;
@@ -226,10 +270,13 @@ body {
     color: #666;
     border-bottom: 1px solid #eee;
 }
+
 .breadcrumb a {
     color: #004b93;
     text-decoration: none;
 }
+
+/* 主体三栏容器 */
 .container {
     display: grid;
     grid-template-columns: 280px 1fr 300px;
@@ -237,6 +284,8 @@ body {
     padding: 20px 120px;
     background-color: white;
 }
+
+/* 通用区块标题 */
 .section-title {
     display: flex;
     align-items: center;
@@ -246,28 +295,35 @@ body {
     margin-bottom: 16px;
     color: #222;
 }
+
 .section-title svg {
     width: 20px;
     height: 20px;
     fill: #004b93;
 }
+
+/* 分区卡片模块 */
 .分区-card {
     margin-bottom: 20px;
 }
+
 .分区-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
 }
+
 .分区-header img {
     width: 120px;
     height: 80px;
     border-radius: 4px;
 }
+
 .分区-list {
     list-style: none;
 }
+
 .分区-list li {
     display: flex;
     justify-content: space-between;
@@ -275,44 +331,54 @@ body {
     padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
+
 .分区-list li:last-child {
     border-bottom: none;
 }
+
 .分区-info {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .分区-icon {
     width: 24px;
     height: 24px;
 }
+
 .分区-text h4 {
     font-size: 14px;
     color: #222;
     margin-bottom: 4px;
 }
+
 .分区-text p {
     font-size: 12px;
     color: #666;
 }
+
 .分区-list li a {
     font-size: 13px;
     color: #004b93;
     text-decoration: none;
 }
+
+/* 部门网格布局 */
 .部门-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 30px;
 }
+
 .部门-card {
     text-align: center;
     padding: 16px;
     border-radius: 6px;
     background-color: #e8f0f9;
 }
+
 /* 部门图标自适应核心代码 */
 .部门-icon {
     width: 48px;
@@ -323,48 +389,60 @@ body {
     display: block;
     margin: 0 auto 10px;
 }
+
 .部门-card h4 {
     font-size: 14px;
     margin-bottom: 8px;
     color: #222;
 }
+
 .部门-card p {
     font-size: 12px;
     color: #666;
     margin-bottom: 10px;
     line-height: 1.4;
 }
+
 .部门-card a {
     font-size: 12px;
     color: #004b93;
     text-decoration: none;
 }
+
+/* 新闻列表 */
 .news-list {
     list-style: none;
 }
+
 .news-list li {
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
     border-bottom: 1px dashed #eee;
 }
+
 .news-list li:last-child {
     border-bottom: none;
 }
+
 .news-list li p {
     font-size: 13px;
     color: #333;
 }
+
 .news-list li span {
     font-size: 12px;
     color: #999;
 }
+
+/* 存档卡片 */
 .存档-card {
     border: 1px solid #eee;
     border-radius: 6px;
     padding: 16px;
     margin-bottom: 20px;
 }
+
 .存档-card h3 {
     font-size: 16px;
     margin-bottom: 12px;
@@ -372,10 +450,12 @@ body {
     align-items: center;
     gap: 6px;
 }
+
 .存档-card h3 img {
     width: 20px;
     height: 20px;
 }
+
 .存档-img {
     width: 100%;
     height: 80px;
@@ -383,10 +463,12 @@ body {
     border-radius: 4px;
     margin-bottom: 12px;
 }
+
 .存档-info-list {
     list-style: none;
     margin-bottom: 16px;
 }
+
 .存档-info-list li {
     display: flex;
     justify-content: space-between;
@@ -394,6 +476,7 @@ body {
     color: #555;
     padding: 4px 0;
 }
+
 .download-btn {
     display: block;
     width: 100%;
@@ -405,9 +488,12 @@ body {
     text-decoration: none;
     font-size: 14px;
 }
+
+/* 快速链接列表 */
 .quick-link-list {
     list-style: none;
 }
+
 .quick-link-list li {
     display: flex;
     justify-content: space-between;
@@ -415,14 +501,18 @@ body {
     padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
+
 .quick-link-list li:last-child {
     border-bottom: none;
 }
+
 .quick-link-list li a {
     color: #333;
     text-decoration: none;
     font-size: 14px;
 }
+
+/* 底部页脚 */
 footer {
     background-color: #004b93;
     color: white;
@@ -432,18 +522,22 @@ footer {
     align-items: center;
     font-size: 12px;
 }
+
 .footer-links a {
     color: white;
     text-decoration: none;
     margin-right: 15px;
 }
+
 .footer-qr {
     display: flex;
     gap: 20px;
 }
+
 .qr-code {
     text-align: center;
 }
+
 .qr-code img {
     width: 60px;
     height: 60px;
@@ -451,165 +545,19 @@ footer {
     border-radius: 4px;
     margin-bottom: 4px;
 }
+
 .qr-code p {
     font-size: 11px;
 }
 
-/* 移动端全局适配优化（768px及以下平板/手机） */
-@media screen and (max-width:768px){
-    * {
-        touch-action: manipulation; /* 移除移动端300ms点击延迟 */
-    }
-    .page-top-tag {
-        right: 10px;
-    }
-    .page-top-tag img {
-        height: 36px;
-        max-width: 160px;
-    }
-    /* 顶部头部 */
-    .header-top {
-        padding: 10px 15px;
-    }
-    .logo img {
-        width: 36px;
-        height: 36px;
-    }
-    .logo-text h1 {
-        font-size: 18px;
-    }
-    .logo-text p {
-        font-size: 10px;
-    }
-    .header-right {
-        gap: 10px;
-    }
-    .search-box {
-        padding: 4px 8px;
-    }
-    .search-box input {
-        width: 100px;
-        font-size: 12px;
-    }
-    /* 轮播适配 */
-    .banner-content{
-        padding:15px 20px;
-    }
-    .banner-text h2{
-        font-size:20px;
-        margin-bottom: 8px;
-    }
-    .banner-text .slogan {
-        font-size: 14px;
-        margin-bottom: 4px;
-    }
-    .banner-text .desc {
-        font-size: 12px;
-    }
-    .carousel-btn {
-        width: 30px;
-        height: 45px;
-        font-size: 16px;
-    }
-    .carousel-btn.prev-btn {
-        left: 8px;
-    }
-    .carousel-btn.next-btn {
-        right: 8px;
-    }
-    .carousel-indicators {
-        gap: 6px;
-    }
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-    /* 面包屑 */
-    .breadcrumb {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    /* 三栏布局改为单列 */
-    .container {
-        grid-template-columns: 1fr;
-        padding: 10px;
-        gap: 16px;
-    }
-    /* 部门卡片单列 */
-    .部门-grid {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-    .部门-card {
-        padding: 12px;
-    }
-    .部门-icon {
-        width: 40px;
-        height: 40px;
-    }
-    /* 通用标题 */
-    .section-title {
-        font-size: 16px;
-    }
-    /* 分区卡片 */
-    .分区-header img {
-        width: 90px;
-        height: 60px;
-    }
-    .分区-list li {
-        padding: 8px 0;
-    }
-    .分区-icon {
-        width: 20px;
-        height: 20px;
-    }
-    /* 存档卡片 */
-    .存档-card {
-        padding: 12px;
-    }
-    .存档-img {
-        height: 60px;
-    }
-    .download-btn {
-        padding: 8px;
-        font-size: 13px;
-    }
-    /* 底部footer适配 */
-    footer {
-        padding: 15px;
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-    }
-    .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-    .footer-links a {
-        margin-right: 8px;
-        font-size: 11px;
-    }
-    .footer-qr {
-        gap: 12px;
-    }
-    .qr-code img {
-        width: 50px;
-        height: 50px;
-    }
-    .qr-code p {
-        font-size: 10px;
-    }
-}
-
+/* 通用自适应图片 */
 .single-adapt-img {
     width: 100%;
     border-radius: 6px;
     overflow: hidden;
     margin: 12px 0;
 }
+
 .single-adapt-img img {
     max-width: 100%;
     width: 100%;
@@ -617,18 +565,206 @@ footer {
     display: block;
 }
 
-/* 超小屏兼容（360px以下，老年机/小尺寸手机） */
+/* ========== 移动端适配 768px及以下 ========== */
+@media screen and (max-width:768px){
+    * {
+        touch-action: manipulation; /* 移除移动端300ms点击延迟 */
+    }
+
+    .page-top-tag {
+        right: 10px;
+    }
+
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+
+    /* 顶部头部 */
+    .header-top {
+        padding: 10px 15px;
+    }
+
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo-text h1 {
+        font-size: 18px;
+    }
+
+    .logo-text p {
+        font-size: 10px;
+    }
+
+    .header-right {
+        gap: 10px;
+    }
+
+    .search-box {
+        padding: 4px 8px;
+    }
+
+    .search-box input {
+        width: 100px;
+        font-size: 12px;
+    }
+
+    /* 轮播适配 */
+    .banner-content{
+        padding:15px 20px;
+    }
+
+    .banner-text h2{
+        font-size:20px;
+        margin-bottom: 8px;
+    }
+
+    .banner-text .slogan {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .banner-text .desc {
+        font-size: 12px;
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .carousel-btn.prev-btn {
+        left: 8px;
+    }
+
+    .carousel-btn.next-btn {
+        right: 8px;
+    }
+
+    .carousel-indicators {
+        gap: 6px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* 面包屑 */
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    /* 三栏布局改为单列 */
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 16px;
+    }
+
+    /* 部门卡片单列 */
+    .部门-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .部门-card {
+        padding: 12px;
+    }
+
+    .部门-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* 通用标题 */
+    .section-title {
+        font-size: 16px;
+    }
+
+    /* 分区卡片 */
+    .分区-header img {
+        width: 90px;
+        height: 60px;
+    }
+
+    .分区-list li {
+        padding: 8px 0;
+    }
+
+    .分区-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 存档卡片 */
+    .存档-card {
+        padding: 12px;
+    }
+
+    .存档-img {
+        height: 60px;
+    }
+
+    .download-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    /* 底部footer适配 */
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+
+    .footer-qr {
+        gap: 12px;
+    }
+
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+
+/* ========== 超小屏兼容 360px以下 ========== */
 @media screen and (max-width: 360px) {
     .main-nav ul li a {
         padding: 8px 10px;
         font-size: 12px;
     }
+
     .banner-text h2 {
         font-size: 16px;
     }
+
     .logo {
         gap: 6px;
     }
+
     .quick-link-list li a {
         font-size: 13px;
     }
