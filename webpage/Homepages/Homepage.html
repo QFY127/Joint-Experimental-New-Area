@@ -19,6 +19,13 @@
                 <p>JOINT EXPERIMENTAL NEW AREA</p>
             </div>
         </div>
+        <div class="header-right">
+            <span class="lang-switch">简体中文</span>
+            <div class="search-box">
+                <input type="text" placeholder="搜索内容">
+                <button>🔍</button>
+            </div>
+        </div>
     </header>
     <nav class="main-nav">
         <ul>
@@ -32,7 +39,6 @@
             <li><a href="#">新闻公告</a></li>
         </ul>
     </nav>
-
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-track">
@@ -87,10 +93,8 @@
                     </div>
                 </div>
             </div>
-
             <button class="carousel-btn prev-btn">◀</button>
             <button class="carousel-btn next-btn">▶</button>
-
             <div class="carousel-indicators">
                 <span class="indicator active" data-index="0"></span>
                 <span class="indicator" data-index="1"></span>
@@ -100,7 +104,6 @@
             </div>
         </div>
     </section>
-
     <div class="breadcrumb">
     
     </div>
@@ -282,18 +285,15 @@
         const carouselSection = document.querySelector('.carousel-section');
         const allBannerContents = document.querySelectorAll('.banner-content');
         const allTextBlocks = document.querySelectorAll('.banner-text');
-
         let currentIndex = 0;
         const totalSlides = items.length;
         let autoTimer = null;
         let textHideTimer = null;
-
         // 切换轮播时：强制全部隐藏文字、按钮
         function hideAll() {
             allBannerContents.forEach(item => item.classList.add('text-hide'));
             carouselBtns.forEach(btn => btn.style.opacity = 0);
         }
-
         // 离开文字区域，3秒后隐藏
         function resetTimer() {
             clearTimeout(textHideTimer);
@@ -303,7 +303,6 @@
             allBannerContents.forEach(item => item.classList.add('text-hide'));
             carouselBtns.forEach(btn => btn.style.opacity = 0);
         }
-
         // 更新轮播：切换直接隐藏所有内容
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 20}%)`;
@@ -311,7 +310,6 @@
             indicators[currentIndex].classList.add('active');
             hideAll(); // 切换立刻隐藏文字按钮
         }
-
         // 自动轮播
         function startAutoPlay() {
             autoTimer = setInterval(() => {
@@ -319,7 +317,6 @@
                 updateCarousel();
             }, 4000);
         }
-
         // 左右按钮切换
         prevBtn.addEventListener('click', () => {
             currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
@@ -335,7 +332,6 @@
                 updateCarousel();
             })
         });
-
         // 仅鼠标进入文字区域才显示文字+按钮
         allTextBlocks.forEach(text => {
             text.addEventListener('mouseenter', () => {
@@ -346,7 +342,6 @@
             });
             text.addEventListener('mouseleave', resetTimer);
         });
-
         // 鼠标在按钮上不触发显示（只允许文字区域hover）
         carouselBtns.forEach(btn => {
             btn.addEventListener('mouseenter', () => {
@@ -354,11 +349,9 @@
             });
             btn.addEventListener('mouseleave', resetTimer);
         });
-
         // 轮播整体hover暂停自动播放
         carouselSection.addEventListener('mouseenter', () => clearInterval(autoTimer));
         carouselSection.addEventListener('mouseleave', startAutoPlay);
-
         // 页面加载初始化
         document.addEventListener('DOMContentLoaded', function(){
             updateCarousel();
@@ -368,6 +361,35 @@
                 block: 'start'
             });
         });
+
+        // ========== 移动端触摸滑动新增代码 ==========
+        let touchStartX = 0;
+        let touchEndX = 0;
+        carouselSection.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(autoTimer);
+        });
+        carouselSection.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoPlay();
+        });
+        // 左右滑动切换轮播
+        function handleSwipe() {
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    // 右滑 → 上一张
+                    currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
+                } else {
+                    // 左滑 → 下一张
+                    currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
+                }
+                updateCarousel();
+            }
+        }
+        // 禁止移动端双击缩放冲突
+        document.addEventListener('dblclick', e => e.preventDefault());
     </script>
 </body>
 </html>

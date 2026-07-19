@@ -88,6 +88,7 @@ body {
     display: flex;
     list-style: none;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .main-nav ul li a {
     display: block;
@@ -453,22 +454,169 @@ footer {
 .qr-code p {
     font-size: 11px;
 }
-/* 移动端全局适配 */
+
+/* 移动端全局适配优化（768px及以下平板/手机） */
 @media screen and (max-width:768px){
+    * {
+        touch-action: manipulation; /* 移除移动端300ms点击延迟 */
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    /* 顶部头部 */
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+    .search-box {
+        padding: 4px 8px;
+    }
+    .search-box input {
+        width: 100px;
+        font-size: 12px;
+    }
+    /* 轮播适配 */
     .banner-content{
-        padding:20px 30px;
+        padding:15px 20px;
     }
     .banner-text h2{
-        font-size:22px;
+        font-size:20px;
+        margin-bottom: 8px;
     }
+    .banner-text .slogan {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    .banner-text .desc {
+        font-size: 12px;
+    }
+    .carousel-btn {
+        width: 30px;
+        height: 45px;
+        font-size: 16px;
+    }
+    .carousel-btn.prev-btn {
+        left: 8px;
+    }
+    .carousel-btn.next-btn {
+        right: 8px;
+    }
+    .carousel-indicators {
+        gap: 6px;
+    }
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+    /* 面包屑 */
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    /* 三栏布局改为单列 */
     .container {
         grid-template-columns: 1fr;
         padding: 10px;
+        gap: 16px;
     }
+    /* 部门卡片单列 */
     .部门-grid {
         grid-template-columns: repeat(1, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
     }
-    .breadcrumb, .header-top, footer {
-        padding: 10px 15px;
+    .部门-card {
+        padding: 12px;
+    }
+    .部门-icon {
+        width: 40px;
+        height: 40px;
+    }
+    /* 通用标题 */
+    .section-title {
+        font-size: 16px;
+    }
+    /* 分区卡片 */
+    .分区-header img {
+        width: 90px;
+        height: 60px;
+    }
+    .分区-list li {
+        padding: 8px 0;
+    }
+    .分区-icon {
+        width: 20px;
+        height: 20px;
+    }
+    /* 存档卡片 */
+    .存档-card {
+        padding: 12px;
+    }
+    .存档-img {
+        height: 60px;
+    }
+    .download-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+    /* 底部footer适配 */
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 12px;
+    }
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+
+/* 超小屏兼容（360px以下，老年机/小尺寸手机） */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .banner-text h2 {
+        font-size: 16px;
+    }
+    .logo {
+        gap: 6px;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
     }
 }

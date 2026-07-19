@@ -2,147 +2,141 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/png" href="/Joint-Experimental-New-Area/image/LZG2logo1.png">
+    <!-- 移动端强制适配，禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="icon" type="image/png" href="image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <!-- 引入独立的CSS文件 -->
     <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
-    <!-- 轮播容器：全屏背景核心 -->
     <div class="carousel-wrapper">
-        <!-- 轮播图片容器 -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/Joint-Experimental-New-Area/image/bg1.jpg" alt="轮播背景1">
+                <img src="image/bg1.jpg" alt="轮播背景1">
             </div>
             <div class="carousel-item">
                 <img src="image/bg2.jpg" alt="轮播背景2">
             </div>
             <div class="carousel-item">
-                <img src="/Joint-Experimental-New-Area/image/bg3.jpg" alt="轮播背景3">
+                <img src="image/bg3.jpg" alt="轮播背景3">
             </div>
         </div>
-
-        <!-- 轮播控制按钮（左右切换） -->
         <button class="carousel-control prev-btn">❮</button>
         <button class="carousel-control next-btn">❯</button>
-
-        <!-- 轮播指示器（小圆点） -->
         <div class="carousel-indicators">
             <span class="indicator active" data-index="0"></span>
             <span class="indicator" data-index="1"></span>
             <span class="indicator" data-index="2"></span>
         </div>
-
-        <!-- 页面核心内容：Logo + 跳转按钮 -->
         <div class="page-content">
-            <!-- Logo区域（带淡入动画） -->
-            <h1 class="logo" id="logo">联合实验新区</h1>
-            <!-- 跳转按钮 -->
-            <a href="/Joint-Experimental-New-Area/webpage/Homepages/Homepage.html" class="jump-btn" id="jumpBtn">
-                进入
-                <span class="arrow">→</span>
-            </a>
+            <div class="content-box" id="hoverBox">
+                <h1 class="logo" id="logo">联合实验新区</h1>
+                <a href="webpage/Homepages/Homepage.html" class="jump-btn" id="jumpBtn">
+                    进入
+                    <span class="arrow">→</span>
+                </a>
+            </div>
         </div>
     </div>
-
-    <!-- 原生JS实现轮播和动画 -->
     <script>
-        // ========== 核心变量定义 ==========
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
         const carouselInner = document.querySelector('.carousel-inner');
         const carouselItems = document.querySelectorAll('.carousel-item');
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
         const indicators = document.querySelectorAll('.indicator');
-        const logo = document.getElementById('logo');
-        const jumpBtn = document.getElementById('jumpBtn');
-        
-        let currentIndex = 0; // 当前轮播索引
-        const itemCount = carouselItems.length; // 轮播项总数
-        const autoPlayTime = 5000; // 自动轮播间隔（5秒）
-        let autoPlayTimer = null; // 自动轮播定时器
+        const pageContent = document.querySelector('.page-content');
+        const hoverBox = document.getElementById('hoverBox');
+        const controlBtns = document.querySelectorAll('.carousel-control');
 
-        // ========== Logo和按钮淡入动画 ==========
-        // 页面加载完成后执行动画
+        let currentIndex = 0;
+        const itemCount = carouselItems.length;
+        const autoPlayTime = 5000;
+        let autoPlayTimer = null;
+        let hideTimer = null;
+        const hideDelay = 3000;
+
+        function showUI() {
+            pageContent.classList.remove('ui-hide');
+            controlBtns.forEach(btn => btn.classList.remove('ui-hide'));
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(hideUI, hideDelay);
+        }
+        function hideUI() {
+            pageContent.classList.add('ui-hide');
+            controlBtns.forEach(btn => btn.classList.add('ui-hide'));
+        }
+
         window.addEventListener('load', () => {
-            // 初始状态：透明、位移
+            const logo = document.getElementById('logo');
+            const jumpBtn = document.getElementById('jumpBtn');
             logo.style.opacity = '0';
             logo.style.transform = 'translateY(-20px)';
             jumpBtn.style.opacity = '0';
             jumpBtn.style.transform = 'translateY(20px)';
-
-            // Logo先淡入
             setTimeout(() => {
                 logo.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
                 logo.style.opacity = '1';
                 logo.style.transform = 'translateY(0)';
-
-                // 按钮延迟0.5秒淡入，增加层次感
                 setTimeout(() => {
                     jumpBtn.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
                     jumpBtn.style.opacity = '1';
                     jumpBtn.style.transform = 'translateY(0)';
+                    hideTimer = setTimeout(hideUI, hideDelay);
                 }, 500);
             }, 300);
         });
 
-        // ========== 轮播核心功能 ==========
-        // 更新轮播显示状态
         function updateCarousel() {
-            // 移动轮播容器（核心动画）
             carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // 更新激活状态
-            carouselItems.forEach((item, index) => {
-                item.classList.toggle('active', index === currentIndex);
-            });
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
-            });
+            carouselItems.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
+            indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
         }
-
-        // 上一张
         function goToPrev() {
             currentIndex = (currentIndex - 1 + itemCount) % itemCount;
             updateCarousel();
         }
-
-        // 下一张
         function goToNext() {
             currentIndex = (currentIndex + 1) % itemCount;
             updateCarousel();
         }
-
-        // 点击指示器切换
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 currentIndex = index;
                 updateCarousel();
             });
         });
-
-        // ========== 自动轮播控制 ==========
-        // 启动自动轮播
         function startAutoPlay() {
             autoPlayTimer = setInterval(goToNext, autoPlayTime);
         }
-
-        // 停止自动轮播
         function stopAutoPlay() {
             clearInterval(autoPlayTimer);
         }
 
-        // ========== 事件绑定 ==========
-        // 左右按钮点击事件
         prevBtn.addEventListener('click', goToPrev);
         nextBtn.addEventListener('click', goToNext);
 
-        // 鼠标悬停轮播容器时暂停，离开时恢复
-        document.querySelector('.carousel-wrapper').addEventListener('mouseenter', stopAutoPlay);
-        document.querySelector('.carousel-wrapper').addEventListener('mouseleave', startAutoPlay);
+        // PC端鼠标悬浮文字显示UI
+        hoverBox.addEventListener('mouseenter', showUI);
+        hoverBox.addEventListener('mouseleave', () => {
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(hideUI, hideDelay);
+        });
+        // 移动端触摸适配：点击文字区域显示，触摸空白3秒隐藏
+        hoverBox.addEventListener('touchstart', showUI);
+        carouselWrapper.addEventListener('touchstart', (e) => {
+            if (!hoverBox.contains(e.target)) {
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(hideUI, hideDelay);
+            }
+        });
 
-        // 初始化：启动自动轮播
+        carouselWrapper.addEventListener('mouseenter', stopAutoPlay);
+        carouselWrapper.addEventListener('mouseleave', startAutoPlay);
+        // 移动端触摸屏幕暂停轮播
+        carouselWrapper.addEventListener('touchstart', stopAutoPlay);
+        carouselWrapper.addEventListener('touchend', startAutoPlay);
+
         startAutoPlay();
     </script>
 </body>
