@@ -1,0 +1,557 @@
+/* 全局公共样式 与首页Homepage.css统一 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+    position: relative;
+}
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 40px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+.header-top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #222;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.lang-switch {
+    font-size: 14px;
+    color: #333;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 6px 12px;
+}
+.search-box input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 180px;
+}
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #004b93;
+}
+/* 导航吸顶相关样式 */
+.main-nav-wrap {
+    position: relative;
+    z-index: 998;
+}
+.main-nav {
+    background-color: #004b93;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+.main-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.nav-placeholder {
+    height: 0;
+    transition: height 0.2s ease;
+}
+.nav-placeholder.show {
+    height: 48px;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    background-color: #00386f;
+}
+.breadcrumb {
+    background-color: white;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+.breadcrumb a {
+    color: #004b93;
+    text-decoration: none;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    padding: 20px 120px;
+    background-color: white;
+    min-height: calc(100vh - 320px);
+}
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #222;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b93;
+}
+/* ====================== 存档下载页面专属样式 ====================== */
+/* 顶部大图横幅（纯布局，无图片地址） */
+.archive-top-banner {
+    width: 100%;
+    height: 420px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.archive-top-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.archive-top-banner .banner-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 60px 30px 30px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.65));
+    color: #fff;
+}
+.archive-top-banner .banner-overlay h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+.archive-top-banner .banner-overlay p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+.download-main {
+    padding-right: 20px;
+}
+.archive-big-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.archive-info-wrap {
+    padding: 20px;
+}
+.archive-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+.archive-title h2 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 6px;
+}
+.archive-tag-group {
+    display: flex;
+    gap: 10px;
+}
+.tag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+.tag-new {
+    background: #004b93;
+    color: #fff;
+}
+.tag-java {
+    background: #e8f0f9;
+    color: #004b93;
+}
+.archive-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.archive-data-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.data-item {
+    padding: 10px;
+    background: #f5f8fc;
+    border-radius: 6px;
+    text-align: center;
+}
+.data-item p:first-child {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+.data-item p:last-child {
+    font-size: 15px;
+    font-weight: bold;
+    color: #004b93;
+}
+.download-buttons {
+    display: flex;
+    gap: 15px;
+}
+.download-btn-lg {
+    flex: 1;
+    display: block;
+    background-color: #004b93;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+.download-btn-lg:hover {
+    background: #00386f;
+}
+.download-btn-secondary {
+    flex: 1;
+    display: block;
+    border: 1px solid #004b93;
+    color: #004b93;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+.download-btn-secondary:hover {
+    background: #e8f0f9;
+}
+.version-list-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.version-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+.version-item:last-child {
+    border-bottom: none;
+}
+.version-left h4 {
+    font-size: 15px;
+    color: #222;
+    margin-bottom: 4px;
+}
+.version-left p {
+    font-size: 12px;
+    color: #666;
+}
+.version-down-link {
+    font-size: 13px;
+    color: #004b93;
+    text-decoration: none;
+}
+.doc-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.doc-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #222;
+}
+.doc-card ol, .doc-card ul {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+}
+.doc-card li {
+    margin-bottom: 8px;
+}
+.right-column {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+.quick-link-card {
+    margin-bottom: 20px;
+}
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+/* 侧边网盘分流模块 替换原来的存档快速信息 */
+.cloud-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 16px;
+}
+.cloud-card h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.cloud-list {
+    list-style: none;
+}
+.cloud-list li {
+    margin-bottom: 10px;
+}
+.cloud-list li:last-child {
+    margin-bottom: 0;
+}
+.cloud-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+    border: 1px solid #eee;
+}
+.cloud-link:hover {
+    background-color: #f5f8fc;
+    border-color: #004b93;
+}
+.cloud-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #222;
+}
+.cloud-tip {
+    font-size: 12px;
+    color: #999;
+}
+/* 底部公共样式 */
+footer {
+    background-color: #004b93;
+    color: white;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+.footer-qr {
+    display: flex;
+    gap: 20px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+
+/* 移动端适配 */
+@media screen and (max-width:768px){
+    .archive-top-banner {
+        height: 260px;
+    }
+    .archive-top-banner .banner-overlay {
+        padding: 40px 20px 20px;
+    }
+    .archive-top-banner .banner-overlay h2 {
+        font-size: 22px;
+    }
+    .archive-top-banner .banner-overlay p {
+        font-size: 13px;
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+    .search-box {
+        padding: 4px 8px;
+    }
+    .search-box input {
+        width: 100px;
+        font-size: 12px;
+    }
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 16px;
+    }
+    .download-main {
+        padding-right: 0;
+    }
+    .archive-data-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .download-buttons {
+        flex-direction: column;
+    }
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 12px;
+    }
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .archive-data-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cloud-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    object-fit: contain;
+    display: block;
+}
