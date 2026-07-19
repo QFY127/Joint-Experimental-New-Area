@@ -604,6 +604,18 @@ footer {
     }
 }
 
+.single-adapt-img {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.single-adapt-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* 超小屏兼容（360px以下，老年机/小尺寸手机） */
 @media screen and (max-width: 360px) {
     .main-nav ul li a {
