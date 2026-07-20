@@ -320,163 +320,160 @@
 
     <!-- 轮播交互JS脚本 -->
     <script>
-        // 获取DOM元素
-        const track = document.querySelector('.carousel-track');
-        const items = document.querySelectorAll('.carousel-item');
-        const indicators = document.querySelectorAll('.indicator');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const carouselBtns = document.querySelectorAll('.carousel-btn');
-        const carouselSection = document.querySelector('.carousel-section');
-        const allBannerContents = document.querySelectorAll('.banner-content');
-        const allTextBlocks = document.querySelectorAll('.banner-text');
+       // 获取DOM元素
+const track = document.querySelector('.carousel-track');
+const items = document.querySelectorAll('.carousel-item');
+const indicators = document.querySelectorAll('.indicator');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const carouselBtns = document.querySelectorAll('.carousel-btn');
+const carouselSection = document.querySelector('.carousel-section');
+const allBannerContents = document.querySelectorAll('.banner-content');
+const allTextBlocks = document.querySelectorAll('.banner-text');
+// 全局变量
+let currentIndex = 0;
+const totalSlides = items.length;
+let autoTimer = null;
+let textHideTimer = null;
+/**
+ * 切换轮播时：强制全部隐藏文字、按钮
+ */
+function hideAll() {
+    allBannerContents.forEach(item => item.classList.add('text-hide'));
+    carouselBtns.forEach(btn => btn.style.opacity = 0);
+}
+/**
+ * 离开文字区域，3秒后隐藏文字按钮
+ */
+function resetTimer() {
+    clearTimeout(textHideTimer);
+    textHideTimer = setTimeout(hide, 3000);
+}
+/**
+ * 隐藏所有轮播文字与切换按钮
+ */
+function hide() {
+    allBannerContents.forEach(item => item.classList.add('text-hide'));
+    carouselBtns.forEach(btn => btn.style.opacity = 0);
+}
+/**
+ * 更新轮播视图位置 + 激活指示器
+ */
+function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 20}%)`;
+    indicators.forEach(ind => ind.classList.remove('active'));
+    indicators[currentIndex].classList.add('active');
+    hideAll(); // 切换立刻隐藏文字按钮
+}
+/**
+ * 启动自动轮播 4秒切换一次
+ */
+function startAutoPlay() {
+    autoTimer = setInterval(() => {
+        currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
+        updateCarousel();
+    }, 4000);
+}
+// 上一张按钮点击事件
+prevBtn.addEventListener('click', () => {
+    currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
+    updateCarousel();
+});
+// 下一张按钮点击事件
+nextBtn.addEventListener('click', () => {
+    currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
+    updateCarousel();
+});
+// 底部指示器点击切换
+indicators.forEach(ind => {
+    ind.addEventListener('click', () => {
+        currentIndex = Number(ind.dataset.index);
+        updateCarousel();
+    })
+});
 
-        // 全局变量
-        let currentIndex = 0;
-        const totalSlides = items.length;
-        let autoTimer = null;
-        let textHideTimer = null;
-
-        /**
-         * 切换轮播时：强制全部隐藏文字、按钮
-         */
-        function hideAll() {
-            allBannerContents.forEach(item => item.classList.add('text-hide'));
-            carouselBtns.forEach(btn => btn.style.opacity = 0);
-        }
-
-        /**
-         * 离开文字区域，3秒后隐藏文字按钮
-         */
-        function resetTimer() {
-            clearTimeout(textHideTimer);
-            textHideTimer = setTimeout(hide, 3000);
-        }
-
-        /**
-         * 隐藏所有轮播文字与切换按钮
-         */
-        function hide() {
-            allBannerContents.forEach(item => item.classList.add('text-hide'));
-            carouselBtns.forEach(btn => btn.style.opacity = 0);
-        }
-
-        /**
-         * 更新轮播视图位置 + 激活指示器
-         */
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * 20}%)`;
-            indicators.forEach(ind => ind.classList.remove('active'));
-            indicators[currentIndex].classList.add('active');
-            hideAll(); // 切换立刻隐藏文字按钮
-        }
-
-        /**
-         * 启动自动轮播 4秒切换一次
-         */
-        function startAutoPlay() {
-            autoTimer = setInterval(() => {
-                currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
-                updateCarousel();
-            }, 4000);
-        }
-
-        // 上一张按钮点击事件
-        prevBtn.addEventListener('click', () => {
-            currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
-            updateCarousel();
-        });
-
-        // 下一张按钮点击事件
-        nextBtn.addEventListener('click', () => {
-            currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
-            updateCarousel();
-        });
-
-        // 底部指示器点击切换
-        indicators.forEach(ind => {
-            ind.addEventListener('click', () => {
-                currentIndex = Number(ind.dataset.index);
-                updateCarousel();
-            })
-        });
-
-        // 鼠标移入整个轮播图区域（图片/文字/按钮全部范围）显示文字与切换按钮
-        carouselSection.addEventListener('mouseenter', () => {
+// 仅移入文字区域才显示文字与按钮
+allTextBlocks.forEach(text => {
+    text.addEventListener('mouseenter', () => {
         clearTimeout(textHideTimer);
         allBannerContents.forEach(item => item.classList.remove('text-hide'));
         carouselBtns.forEach(btn => btn.style.opacity = 1);
-        });
-        // 鼠标离开轮播整体区域，3秒后隐藏文字按钮
-        carouselSection.addEventListener('mouseleave', resetTimer);
-        // 悬浮切换按钮不重置倒计时
-        carouselBtns.forEach(btn => {
-        btn.addEventListener('mouseenter', () => clearTimeout(textHideTimer));
-        btn.addEventListener('mouseleave', resetTimer);
-        });
+        // 进入文字区：暂停自动轮播
+        clearInterval(autoTimer);
+    });
+    text.addEventListener('mouseleave', () => {
+        resetTimer();
+        // 离开文字区：恢复自动轮播
+        startAutoPlay();
+    });
+});
+// 悬浮左右按钮时不隐藏文字
+carouselBtns.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        clearTimeout(textHideTimer);
+        clearInterval(autoTimer);
+    });
+    btn.addEventListener('mouseleave', () => {
+        resetTimer();
+        startAutoPlay();
+    });
+});
 
-        // 鼠标悬浮轮播区域暂停自动播放
-        carouselSection.addEventListener('mouseenter', () => clearInterval(autoTimer));
-        carouselSection.addEventListener('mouseleave', startAutoPlay);
+// 页面加载完成初始化轮播
+document.addEventListener('DOMContentLoaded', function(){
+    updateCarousel();
+    startAutoPlay();
+    carouselSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
 
-        // 页面加载完成初始化轮播
-        document.addEventListener('DOMContentLoaded', function(){
-            updateCarousel();
-            startAutoPlay();
-            carouselSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-
-        // ========== 移动端触摸滑动逻辑 ==========
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        carouselSection.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-            clearInterval(autoTimer);
-        });
-
-        carouselSection.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            startAutoPlay();
-        });
-
-        /**
-         * 处理左右滑动判定
-         */
-        function handleSwipe() {
-            const diff = touchEndX - touchStartX;
-            if (Math.abs(diff) > 40) {
-                if (diff > 0) {
-                    // 右滑 → 上一张
-                    currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
-                } else {
-                    // 左滑 → 下一张
-                    currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
-                }
-                updateCarousel();
-            }
+// ========== 移动端触摸滑动逻辑 ==========
+let touchStartX = 0;
+let touchEndX = 0;
+carouselSection.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    clearInterval(autoTimer);
+});
+carouselSection.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    startAutoPlay();
+});
+/**
+ * 处理左右滑动判定
+ */
+function handleSwipe() {
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+            // 右滑 → 上一张
+            currentIndex = currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1;
+        } else {
+            // 左滑 → 下一张
+            currentIndex = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
         }
+        updateCarousel();
+    }
+}
+// 禁止移动端双击缩放冲突
+document.addEventListener('dblclick', e => e.preventDefault());
 
-        // 禁止移动端双击缩放冲突
-        document.addEventListener('dblclick', e => e.preventDefault());
-        // 导航栏跟随滚动吸顶逻辑（仅新增，原有轮播代码不动）
-        const navBar = document.querySelector('.main-nav');
-        const headerBox = document.querySelector('.header-top');
-        window.addEventListener('scroll', function() {
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const headerHeight = headerBox.offsetHeight;
-        if (scrollTop >= headerHeight) {
+// 导航栏吸顶跟随滚动代码
+const navBar = document.querySelector('.main-nav');
+const headerBox = document.querySelector('.header-top');
+window.addEventListener('scroll', function() {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const headerHeight = headerBox.offsetHeight;
+    if (scrollTop >= headerHeight) {
         navBar.classList.add('fixed-nav');
         headerBox.classList.add('nav-fixed-padding');
-        } else {
+    } else {
         navBar.classList.remove('fixed-nav');
         headerBox.classList.remove('nav-fixed-padding');
-        }
-        });
+    }
+});
     </script>
 </body>
 </html>
