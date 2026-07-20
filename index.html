@@ -49,150 +49,162 @@
 
     <!-- 轮播交互逻辑JS -->
     <script>
-        // DOM元素获取
-        const carouselWrapper = document.querySelector('.carousel-wrapper');
-        const carouselInner = document.querySelector('.carousel-inner');
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const indicators = document.querySelectorAll('.indicator');
-        const pageContent = document.querySelector('.page-content');
-        const hoverBox = document.getElementById('hoverBox');
-        const controlBtns = document.querySelectorAll('.carousel-control');
+       // DOM元素获取
+const carouselWrapper = document.querySelector('.carousel-wrapper');
+const carouselInner = document.querySelector('.carousel-inner');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const indicators = document.querySelectorAll('.indicator');
+const pageContent = document.querySelector('.page-content');
+const hoverBox = document.getElementById('hoverBox');
+const controlBtns = document.querySelectorAll('.carousel-control');
+// 全局配置变量
+let currentIndex = 0;
+const itemCount = carouselItems.length;
+const autoPlayTime = 5000;
+let autoPlayTimer = null;
+let hideTimer = null;
+const hideDelay = 3000;
 
-        // 全局配置变量
-        let currentIndex = 0;
-        const itemCount = carouselItems.length;
-        const autoPlayTime = 5000;
-        let autoPlayTimer = null;
-        let hideTimer = null;
-        const hideDelay = 3000;
+/**
+ * 显示页面UI（标题、按钮、左右切换控件）
+ */
+function showUI() {
+    pageContent.classList.remove('ui-hide');
+    controlBtns.forEach(btn => btn.classList.remove('ui-hide'));
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideUI, hideDelay);
+}
 
-        /**
-         * 显示页面UI（标题、按钮、左右切换控件）
-         */
-        function showUI() {
-            pageContent.classList.remove('ui-hide');
-            controlBtns.forEach(btn => btn.classList.remove('ui-hide'));
-            clearTimeout(hideTimer);
+/**
+ * 隐藏页面UI
+ */
+function hideUI() {
+    pageContent.classList.add('ui-hide');
+    controlBtns.forEach(btn => btn.classList.add('ui-hide'));
+}
+
+/**
+ * 页面加载完成：标题+按钮渐入动画
+ */
+window.addEventListener('load', () => {
+    const logo = document.getElementById('logo');
+    const jumpBtn = document.getElementById('jumpBtn');
+    // 初始隐藏偏移
+    logo.style.opacity = '0';
+    logo.style.transform = 'translateY(-20px)';
+    jumpBtn.style.opacity = '0';
+    jumpBtn.style.transform = 'translateY(20px)';
+    // 标题渐入
+    setTimeout(() => {
+        logo.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+        logo.style.opacity = '1';
+        logo.style.transform = 'translateY(0)';
+        // 延迟后按钮渐入
+        setTimeout(() => {
+            jumpBtn.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+            jumpBtn.style.opacity = '1';
+            jumpBtn.style.transform = 'translateY(0)';
             hideTimer = setTimeout(hideUI, hideDelay);
-        }
+        }, 500);
+    }, 300);
+});
 
-        /**
-         * 隐藏页面UI
-         */
-        function hideUI() {
-            pageContent.classList.add('ui-hide');
-            controlBtns.forEach(btn => btn.classList.add('ui-hide'));
-        }
+/**
+ * 更新轮播位置与激活指示器
+ */
+function updateCarousel() {
+    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    carouselItems.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
+    indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
+}
 
-        /**
-         * 页面加载完成：标题+按钮渐入动画
-         */
-        window.addEventListener('load', () => {
-            const logo = document.getElementById('logo');
-            const jumpBtn = document.getElementById('jumpBtn');
+/**
+ * 切换上一张轮播
+ */
+function goToPrev() {
+    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+    updateCarousel();
+    restartAutoPlay();
+}
 
-            // 初始隐藏偏移
-            logo.style.opacity = '0';
-            logo.style.transform = 'translateY(-20px)';
-            jumpBtn.style.opacity = '0';
-            jumpBtn.style.transform = 'translateY(20px)';
+/**
+ * 切换下一张轮播
+ */
+function goToNext() {
+    currentIndex = (currentIndex + 1) % itemCount;
+    updateCarousel();
+    restartAutoPlay();
+}
 
-            // 标题渐入
-            setTimeout(() => {
-                logo.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-                logo.style.opacity = '1';
-                logo.style.transform = 'translateY(0)';
+// 指示器点击切换
+indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        restartAutoPlay();
+    });
+});
 
-                // 延迟后按钮渐入
-                setTimeout(() => {
-                    jumpBtn.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-                    jumpBtn.style.opacity = '1';
-                    jumpBtn.style.transform = 'translateY(0)';
-                    hideTimer = setTimeout(hideUI, hideDelay);
-                }, 500);
-            }, 300);
-        });
+/**
+ * 停止自动轮播
+ */
+function stopAutoPlay() {
+    if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+    }
+}
 
-        /**
-         * 更新轮播位置与激活指示器
-         */
-        function updateCarousel() {
-            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-            carouselItems.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
-            indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
-        }
+/**
+ * 开启自动轮播（先清旧定时器再新建）
+ */
+function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(goToNext, autoPlayTime);
+}
 
-        /**
-         * 切换上一张轮播
-         */
-        function goToPrev() {
-            currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-            updateCarousel();
-        }
+/**
+ * 手动切换后重置计时
+ */
+function restartAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+}
 
-        /**
-         * 切换下一张轮播
-         */
-        function goToNext() {
-            currentIndex = (currentIndex + 1) % itemCount;
-            updateCarousel();
-        }
+// 左右按钮点击事件
+prevBtn.addEventListener('click', goToPrev);
+nextBtn.addEventListener('click', goToNext);
 
-        // 指示器点击切换
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-            });
-        });
+// PC端鼠标悬浮文字框显示UI
+hoverBox.addEventListener('mouseenter', showUI);
+hoverBox.addEventListener('mouseleave', () => {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideUI, hideDelay);
+});
 
-        /**
-         * 开启自动轮播
-         */
-        function startAutoPlay() {
-            autoPlayTimer = setInterval(goToNext, autoPlayTime);
-        }
+// 移动端触摸文字区域显示UI
+hoverBox.addEventListener('touchstart', showUI);
 
-        /**
-         * 停止自动轮播
-         */
-        function stopAutoPlay() {
-            clearInterval(autoPlayTimer);
-        }
+// 触摸空白区域计时隐藏UI
+carouselWrapper.addEventListener('touchstart', (e) => {
+    if (!hoverBox.contains(e.target)) {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideUI, hideDelay);
+    }
+});
 
-        // 左右按钮点击事件
-        prevBtn.addEventListener('click', goToPrev);
-        nextBtn.addEventListener('click', goToNext);
+// ========== 关键改动：移除鼠标移入暂停、移出恢复的监听，鼠标放图片不暂停轮播 ==========
+// carouselWrapper.addEventListener('mouseenter', stopAutoPlay);
+// carouselWrapper.addEventListener('mouseleave', startAutoPlay);
 
-        // PC端鼠标悬浮文字框显示UI
-        hoverBox.addEventListener('mouseenter', showUI);
-        hoverBox.addEventListener('mouseleave', () => {
-            clearTimeout(hideTimer);
-            hideTimer = setTimeout(hideUI, hideDelay);
-        });
+// 移动端触摸暂停逻辑保留（可选，不想触摸暂停可删掉下面两行）
+carouselWrapper.addEventListener('touchstart', stopAutoPlay);
+carouselWrapper.addEventListener('touchend', startAutoPlay);
 
-        // 移动端触摸文字区域显示UI
-        hoverBox.addEventListener('touchstart', showUI);
-        // 触摸空白区域计时隐藏UI
-        carouselWrapper.addEventListener('touchstart', (e) => {
-            if (!hoverBox.contains(e.target)) {
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(hideUI, hideDelay);
-            }
-        });
-
-        // 鼠标悬浮轮播暂停自动播放
-        carouselWrapper.addEventListener('mouseenter', stopAutoPlay);
-        carouselWrapper.addEventListener('mouseleave', startAutoPlay);
-
-        // 移动端触摸屏幕暂停轮播，松开恢复
-        carouselWrapper.addEventListener('touchstart', stopAutoPlay);
-        carouselWrapper.addEventListener('touchend', startAutoPlay);
-
-        // 页面初始化启动自动轮播
-        startAutoPlay();
+// 页面初始化启动自动轮播
+startAutoPlay();
     </script>
 </body>
 </html>
