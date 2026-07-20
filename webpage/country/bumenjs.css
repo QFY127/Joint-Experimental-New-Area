@@ -1,0 +1,602 @@
+/* ==============================================
+                全局基础通用样式
+============================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+
+body {
+    background-color: #f6f7f9;
+    position: relative;
+    scroll-padding-top: 52px;
+}
+
+/* 顶部悬浮LOGO */
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 12px;
+    right: 42px;
+    background: transparent;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+
+/* 头部LOGO栏 */
+.header-top {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 40px;
+    border-bottom: 1px solid #e5e8ec;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #1d1d1f;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #606266;
+    letter-spacing: 1px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 全局吸顶导航 */
+.main-nav {
+    background-color: #00478e;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 13px 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.24s ease;
+}
+.main-nav ul li a:hover {
+    background-color: #00366b;
+}
+
+/* 面包屑导航 */
+.breadcrumb {
+    background-color: #fff;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #606266;
+    border-bottom: 1px solid #e5e8ec;
+}
+.breadcrumb a {
+    color: #00478e;
+    text-decoration: none;
+}
+
+/* 主体三栏容器 */
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 24px;
+    padding: 24px 120px;
+    background-color: #ffffff;
+    align-items: flex-start;
+}
+
+/* 板块标题通用样式 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    color: #1d1d1f;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #00478e;
+}
+
+/* 资讯列表 */
+.news-list {
+    list-style: none;
+}
+.news-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed #e5e8ec;
+}
+.news-list li:last-child {
+    border-bottom: none;
+}
+.news-list li p {
+    font-size: 13px;
+    color: #303133;
+}
+.news-list li span {
+    font-size: 12px;
+    color: #909399;
+}
+
+/* 快速链接列表 */
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid #e5e8ec;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #303133;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* 指挥架构卡片外层 */
+.structure-card {
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.structure-card h3 {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1d1d1f;
+}
+
+/* ====================== 竖版树形架构CSS ====================== */
+.tree-container {
+    margin-top:12px;
+    padding-left:6px;
+}
+.tree-root, .tree-child {
+    list-style: none;
+    position: relative;
+}
+.tree-root {
+    padding-left: 14px;
+}
+.tree-child {
+    padding-left: 24px;
+}
+/* 竖连接线 */
+.tree-root::before,
+.tree-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #00478e;
+}
+.tree-root > li::before,
+.tree-child > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 16px;
+    height: 1px;
+    background: #00478e;
+}
+.tree-node {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 4px 0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.tree-level1 .tree-node {
+    background: #00478e;
+    color: #fff;
+}
+.tree-level2 .tree-node {
+    background: #e6f0fb;
+    color: #00478e;
+    font-weight: 500;
+}
+.tree-level3 .tree-node {
+    background: #f4f9ff;
+    color: #333;
+}
+
+/* 页脚区域 */
+footer {
+    background-color: #00478e;
+    color: #fff;
+    padding: 24px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 16px;
+}
+.footer-qr {
+    display: flex;
+    gap: 22px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 62px;
+    height: 62px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+
+/* ==============================================
+                侧边悬浮跟随配置
+============================================== */
+.left-column,
+.right-column {
+    height: fit-content;
+    position: sticky;
+    top: 52px;
+}
+/* 侧边卡片统一类 */
+.side-card {
+    background: #fff;
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+
+/* ==============================================
+                页面横幅样式
+============================================== */
+.page-banner {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #ffffff;
+}
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.banner-text-wrap {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 14px 28px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0.9);
+}
+.banner-text-wrap h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+.banner-text-wrap p {
+    font-size: 17px;
+    opacity: 0.96;
+}
+
+/* ==============================================
+                部门页面专属组件
+============================================== */
+/* 全域总览地图 */
+.overview-map {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    border: 1px solid #e5e8ec;
+}
+.overview-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 侧边导航卡片 */
+.side-nav-card {
+    background: #fff;
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.side-nav-list {
+    list-style: none;
+}
+.side-nav-list li {
+    margin-bottom: 9px;
+}
+.side-nav-list li a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 5px;
+    color: #303133;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.24s ease;
+}
+.side-nav-list li a.active,
+.side-nav-list li a:hover {
+    background-color: #00478e;
+    color: #ffffff;
+}
+
+/* 单部门详情卡片 */
+.detail-card {
+    background: #ffffff;
+    border: 1px solid #e5e8ec;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0.04);
+}
+.detail-top {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+.detail-thumb {
+    width: 260px;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.detail-head h3 {
+    font-size: 22px;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.detail-head h3 img {
+    width: 28px;
+    height: 28px;
+}
+.tag-group {
+    margin-bottom: 16px;
+}
+.detail-tag {
+    display: inline-block;
+    background: #e6f0fb;
+    color: #00478e;
+    padding: 4px 11px;
+    border-radius: 14px;
+    font-size: 12px;
+    margin-right: 7px;
+}
+.detail-desc {
+    margin: 18px 0;
+    line-height: 1.75;
+    color: #444649;
+    font-size: 14px;
+}
+
+/* 数据统计四栏 */
+.detail-data {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 22px 0;
+}
+.data-item {
+    background: #f4f9ff;
+    padding: 14px;
+    text-align: center;
+    border-radius: 6px;
+}
+.data-item h4 {
+    font-size: 22px;
+    color: #00478e;
+    margin-bottom: 5px;
+}
+.data-item p {
+    font-size: 12px;
+    color: #606266;
+}
+
+/* 图片图集三栏 */
+.detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+}
+.gallery-img {
+    width: 100%;
+    height: 145px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* 详情跳转按钮 */
+.enter-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 26px;
+    background: #00478e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.24s ease;
+}
+.enter-btn:hover {
+    background: #00366b;
+}
+
+/* ==============================================
+                移动端响应式适配
+============================================== */
+@media screen and (max-width:768px){
+    * {
+        touch-action: manipulation;
+    }
+    .page-top-tag {
+        right: 12px;
+    }
+    .page-top-tag img {
+        height: 38px;
+        max-width: 160px;
+    }
+    .header-top {
+        padding: 12px 16px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+    .main-nav {
+        position: static;
+    }
+    .breadcrumb {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 20px;
+    }
+    .left-column,
+    .right-column {
+        position: static;
+        top: auto;
+    }
+    .page-banner {
+        height: 150px;
+    }
+    .banner-text-wrap h2 {
+        font-size: 26px;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .detail-top {
+        flex-direction: column;
+    }
+    .detail-thumb {
+        width: 100%;
+        height: auto;
+    }
+    .detail-data {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    footer {
+        padding: 18px;
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 14px;
+    }
+    .qr-code img {
+        width: 52px;
+        height: 52px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+
+/* 超小手机屏幕适配 */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .banner-text-wrap h2 {
+        font-size: 18px;
+    }
+    .logo {
+        gap: 6px;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
+    }
+    .main-nav, .left-column, .right-column {
+        position: static;
+        top: auto;
+    }
+}

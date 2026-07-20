@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
+    <title>部门介绍 - 我的世界联合实验新区</title>
+    <!-- 独立专属样式文件 -->
+    <link rel="stylesheet" href="bumenjs.css">
+</head>
+<body>
+    <!-- 顶部悬浮品牌标识 -->
+    <div class="page-top-tag">
+        <img src="/image/logo.png" width="160" height="50" alt="新区顶部LOGO">
+    </div>
+
+    <!-- 网站头部Logo区域 -->
+    <header class="header-top">
+        <div class="logo">
+            <img src="/image/LZG2logo.png" alt="站点主LOGO">
+            <div class="logo-text">
+                <h1>联合实验新区</h1>
+                <p>JOINT EXPERIMENTAL NEW AREA</p>
+            </div>
+        </div>
+        <div class="header-right"></div>
+    </header>
+
+    <!-- 全局导航栏（滚动吸顶） -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
+            <li><a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">关于我们</a></li>
+            <li><a href="fenqujs.html">分区介绍</a></li>
+            <li><a href="#" style="background:#00386f">部门介绍</a></li>
+            <li><a href="/webpage/country/download.html">存档下载</a></li>
+            <li><a href="#">档案管理</a></li>
+            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
+            <li><a href="#">新闻公告</a></li>
+        </ul>
+    </nav>
+
+    <!-- 页面头部横幅 -->
+    <div class="page-banner">
+        <img src="/image/ui/bumenjsui.png" alt="部门介绍横幅背景图" class="banner-bg-img">
+        <div class="banner-text-wrap">
+            <h2>职能部门介绍</h2>
+            <p>六大职能部门协同运营 · 分工明确 · 全域统筹共建</p>
+        </div>
+    </div>
+
+    <!-- 面包屑导航预留位 -->
+    <div class="breadcrumb"></div>
+
+    <!-- 页面主体三栏布局容器 -->
+    <div class="container">
+        <!-- 左侧悬浮侧边栏 -->
+        <aside class="left-column">
+            <!-- 侧边导航卡片 -->
+            <div class="side-nav-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    部门快速导航
+                </div>
+                <ul class="side-nav-list">
+                    <li><a href="#yanfa" class="active">建设规划部</a></li>
+                    <li><a href="#gongcheng">工程建设部</a></li>
+                    <li><a href="#nongken">公共设施管理部</a></li>
+                    <li><a href="#cangchu">分区规划管理部</a></li>
+                    <li><a href="#fangwu">综合管理部</a></li>
+                </ul>
+            </div>
+
+            <!-- 部门动态资讯卡片 -->
+            <div class="news-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                    </svg>
+                    部门近期动态
+                </div>
+                <ul class="news-list">
+                    <li>
+                        <p><a href="#">红石研发部全自动化产线完成调试</a></p>
+                        <span>2026-07-08</span>
+                    </li>
+                    <li>
+                        <p><a href="#">基建工程部跨海大桥完成竣工验收</a></p>
+                        <span>2026-06-22</span>
+                    </li>
+                    <li>
+                        <p><a href="#">边境防务部新增3处海上巡逻岗</a></p>
+                        <span>2026-05-30</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 中间主内容区域 -->
+        <main class="center-column">
+            <div class="section-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                全域职能总览
+            </div>
+
+            <!-- 部门职能总图 -->
+            <div class="overview-map">
+                <img src="/image/jing/bumen_map.png" alt="新区六大部门职能规划总图">
+            </div>
+
+            <p style="font-size:13px;color:#666;line-height:1.6;margin-bottom:28px;">
+              新区各部门分工协作，建设规划部统筹规划审批宣传，工程建设部承接基建施工，公管部管护公共设施，分区部管控片区，综合管理部仅留存档案管理。
+          </p>
+
+            <!-- 1. 建设规划部 -->
+            <div class="detail-card" id="yanfa">
+                <div class="detail-top">
+                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="红石研发部办公区全景">
+                    <div class="detail-head">
+                        <h3>
+                            <img src="/image/LZG2logo.png">
+                          建设规划部
+                      </h3>
+                        <div class="tag-group">
+                            <span class="detail-tag">统筹规划</span>
+                            <span class="detail-tag">文件签发</span>
+                            <span class="detail-tag">文化宣传</span>
+                        </div>
+                        <div class="detail-desc">
+                          建设规划部作为统筹新区发展布局的核心职能部门，主要负责全域土地分区、片区开发、道路配套等中长期建设规划编制与方案优化，统一受理各类建筑修建、工程改造、场地开发等项目申报，完成资质核验、许可文书审核签发与全套审批档案留存管理，同时牵头统筹新区城市形象打造、主题文化展览、节庆特色活动、对外宣传推广等相关工作，从规划建设、行政审批到文化宣传全方位塑造规范有序、特色鲜明的新区整体风貌。
+                      </div>
+                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                    </div>
+                </div>
+                <div class="detail-data">
+                    <div class="data-item">
+                        <h4>0</h4>
+                        <p>签发规划方案</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>46</h4>
+                        <p>文化宣传条数</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>100%</h4>
+                        <p>部门运营完成度</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>8</h4>
+                        <p>下辖单位</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
+                <div class="detail-gallery">
+                    <img src="/image/jing/bm1.jpg" class="gallery-img" alt="红石实验室内部">
+                    <img src="/image/jing/bm2.jpg" class="gallery-img" alt="全自动生产装置">
+                    <img src="/image/jing/bm3.jpg" class="gallery-img" alt="研发办公主楼">
+                </div>
+            </div>
+
+            <!-- 2. 工程建设部 -->
+            <div class="detail-card" id="gongcheng">
+                <div class="detail-top">
+                    <img src="/image/qizhi/jsb.png" class="detail-thumb" alt="基建工程部施工现场全景">
+                    <div class="detail-head">
+                        <h3>
+                            <img src="/image/LZG2logo.png">
+                            工程建设部
+                        </h3>
+                        <div class="tag-group">
+                            <span class="detail-tag">房屋建造</span>
+                            <span class="detail-tag">设施建造</span>
+                            <span class="detail-tag">道路基建</span>
+                        </div>
+                        <div class="detail-desc">
+                          工程建设部承接建设规划部下达的各项工程建设任务与施工方案，统筹负责新区道路路面、桥梁隧道、管线通道等全域基础配套设施的施工搭建、现场施工调度、建材调配以及工程落地实施与后期修缮作业。
+                      </div>
+                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                    </div>
+                </div>
+                <div class="detail-data">
+                    <div class="data-item">
+                        <h4>56</h4>
+                        <p>接受建设方案</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>28</h4>
+                        <p>当前在建工程项目</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>72%</h4>
+                        <p>完工建筑</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>12</h4>
+                        <p>下辖部门</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
+                <div class="detail-gallery">
+                    <img src="/image/jing/gc1.jpg" class="gallery-img" alt="住宅施工工地">
+                    <img src="/image/jing/gc2.jpg" class="gallery-img" alt="铁路铺设现场">
+                    <img src="/image/jing/gc3.jpg" class="gallery-img" alt="建材堆放堆场">
+                </div>
+            </div>
+
+            <!-- 3. 公共设施管理部 -->
+            <div class="detail-card" id="nongken">
+                <div class="detail-top">
+                    <img src="/image/qizhi/ggb.png" class="detail-thumb" alt="农林垦殖部田园全景">
+                    <div class="detail-head">
+                        <h3>
+                            <img src="/image/LZG2logo.png">
+                            公共设施管理部
+                      </h3>
+                        <div class="tag-group">
+                            <span class="detail-tag">自然绿化</span>
+                            <span class="detail-tag">红石管理</span>
+                            <span class="detail-tag">仓储管理</span>
+                        </div>
+                        <div class="detail-desc">
+                          公共设施管理部统筹辖区内交通、绿化、水利各类城市公共配套设施的日常运营、巡检维护与常态化管护工作，持续保障城市道路通行、景观绿化养护、水系管网运行稳定有序，同步跟进各类公共配套设施损耗检修、功能优化与环境提质相关工作，为新区居民提供完善稳定的公共服务保障。
+                      </div>
+                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                    </div>
+                </div>
+                <div class="detail-data">
+                    <div class="data-item">
+                        <h4>24</h4>
+                        <p>绿化项目</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>32</h4>
+                        <p>区域生态区</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>90%</h4>
+                        <p>道路配套养护</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>7</h4>
+                        <p>下辖部门</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
+                <div class="detail-gallery">
+                    <img src="/image/jing/nk1.jpg" class="gallery-img" alt="连片灌溉农田">
+                    <img src="/image/jing/nk2.jpg" class="gallery-img" alt="大型畜牧养殖场">
+                    <img src="/image/jing/nk3.jpg" class="gallery-img" alt="果蔬加工工坊">
+                </div>
+            </div>
+
+            <!-- 4. 分区规划管理部 -->
+            <div class="detail-card" id="cangchu">
+                <div class="detail-top">
+                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="资源仓储物流枢纽全景">
+                    <div class="detail-head">
+                        <h3>
+                            <img src="/image/LZG2logo.png">
+                            分区规划管理部
+                      </h3>
+                        <div class="tag-group">
+                            <span class="detail-tag">协调发展</span>
+                            <span class="detail-tag">分区建设</span>
+                            <span class="detail-tag">统筹规划</span>
+                        </div>
+                        <div class="detail-desc">
+                          分区规划管理部负责新区各片区细分地块管控、分区发展方案细化落地，跟进片区用地规范监督、区域配套布局统筹，配合建设规划部完成分区图纸核验、片区建设进度跟进，协调各区域基建、绿化、水利配套适配规划标准，维护各分区建设秩序与区域发展均衡性。
+                      </div>
+                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                    </div>
+                </div>
+                <div class="detail-data">
+                    <div class="data-item">
+                        <h4>28</h4>
+                        <p>仓储物流工作人员</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>14</h4>
+                        <p>大型露天矿坑</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>100%</h4>
+                        <p>仓储物流体系完成度</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>3&nbsp;</h4>
+                        <p>下辖分区</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
+                <div class="detail-gallery">
+                    <img src="/image/jing/cc1.jpg" class="gallery-img" alt="大型物资仓库">
+                    <img src="/image/jing/cc2.jpg" class="gallery-img" alt="矿石冶炼厂区">
+                    <img src="/image/jing/cc3.jpg" class="gallery-img" alt="货运铁路枢纽">
+                </div>
+            </div>
+
+            <!-- 5. 综合管理部 -->
+            <div class="detail-card" id="fangwu">
+                <div class="detail-top">
+                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="边境防务海岛基地全景">
+                    <div class="detail-head">
+                        <h3>
+                            <img src="/image/LZG2logo.png">
+                        	综合管理部
+                      </h3>
+                        <div class="tag-group">
+                            <span class="detail-tag">旧区转移</span>
+                            <span class="detail-tag">细分事务</span>
+                            <span class="detail-tag">文档管理</span>
+                        </div>
+                        <div class="detail-desc">
+                          综合管理部原有全域统筹、协调管控、事务督办等管理职权已全部下放至各职能部门，现阶段部门职能大幅收缩、处于待解散过渡阶段，不再参与新区各类建设规划、工程施工、公共运维、片区管理等日常事务决策与管控工作，仅专职负责新区各类历史文书、审批档案、工程资料、部门台账等各类文件资料的收集、整理、归档、保管与查询调取工作，妥善留存新区发展全过程档案资料，保障各类历史资料完整可溯，平稳推进部门收尾过渡工作。
+                      </div>
+                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                    </div>
+                </div>
+                <div class="detail-data">
+                    <div class="data-item">
+                        <h4>36</h4>
+                        <p>驻防巡逻人员</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>12</h4>
+                        <p>海防防御塔楼</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>85%</h4>
+                        <p>海岛基地建设完成度</p>
+                    </div>
+                    <div class="data-item">
+                        <h4>1</h4>
+                        <p>跨海连通主干大桥</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
+                <div class="detail-gallery">
+                    <img src="/image/jing/fw1.jpg" class="gallery-img" alt="海岛海防堡垒">
+                    <img src="/image/jing/fw2.jpg" class="gallery-img" alt="港口安全检查站">
+                    <img src="/image/jing/fw3.jpg" class="gallery-img" alt="海岸巡逻步道">
+                </div>
+            </div>
+
+            
+        </main>
+
+        <!-- 右侧悬浮侧边栏 -->
+        <aside class="right-column">
+            <!-- 【置顶】全域指挥架构卡片（竖版树形） -->
+            <div class="structure-card side-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#00478e">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    </svg>
+                    全域管理架构树
+              </h3>
+                <!-- 纯CSS竖版树形架构：联众国→3大部→各分局 -->
+                <div class="tree-container">
+                    <ul class="tree-root">
+                        <li class="tree-level1">
+                            <span class="tree-node">联众国（最高统筹）</span>
+                            <ul class="tree-child">
+                                <!-- 第一大部：综合行政部 -->
+                                <li class="tree-level2">
+                                    <span class="tree-node">建设规划部</span>
+                                    <ul class="tree-child">
+                                        <li class="tree-level3"><span class="tree-node">档案管理局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">社区规划局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">规划调度局</span></li>
+                                    </ul>
+                                </li>
+                                <!-- 第二大部：生产建设部 -->
+                                <li class="tree-level2">
+                                    <span class="tree-node">工程建设部&nbsp;</span>
+                                    <ul class="tree-child">
+                                        <li class="tree-level3"><span class="tree-node">基建工程局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">建材分配局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">交通管理局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">红石研发局</span></li>
+                                    </ul>
+                                </li>
+                                <!-- 第三大部：边境防务部 -->
+                                <li class="tree-level2">
+                                    <span class="tree-node">公共设施管理部&nbsp;</span>
+                                    <ul class="tree-child">
+                                        <li class="tree-level3"><span class="tree-node">绿化局</span></li>
+                                        <li class="tree-level3"><span class="tree-node">安保局</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <p style="font-size:13px;color:#505256;line-height:1.6;margin-top:12px;">
+                    三层垂直指挥体系，联众国统筹三大职能大部，各部下辖专项分局，权责清晰、垂直管理。
+                </p>
+            </div>
+
+            <!-- 站点快速导航（移至架构卡片下方） -->
+            <div class="quick-link-card side-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13 10h-2v2h2v-2zm0-4h-2v6h2V6zm-1 12c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18C5.93 0 0 5.93 0 12s5.93 12 12 12 12-5.93 12-12S18.07 0 12 0z"></path>
+                    </svg>
+                    站点快速导航
+                </div>
+                <ul class="quick-link-list">
+                    <li><a href="#">风景浏览专区</a> <span><a href="#">></a></span></li>
+                    <li><a href="https://zh.minecraft.wiki/">我的世界Wiki</a> <span><a href="#">></a></span></li>
+                    <li><a href="#">存档配套整合包</a> <span><a href="#">></a></span></li>
+                    <li><a href="#">提交建议反馈</a> <span><a href="#">></a></span></li>
+                    <li><a href="/webpage/country/download.html">全部下载资源</a> <span><a href="#">></a></span></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页面底部页脚 -->
+    <footer>
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="#">站点地图</a>
+                <a href="#">隐私声明说明</a>
+                <a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">联系我们</a>
+            </div>
+            <p style="margin-top:10px;">© 2026 我的世界联合实验新区及公众号平台 保留全部版权</p>
+        </div>
+        <div class="footer-qr">
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方交流群二维码">
+                <p>玩家交流群</p>
+            </div>
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方论坛二维码">
+                <p>新区官方论坛</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 平滑滚动JS逻辑 -->
+    <script>
+        document.querySelectorAll('.side-nav-list a').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                // 清除全部激活状态
+                document.querySelectorAll('.side-nav-list a').forEach(link => link.classList.remove('active'));
+                // 当前导航高亮
+                this.classList.add('active');
+            })
+        })
+    </script>
+</body>
+</html>
