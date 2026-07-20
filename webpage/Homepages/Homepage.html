@@ -401,20 +401,18 @@
             })
         });
 
-        // 鼠标移入轮播文字区域：显示文字+按钮
-        allTextBlocks.forEach(text => {
-            text.addEventListener('mouseenter', () => {
-                clearTimeout(textHideTimer);
-                allBannerContents.forEach(item => item.classList.remove('text-hide'));
-                carouselBtns.forEach(btn => btn.style.opacity = 1);
-            });
-            text.addEventListener('mouseleave', resetTimer);
+        // 鼠标移入整个轮播图区域（图片/文字/按钮全部范围）显示文字与切换按钮
+        carouselSection.addEventListener('mouseenter', () => {
+        clearTimeout(textHideTimer);
+        allBannerContents.forEach(item => item.classList.remove('text-hide'));
+        carouselBtns.forEach(btn => btn.style.opacity = 1);
         });
-
-        // 鼠标悬浮在切换按钮上不触发显示逻辑
+        // 鼠标离开轮播整体区域，3秒后隐藏文字按钮
+        carouselSection.addEventListener('mouseleave', resetTimer);
+        // 悬浮切换按钮不重置倒计时
         carouselBtns.forEach(btn => {
-            btn.addEventListener('mouseenter', () => {});
-            btn.addEventListener('mouseleave', resetTimer);
+        btn.addEventListener('mouseenter', () => clearTimeout(textHideTimer));
+        btn.addEventListener('mouseleave', resetTimer);
         });
 
         // 鼠标悬浮轮播区域暂停自动播放
