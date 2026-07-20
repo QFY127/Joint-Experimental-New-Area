@@ -1,0 +1,424 @@
+/* 全局重置 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft Yahei",sans-serif;
+}
+body{
+    background:#f7f9fc;
+    color:#222;
+}
+ul{list-style:none;}
+a{text-decoration:none;}
+img{display:block;width:100%;}
+
+/* 页面滚动淡入基础动画 */
+.scroll-animate{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.scroll-animate.animate-in{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* 顶部悬浮标 */
+.top-brand{
+    position:absolute;
+    top:12px;
+    right:40px;
+    z-index:999;
+}
+.top-brand img{
+    height:50px;
+    width:auto;
+}
+
+/* 头部LOGO栏 */
+.site-header{
+    background:#fff;
+    padding:14px 120px;
+    border-bottom:1px solid #e2e8f0;
+}
+.header-inner{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.header-logo-img{
+    width:48px;height:48px;
+}
+.header-text h1{
+    font-size:24px;
+    color:#004b93;
+}
+.header-text p{
+    font-size:12px;
+    color:#64748b;
+    letter-spacing:0.5px;
+}
+
+/* ====================== 导航【完全还原原始首页CSS】 ====================== */
+.main-nav {
+    background-color: #004b93;
+    width: 100%;
+    z-index: 998;
+    transition: all 0.25s ease;
+}
+/* 滚动吸顶样式，仅新增，原有导航样式不动 */
+.main-nav.nav-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 12px rgba(0,75,147,0.25);
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover {
+    background-color: #00386f;
+}
+.main-nav ul li a.active {
+    background-color: #00386f;
+}
+/* ====================================================================== */
+
+/* 文旅全屏轮播 */
+.tour-banner{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+.banner-track{
+    width:500%;
+    display:flex;
+    transition:transform 0.7s ease-out;
+}
+.banner-slide{
+    width:20%;
+    position:relative;
+}
+.banner-slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,0.6),rgba(0,0,0.1));
+}
+.banner-text{
+    position:absolute;
+    bottom:0;
+    left:0;
+    z-index:2;
+    padding:60px 120px;
+    color:#fff;
+}
+.banner-text h2{
+    font-size:36px;
+    margin-bottom:10px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
+.banner-text p{
+    font-size:17px;
+    opacity:0.9;
+}
+.banner-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:46px;
+    height:72px;
+    background:rgba(255,255,255,0.15);
+    border:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    z-index:3;
+    backdrop-filter:blur(2px);
+    transition:0.2s;
+}
+.banner-btn.prev{left:0;border-radius:0 10px 10px 0;}
+.banner-btn.next{right:0;border-radius:10px 0 0 10px;}
+.banner-btn:hover{background:rgba(255,255,255,0.3);}
+.banner-dots{
+    position:absolute;
+    bottom:26px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:12px;
+    z-index:3;
+}
+.dot{
+    width:14px;height:14px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+    cursor:pointer;
+    transition:0.2s;
+}
+.dot.active{
+    background:#fff;
+    transform:scale(1.2);
+}
+
+/* 面包屑 */
+.bread-nav{
+    background:#fff;
+    padding:12px 120px;
+    font-size:14px;
+    color:#64748b;
+    border-bottom:1px solid #e2e8f0;
+}
+.bread-nav a{
+    color:#004b93;
+}
+
+/* 三栏容器 */
+.container{
+    display:grid;
+    grid-template-columns:270px 1fr 310px;
+    gap:24px;
+    padding:26px 120px;
+    background:#fff;
+}
+
+/* 通用侧边卡片 */
+.sidebar-card{
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:22px;
+    background:#f7f9fc;
+}
+.card-title{
+    font-size:18px;
+    color:#004b93;
+    font-weight:bold;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+/* 左侧边栏 */
+.notice-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dashed #cbd5e1;
+    font-size:13px;
+}
+.notice-list li:last-child{border:none;}
+.notice-list a{color:#222;}
+.notice-list a:hover{color:#004b93;}
+.notice-list span{color:#94a3b8;}
+
+.zone-list li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:11px 0;
+    border-bottom:1px solid #e2e8f0;
+    gap:10px;
+}
+.zone-list li:last-child{border:none;}
+.zone-ico{width:26px;height:26px;}
+.zone-list h4{font-size:14px;color:#222;}
+.zone-list p{font-size:12px;color:#64748b;}
+.zone-list a{font-size:13px;color:#004b93;font-weight:500;}
+
+/* 中间主内容 */
+.section-head{
+    font-size:24px;
+    color:#004b93;
+    margin-bottom:10px;
+}
+.section-desc{
+    font-size:13px;
+    color:#64748b;
+    margin-bottom:24px;
+}
+.scene-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-bottom:36px;
+}
+.scene-card{
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid #e2e8f0;
+    background:#f7f9fc;
+    transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.scene-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 8px 18px rgba(0,75,147,0.12);
+}
+.scene-img{
+    width:100%;
+    height:170px;
+    overflow:hidden;
+}
+.scene-img img{
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.4s ease;
+}
+.scene-card:hover .scene-img img{
+    transform:scale(1.08);
+}
+.scene-text{
+    padding:14px;
+}
+.scene-text h4{
+    font-size:15px;
+    color:#004b93;
+    margin-bottom:6px;
+}
+.scene-text p{
+    font-size:12px;
+    color:#64748b;
+}
+
+.tips-section{
+    background:#e8f0fb;
+    border-radius:10px;
+    padding:20px;
+}
+.tips-list li{
+    font-size:13px;
+    line-height:1.9;
+    color:#222;
+}
+
+/* 右侧边栏 */
+.quick-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #e2e8f0;
+    font-size:14px;
+}
+.quick-list li:last-child{border:none;}
+.quick-list a{color:#222;}
+.quick-list a:hover{color:#004b93;}
+.quick-list span{color:#004b93;}
+
+.archive-img{
+    border-radius:8px;
+    overflow:hidden;
+    margin-bottom:14px;
+}
+.archive-info li{
+    font-size:13px;
+    padding:4px 0;
+    color:#475569;
+}
+.download-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:11px;
+    background:#004b93;
+    color:#fff;
+    border-radius:8px;
+    margin-top:14px;
+    font-weight:500;
+}
+.download-btn:hover{background:#00386f;}
+
+.msg-item{
+    padding:10px 0;
+    border-bottom:1px solid #e2e8f0;
+}
+.msg-item:last-child{border:none;}
+.msg-user{
+    font-size:13px;
+    color:#004b93;
+    font-weight:500;
+    margin-bottom:4px;
+}
+.msg-text{
+    font-size:12px;
+    color:#475569;
+}
+
+/* 页脚 */
+.site-footer{
+    background:#004b93;
+    color:#fff;
+    padding:26px 120px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.footer-link-group a{
+    color:#e8f0fb;
+    margin-right:16px;
+    font-size:13px;
+}
+.copyright{
+    margin-top:10px;
+    font-size:12px;
+    opacity:0.85;
+}
+.footer-qr-group{
+    display:flex;
+    gap:24px;
+}
+.qr-item{
+    text-align:center;
+}
+.qr-item img{
+    width:64px;height:64px;
+    background:#fff;
+    border-radius:6px;
+    margin-bottom:6px;
+}
+.qr-item p{
+    font-size:11px;
+    opacity:0.9;
+}
+
+/* 移动端适配 */
+@media screen and (max-width:768px){
+    .top-brand{right:12px;}
+    .top-brand img{height:38px;}
+    .site-header{padding:10px 16px;}
+    .header-text h1{font-size:20px;}
+    .banner-text{padding:24px 16px;}
+    .banner-text h2{font-size:24px;}
+    .bread-nav{padding:8px 16px;}
+    .container{
+        grid-template-columns:1fr;
+        padding:12px;
+        gap:18px;
+    }
+    .scene-grid{grid-template-columns:1fr;}
+    .site-footer{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+        padding:16px;
+    }
+}
+@media screen and (max-width:360px){
+    .main-nav ul li a{
+        padding:8px 10px;
+        font-size:12px;
+    }
+    .banner-text h2{font-size:20px;}
+}
