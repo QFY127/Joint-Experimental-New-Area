@@ -749,6 +749,19 @@ footer {
         font-size: 10px;
     }
 }
+/* 导航吸顶样式 仅新增，原有代码不动 */
+.main-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+/* 头部占位，防止导航固定后内容上移 */
+.header-top.nav-fixed-padding {
+    padding-bottom: 52px;
+}
 
 /* ========== 超小屏兼容 360px以下 ========== */
 @media screen and (max-width: 360px) {

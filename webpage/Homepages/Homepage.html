@@ -465,6 +465,20 @@
 
         // 禁止移动端双击缩放冲突
         document.addEventListener('dblclick', e => e.preventDefault());
+        // 导航栏跟随滚动吸顶逻辑（仅新增，原有轮播代码不动）
+        const navBar = document.querySelector('.main-nav');
+        const headerBox = document.querySelector('.header-top');
+        window.addEventListener('scroll', function() {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const headerHeight = headerBox.offsetHeight;
+        if (scrollTop >= headerHeight) {
+        navBar.classList.add('fixed-nav');
+        headerBox.classList.add('nav-fixed-padding');
+        } else {
+        navBar.classList.remove('fixed-nav');
+        headerBox.classList.remove('nav-fixed-padding');
+        }
+        });
     </script>
 </body>
 </html>
