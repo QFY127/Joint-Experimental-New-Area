@@ -91,27 +91,35 @@ img{display:block;width:100%;}
     background-color: #00386f;
 }
 /* ====================================================================== */
-/* 文旅全屏轮播（修复白屏+移除黑色遮罩+固定高度+渲染优化） */
+/* 文旅全屏轮播【终极修复：强制高度继承，解决空白塌陷】 */
 .tour-banner{
     width:100%;
+    height: 440px;
     overflow:hidden;
     position:relative;
     contain: layout size;
+    /* 兜底背景，极端情况防止纯白 */
+    background: #111;
+    background-image: url(/image/jing/shou1.jpg);
+    background-size: cover;
+    background-position: center;
 }
 .banner-track{
     width:500%;
+    height: 100%;
     display:flex;
     transition:transform 0.7s ease-out;
     will-change: transform;
 }
 .banner-slide{
     width:20%;
+    height: 100%;
     position:relative;
     background: #111;
 }
 .banner-slide img {
     width: 100%;
-    height: 440px;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
@@ -387,8 +395,12 @@ img{display:block;width:100%;}
     .header-text h1{font-size:20px;}
     .banner-text{padding:24px 16px;}
     .banner-text h2{font-size:24px;}
-    .banner-slide img {
+    /* 移动端轮播高度 */
+    .tour-banner{
         height: 260px;
+    }
+    .banner-slide img {
+        height: 100%;
     }
     .bread-nav{padding:8px 16px;}
     .container{
@@ -410,7 +422,11 @@ img{display:block;width:100%;}
         font-size:12px;
     }
     .banner-text h2{font-size:20px;}
-    .banner-slide img {
+    /* 超小屏轮播高度 */
+    .tour-banner{
         height: 200px;
+    }
+    .banner-slide img {
+        height: 100%;
     }
 }
