@@ -12,7 +12,6 @@ body{
 ul{list-style:none;}
 a{text-decoration:none;}
 img{display:block;width:100%;}
-
 /* 页面滚动淡入基础动画 */
 .scroll-animate{
     opacity:0;
@@ -23,7 +22,6 @@ img{display:block;width:100%;}
     opacity:1;
     transform:translateY(0);
 }
-
 /* 顶部悬浮标 */
 .top-brand{
     position:absolute;
@@ -35,7 +33,6 @@ img{display:block;width:100%;}
     height:50px;
     width:auto;
 }
-
 /* 头部LOGO栏 */
 .site-header{
     background:#fff;
@@ -59,7 +56,6 @@ img{display:block;width:100%;}
     color:#64748b;
     letter-spacing:0.5px;
 }
-
 /* ====================== 导航【完全还原原始首页CSS】 ====================== */
 .main-nav {
     background-color: #004b93;
@@ -95,21 +91,29 @@ img{display:block;width:100%;}
     background-color: #00386f;
 }
 /* ====================================================================== */
-
-/* 文旅全屏轮播 */
+/* 文旅全屏轮播（修复白屏+移除黑色遮罩+固定高度+渲染优化） */
 .tour-banner{
     width:100%;
     overflow:hidden;
     position:relative;
+    contain: layout size;
 }
 .banner-track{
     width:500%;
     display:flex;
     transition:transform 0.7s ease-out;
+    will-change: transform;
 }
 .banner-slide{
     width:20%;
     position:relative;
+    background: #111;
+}
+.banner-slide img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
 }
 .banner-text{
     position:absolute;
@@ -166,7 +170,6 @@ img{display:block;width:100%;}
     background:#fff;
     transform:scale(1.2);
 }
-
 /* 面包屑 */
 .bread-nav{
     background:#fff;
@@ -178,7 +181,6 @@ img{display:block;width:100%;}
 .bread-nav a{
     color:#004b93;
 }
-
 /* 三栏容器 */
 .container{
     display:grid;
@@ -187,7 +189,6 @@ img{display:block;width:100%;}
     padding:26px 120px;
     background:#fff;
 }
-
 /* 通用侧边卡片 */
 .sidebar-card{
     border:1px solid #e2e8f0;
@@ -205,7 +206,6 @@ img{display:block;width:100%;}
     align-items:center;
     gap:8px;
 }
-
 /* 左侧边栏 */
 .notice-list li{
     display:flex;
@@ -218,7 +218,6 @@ img{display:block;width:100%;}
 .notice-list a{color:#222;}
 .notice-list a:hover{color:#004b93;}
 .notice-list span{color:#94a3b8;}
-
 .zone-list li{
     display:flex;
     align-items:center;
@@ -232,7 +231,6 @@ img{display:block;width:100%;}
 .zone-list h4{font-size:14px;color:#222;}
 .zone-list p{font-size:12px;color:#64748b;}
 .zone-list a{font-size:13px;color:#004b93;font-weight:500;}
-
 /* 中间主内容 */
 .section-head{
     font-size:24px;
@@ -286,7 +284,6 @@ img{display:block;width:100%;}
     font-size:12px;
     color:#64748b;
 }
-
 .tips-section{
     background:#e8f0fb;
     border-radius:10px;
@@ -297,7 +294,6 @@ img{display:block;width:100%;}
     line-height:1.9;
     color:#222;
 }
-
 /* 右侧边栏 */
 .quick-list li{
     display:flex;
@@ -310,7 +306,6 @@ img{display:block;width:100%;}
 .quick-list a{color:#222;}
 .quick-list a:hover{color:#004b93;}
 .quick-list span{color:#004b93;}
-
 .archive-img{
     border-radius:8px;
     overflow:hidden;
@@ -333,7 +328,6 @@ img{display:block;width:100%;}
     font-weight:500;
 }
 .download-btn:hover{background:#00386f;}
-
 .msg-item{
     padding:10px 0;
     border-bottom:1px solid #e2e8f0;
@@ -349,7 +343,6 @@ img{display:block;width:100%;}
     font-size:12px;
     color:#475569;
 }
-
 /* 页脚 */
 .site-footer{
     background:#004b93;
@@ -386,7 +379,6 @@ img{display:block;width:100%;}
     font-size:11px;
     opacity:0.9;
 }
-
 /* 移动端适配 */
 @media screen and (max-width:768px){
     .top-brand{right:12px;}
@@ -395,6 +387,9 @@ img{display:block;width:100%;}
     .header-text h1{font-size:20px;}
     .banner-text{padding:24px 16px;}
     .banner-text h2{font-size:24px;}
+    .banner-slide img {
+        height: 260px;
+    }
     .bread-nav{padding:8px 16px;}
     .container{
         grid-template-columns:1fr;
@@ -415,4 +410,7 @@ img{display:block;width:100%;}
         font-size:12px;
     }
     .banner-text h2{font-size:20px;}
+    .banner-slide img {
+        height: 200px;
+    }
 }
