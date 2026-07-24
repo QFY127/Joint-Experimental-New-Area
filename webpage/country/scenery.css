@@ -111,12 +111,6 @@ img{display:block;width:100%;}
     width:20%;
     position:relative;
 }
-.banner-slide::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,0.6),rgba(0,0,0.1));
-}
 .banner-text{
     position:absolute;
     bottom:0;
