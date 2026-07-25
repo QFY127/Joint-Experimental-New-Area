@@ -1,382 +1,305 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="/image/LZG2logo1.png">
-<title>全域风景游览 | 联合实验新区</title>
-<link rel="stylesheet" href="scenery.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
+    <title>全域风景旅游 | 联合实验新区旅游观光</title>
+    <link rel="stylesheet" href="scenery.css">
 </head>
 <body>
-<!-- 顶部悬浮标识 -->
-<div class="top-brand">
-    <img src="/image/logo.png" alt="站点LOGO">
-</div>
-
-<!-- 头部LOGO栏 -->
-<header class="site-header">
-    <div class="header-inner">
-        <img src="/image/LZG2logo.png" class="header-logo-img">
-        <div class="header-text">
-            <h1>联合实验新区</h1>
-            <p>JOINT EXPERIMENTAL NEW AREA · 全域文旅观光平台</p>
-        </div>
+    <!-- 顶部悬浮标识 -->
+    <div class="page-top-tag">
+        <img src="/image/logo.png" alt="顶部标识" />
     </div>
-</header>
-
-<!-- ========== 1:1还原原始首页导航结构、链接顺序 ========== -->
-<nav class="main-nav" id="scrollNav">
-    <ul>
-            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
-            <li><a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">关于我们</a></li>
+    <!-- 网站头部 -->
+    <header class="header-top">
+        <div class="logo">
+            <img src="/image/LZG2logo.png" alt="站点logo">
+            <div class="logo-text">
+                <h1>新区旅游观光</h1>
+                <p>SCENIC TOUR & LANDSCAPE VIEW</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" placeholder="搜索景点、游玩攻略">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <!-- 吸顶主导航（已替换为about页面导航菜单） -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="http://www.lhsyxq.de5.net/">首页</a></li>
+            <li><a href="#">关于我们</a></li>
             <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
-            <li><a href="/webpage/country/bumenjs.html">部门介绍</a></li>
+            <li><a href="#">部门介绍</a></li>
             <li><a href="/webpage/country/download.html">存档下载</a></li>
             <li><a href="#">档案管理</a></li>
             <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
             <li><a href="#">新闻公告</a></li>
-    </ul>
-</nav>
-
-<!-- 文旅全屏轮播 -->
-<section class="tour-banner">
-    <div class="banner-track">
-        <div class="banner-slide active">
-            <img src="/image/jing/shou1.jpg" alt="全域全景风光">
-            <div class="banner-text">
-                <h2>四大分区全域观光</h2>
-                <p>城市｜田园｜矿谷｜海岛 一站式游览</p>
+        </ul>
+    </nav>
+    <!-- 顶部轮播图带文本 -->
+    <div class="carousel-section">
+        <div class="carousel" id="carousel">
+            <div class="carousel-slide">
+                <img src="/image/ui/fengjing_ui.png" alt="全域风光">
+                <div class="carousel-mask"></div>
+                <div class="carousel-text">
+                    <h2>四大特色景区</h2>
+                    <p>城市人文、工业地貌、田园山水、海岛海岸，一站式游览新区全域风光。</p>
+                    <a href="#city-scene" class="carousel-btn">开始游览</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="/image/jing/city3.jpg" alt="城市夜景">
+                <div class="carousel-mask"></div>
+                <div class="carousel-text">
+                    <h2>东台莱德夜景</h2>
+                    <p>中央公园、商业街与红石建筑群夜景灯火璀璨，是城市观光的核心打卡点。</p>
+                    <a href="#city-scene" class="carousel-btn">查看城市景区</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="/image/jing/island3.jpg" alt="跨海大桥">
+                <div class="carousel-mask"></div>
+                <div class="carousel-text">
+                    <h2>眼镜岛海岸风光</h2>
+                    <p>跨海长桥、海防堡垒与白色沙滩组成独特滨海景观，清晨日出尤其值得一看。</p>
+                    <a href="#island-scene" class="carousel-btn">查看海岛景区</a>
+                </div>
             </div>
         </div>
-        <div class="banner-slide">
-            <img src="/image/jing/shou2.jpg" alt="东台莱德都市">
-            <div class="banner-text">
-                <h2>东台莱德现代都市景区</h2>
-                <p>中央公园、城市地标、网红打卡街区</p>
-            </div>
-        </div>
-        <div class="banner-slide">
-            <img src="/image/jing/shou3.jpg" alt="林沃森田园">
-            <div class="banner-text">
-                <h2>林沃森田园生态景区</h2>
-                <p>梯田花海、溪流村落、原生态森林</p>
-            </div>
-        </div>
-        <div class="banner-slide">
-            <img src="/image/jing/shou4.jpg" alt="采矿峡谷">
-            <div class="banner-text">
-                <h2>采矿小镇工业峡谷景区</h2>
-                <p>巨型露天矿坑、地下溶洞探险点</p>
-            </div>
-        </div>
-        <div class="banner-slide">
-            <img src="/image/jing/shou5.jpg" alt="眼镜岛海岸">
-            <div class="banner-text">
-                <h2>眼镜岛滨海度假景区</h2>
-                <p>落日灯塔、沙滩码头、近海观景台</p>
-            </div>
+        <button class="carousel-arrow prev" id="prevBtn">‹</button>
+        <button class="carousel-arrow next" id="nextBtn">›</button>
+        <div class="carousel-dots" id="dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
         </div>
     </div>
-    <button class="banner-btn prev">‹</button>
-    <button class="banner-btn next">›</button>
-    <div class="banner-dots">
-        <span class="dot active" data-index="0"></span>
-        <span class="dot" data-index="1"></span>
-        <span class="dot" data-index="2"></span>
-        <span class="dot" data-index="3"></span>
-        <span class="dot" data-index="4"></span>
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <a href="/webpage/Homepages/Homepage.html">首页</a> / <span>风景观光</span>
     </div>
-</section>
-
-<!-- 面包屑 -->
-<div class="bread-nav">
-</div>
-
-<!-- 主体容器（全部模块自带滚动淡入） -->
-<div class="container">
-    <!-- 左侧边栏 -->
-    <aside class="sidebar-left scroll-animate">
-        <!-- 景区上新公告 -->
-        <div class="sidebar-card">
-            <h3 class="card-title">景区上新公告</h3>
-            <ul class="notice-list">
-                <li><a href="#">眼镜岛落日观景台全新开放</a><span>07-19</span></li>
-                <li><a href="#">林沃森夏季花海观景通道开通</a><span>07-12</span></li>
-                <li><a href="#">东台莱德夜景灯光全线升级</a><span>06-28</span></li>
-            </ul>
-        </div>
-
-        <!-- 景区导览分类 -->
-        <div class="sidebar-card">
-            <h3 class="card-title">四大景区导览</h3>
-            <ul class="zone-list">
-                <li>
-                    <img src="/image/fenqu/DongtaiRyder.png" class="zone-ico">
-                    <div>
-                        <h4>东台莱德 · 都市景区</h4>
-                        <p>城市地标、公园步道</p>
-                    </div>
-                    <a href="#">进入景区</a>
-                </li>
-                <li>
-                    <img src="/image/fenqu/lws.png" class="zone-ico">
-                    <div>
-                        <h4>林沃森 · 田园景区</h4>
-                        <p>梯田花海、农耕村落</p>
-                    </div>
-                    <a href="#">进入景区</a>
-                </li>
-                <li>
-                    <img src="/image/fenqu/ckxz.png" class="zone-ico">
-                    <div>
-                        <h4>采矿小镇 · 峡谷景区</h4>
-                        <p>矿坑溶洞、工业栈道</p>
-                    </div>
-                    <a href="#">进入景区</a>
-                </li>
-                <li>
-                    <img src="/image/fenqu/yjd.png" class="zone-ico">
-                    <div>
-                        <h4>眼镜岛 · 滨海景区</h4>
-                        <p>灯塔沙滩、海湾码头</p>
-                    </div>
-                    <a href="#">进入景区</a>
-                </li>
-            </ul>
-        </div>
-    </aside>
-
-    <!-- 中间主内容 -->
-    <main class="main-content">
-        <!-- 观光景点合集（滚动淡入） -->
-        <section class="scene-section scroll-animate">
-            <h2 class="section-head">精选观光打卡点</h2>
-            <p class="section-desc">全部点位内置在官方存档，可自由前往打卡拍照，适配光影材质包拍摄大片</p>
-            <div class="scene-grid">
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou1.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>主城中央全景观景台</h4>
-                        <p>全地图制高点，昼夜双景拍摄绝佳点位</p>
+    <!-- 主体两栏容器 -->
+    <div class="container">
+        <!-- 左侧悬浮导航栏 -->
+        <aside class="left-column">
+            <div class="side-nav-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    景区快速导航
+                </div>
+                <ul class="side-nav-list">
+                    <li><a href="#city-scene" class="active">城市人文景区</a></li>
+                    <li><a href="#mine-scene">工业地貌景区</a></li>
+                    <li><a href="#farm-scene">田园山水景区</a></li>
+                    <li><a href="#island-scene">海岛海岸景区</a></li>
+                    <li><a href="#panorama">全域航拍全景</a></li>
+                </ul>
+            </div>
+            <!-- 出行贴士 -->
+            <div class="tips-card">
+                <h4>📌 观光出行贴士</h4>
+                <ul>
+                    <li>1. 推荐游览顺序：城市→田园→矿区→海岛</li>
+                    <li>2. 日出拍摄推荐眼镜岛东岸海滩</li>
+                    <li>3. 夜景最佳观赏点：东台莱德中央公园</li>
+                    <li>4. 全域自驾铁路贯通，出行便利</li>
+                    <li>5. 摄影图集可保存分享，禁止商用</li>
+                </ul>
+            </div>
+        </aside>
+        <!-- 主内容区 -->
+        <main class="center-column">
+            <div class="section-title">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                新区热门景区总览
+            </div>
+            <p style="font-size:14px;color:#666;margin-bottom:20px;line-height:1.7;">
+                向下滑动浏览四大特色景区，每张风景大图都会平滑浮现。鼠标悬停图片可放大预览。
+            </p>
+            <!-- 纯图片动画矩阵 -->
+            <div class="scene-image-grid">
+                <div class="scene-image-card">
+                    <img src="/image/jing/city3.jpg" alt="东台莱德城市景区">
+                    <div class="scene-image-mask">
+                        <h4>东台莱德 · 城市人文</h4>
+                        <p>夜景灯光、中央公园、网红商业街</p>
                     </div>
                 </div>
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou2.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>莱德中央城市公园</h4>
-                        <p>人工湖泊、艺术雕塑、环湖步道</p>
+                <div class="scene-image-card">
+                    <img src="/image/jing/mine1.jpg" alt="采矿小镇工业景区">
+                    <div class="scene-image-mask">
+                        <h4>采矿小镇 · 工业地貌</h4>
+                        <p>巨型矿坑、冶炼工厂、货运铁路线</p>
                     </div>
                 </div>
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou3.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>林沃森多层梯田花海</h4>
-                        <p>四季植被轮换，春日限定花海景观</p>
+                <div class="scene-image-card">
+                    <img src="/image/jing/farm1.jpg" alt="林沃森田园景区">
+                    <div class="scene-image-mask">
+                        <h4>林沃森 · 田园山水</h4>
+                        <p>连片农田、温室大棚、临水乡村</p>
                     </div>
                 </div>
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou4.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>巨型露天矿坑观景台</h4>
-                        <p>纵深峡谷地貌，夜间工业灯光氛围感</p>
-                    </div>
-                </div>
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou5.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>眼镜岛滨海落日灯塔</h4>
-                        <p>全域公认最美黄昏打卡地</p>
-                    </div>
-                </div>
-                <div class="scene-card">
-                    <div class="scene-img">
-                        <img src="/image/jing/shou1.jpg">
-                    </div>
-                    <div class="scene-text">
-                        <h4>跨分区内河观光航道</h4>
-                        <p>沿河小镇、水闸水系全线游览</p>
+                <div class="scene-image-card">
+                    <img src="/image/jing/island3.jpg" alt="眼镜岛海岸景区">
+                    <div class="scene-image-mask">
+                        <h4>眼镜岛 · 海岛海岸</h4>
+                        <p>跨海大桥、海防堡垒、海上日出</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- 游客出行须知（滚动淡入） -->
-        <section class="tips-section scroll-animate">
-            <h2 class="section-head">游客游览须知</h2>
-            <ul class="tips-list">
-                <li>1. 下载官方完整存档即可抵达全部观光景点，无需额外模组</li>
-                <li>2. 拍摄风景截图可投稿游客社群，优秀作品登上官网轮播</li>
-                <li>3. 推荐搭配写实光影与自然材质，大幅提升画面质感</li>
-                <li>4. 全景区无游览限制，支持自由建造、截图、录制视频</li>
-            </ul>
-        </section>
-    </main>
-
-    <!-- 右侧边栏 -->
-    <aside class="sidebar-right scroll-animate">
-        <!-- 快捷导航 -->
-        <div class="sidebar-card">
-            <h3 class="card-title">游客快捷通道</h3>
-            <ul class="quick-list">
-                <li><a href="/">返回首页</a><span>→</span></li>
-                <li><a href="/webpage/country/download.html">下载观光存档</a><span>→</span></li>
-                <li><a href="#">光影材质推荐</a><span>→</span></li>
-                <li><a href="#">截图投稿入口</a><span>→</span></li>
-                <li><a href="https://qm.qq.com/q/dQHwMfowp4">游客交流群</a><span>→</span></li>
-            </ul>
-        </div>
-
-        <!-- 存档游览卡 -->
-        <div class="sidebar-card archive-box">
-            <h3 class="card-title">官方观光存档</h3>
-            <div class="archive-img">
-                <img src="/image/jing/cundang.png">
+            <!-- 1.城市人文景区 大图摄影卡片 -->
+            <div class="photo-card" id="city-scene">
+                <div class="photo-card-img-wrap">
+                    <img src="/image/jing/city3.jpg" alt="东台莱德 · 城市人文观光区">
+                </div>
+                <div class="photo-card-text">
+                    <h3>东台莱德 · 城市人文观光区</h3>
+                    <span class="photo-card-tag">城市打卡</span>
+                    <span class="photo-card-tag">夜景胜地</span>
+                    <span class="photo-card-tag">休闲公园</span>
+                    <p>新区核心人文游览区，规整现代居民建筑群、中央景观湖、商业步行街、红石科技展馆全部对外开放。白天城市整洁开阔，黄昏灯光逐步亮起，夜间全景氛围感拉满，是游客拍照打卡首选地点。</p>
+                </div>
             </div>
-            <ul class="archive-info">
-                <li>存档版本：Java 26.1.2</li>
-                <li>存档体积：0.13GB</li>
-            </ul>
-            <a href="/webpage/country/download.html" class="download-btn">立即下载去观光</a>
-        </div>
-
-        <!-- 游客真实评价 -->
-        <div class="sidebar-card msg-box">
-            <h3 class="card-title">游客打卡评价</h3>
-            <div class="msg-item">
-                <p class="msg-user">田园观光客</p>
-                <p class="msg-text">林沃森梯田花海拍照巨出片，强烈推荐白天游览！</p>
+            <!-- 2.工业地貌景区 大图摄影卡片 -->
+            <div class="photo-card" id="mine-scene">
+                <div class="photo-card-img-wrap">
+                    <img src="/image/jing/mine1.jpg" alt="采矿小镇 · 工业地貌观光区">
+                </div>
+                <div class="photo-card-text">
+                    <h3>采矿小镇 · 工业地貌观光区</h3>
+                    <span class="photo-card-tag">工业风摄影</span>
+                    <span class="photo-card-tag">巨型矿坑</span>
+                    <span class="photo-card-tag">铁路沿线</span>
+                    <p>独特重工业地貌观光点，多层阶梯露天矿场、大型冶炼工厂、货运铁路干线构成硬核工业景观。高低错落山体与机械厂房结合，适合工业风、废墟风摄影，沿途设有多处铁路观景台。</p>
+                </div>
             </div>
-            <div class="msg-item">
-                <p class="msg-user">城市观光爱好者</p>
-                <p class="msg-text">莱德夜景灯光设计超用心，傍晚游览氛围感拉满</p>
+            <!-- 3.田园山水景区 大图摄影卡片 -->
+            <div class="photo-card" id="farm-scene">
+                <div class="photo-card-img-wrap">
+                    <img src="/image/jing/farm1.jpg" alt="林沃森 · 田园山水观光区">
+                </div>
+                <div class="photo-card-text">
+                    <h3>林沃森 · 田园山水观光区</h3>
+                    <span class="photo-card-tag">治愈田园</span>
+                    <span class="photo-card-tag">溪流湿地</span>
+                    <span class="photo-card-tag">乡村民宿</span>
+                    <p>新区生态休闲核心，连片方格农田、温室果蔬大棚、沿河乡村聚落与天然内河湿地融为一体。水系环绕植被茂密，四季风光柔和治愈，适合散心漫步、田园写生、静水摄影。</p>
+                </div>
             </div>
-            <div class="msg-item">
-                <p class="msg-user">海岛爱好者</p>
-                <p class="msg-text">眼镜岛落日是整张地图天花板风景，不容错过</p>
+            <!-- 4.海岛海岸景区 大图摄影卡片 -->
+            <div class="photo-card" id="island-scene">
+                <div class="photo-card-img-wrap">
+                    <img src="/image/jing/island3.jpg" alt="眼镜岛 · 海岛海岸观光区">
+                </div>
+                <div class="photo-card-text">
+                    <h3>眼镜岛 · 海岛海岸观光区</h3>
+                    <span class="photo-card-tag">滨海日出</span>
+                    <span class="photo-card-tag">跨海大桥</span>
+                    <span class="photo-card-tag">海岛堡垒</span>
+                    <p>独立近海岛屿观光点，四面环海白色沙滩环绕，海防古堡、港口码头、跨海长桥构成独特滨海景观。东岸海面视野开阔，是全域最佳日出拍摄地，跨海大桥远景氛围感极强。</p>
+                </div>
             </div>
-        </div>
-    </aside>
-</div>
-
-<!-- 底部页脚 -->
-<footer class="site-footer scroll-animate">
-    <div class="footer-left">
-        <div class="footer-link-group">
-            <a href="#">网站地图</a>
-            <a href="#">隐私说明</a>
-            <a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">联系我们</a>
-        </div>
-        <p class="copyright">© 2026 联合实验新区文旅观光平台 版权所有</p>
+            <!-- 5.全域航拍全景 大图摄影卡片 -->
+            <div class="photo-card" id="panorama">
+                <div class="photo-card-img-wrap">
+                    <img src="/image/jing/pano1.jpg" alt="全域高空航拍全景">
+                </div>
+                <div class="photo-card-text">
+                    <h3>全域高空航拍全景</h3>
+                    <span class="photo-card-tag">上帝视角</span>
+                    <span class="photo-card-tag">全域规划</span>
+                    <span class="photo-card-tag">昼夜双景</span>
+                    <p>高空俯瞰完整收录四大景区整体布局，清晰展示城市、矿区、田园、海岛地理分布与交通路网，包含白昼清晰版图、夜间全域灯光两套全景素材，直观感受整片观光区域规模。</p>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="footer-qr-group">
-        <div class="qr-item">
-            <img src="/image/gzh.jpg">
-            <p>游客交流群</p>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="#">网站地图</a>
+                <a href="#">隐私声明</a>
+                <a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">联系我们</a>
+            </div>
+            <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
         </div>
-        <div class="qr-item">
-            <img src="/image/gzh.jpg">
-            <p>玩家论坛</p>
+        <div class="footer-qr">
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方交流群">
+                <p>官方交流群</p>
+            </div>
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方论坛">
+                <p>官方论坛</p>
+            </div>
         </div>
-    </div>
-</footer>
-
-<script>
-// 页面滚动淡入动画
-const animateItems = document.querySelectorAll('.scroll-animate');
-function checkScrollAnim(){
-    const trigger = window.innerHeight * 0.88;
-    animateItems.forEach(item=>{
-        const itemTop = item.getBoundingClientRect().top;
-        if(itemTop < trigger){
-            item.classList.add('animate-in');
+    </footer>
+    <script>
+        // 左侧导航平滑滚动+激活切换
+        document.querySelectorAll('.side-nav-list a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                document.querySelectorAll('.side-nav-list a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        // 顶部轮播图逻辑
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        const totalSlides = 3;
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 33.333}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
         }
-    })
-}
-window.addEventListener('scroll',checkScrollAnim);
-window.addEventListener('load',checkScrollAnim);
-
-// 导航滚动吸顶
-const nav = document.getElementById('scrollNav');
-const navOriginTop = nav.offsetTop;
-window.addEventListener('scroll',()=>{
-    if(window.scrollY >= navOriginTop){
-        nav.classList.add('nav-fixed');
-    }else{
-        nav.classList.remove('nav-fixed');
-    }
-})
-
-// 轮播逻辑
-const track = document.querySelector('.banner-track');
-const slides = document.querySelectorAll('.banner-slide');
-const dots = document.querySelectorAll('.dot');
-const prev = document.querySelector('.banner-btn');
-const next = document.querySelector('.banner-btn.next');
-let current = 0;
-const total = slides.length;
-let autoTimer;
-
-function refreshBanner(){
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach(d=>d.classList.remove('active'));
-    dots[current].classList.add('active');
-}
-function autoBanner(){
-    autoTimer = setInterval(()=>{
-        current = current >= total-1 ? 0 : current+1;
-        refreshBanner();
-    },4200);
-}
-prev.onclick = ()=>{
-    current = current <=0 ? total-1 : current-1;
-    refreshBanner();
-}
-next.onclick = ()=>{
-    current = current >= total-1 ? 0 : current+1;
-    refreshBanner();
-}
-dots.forEach(dot=>{
-    dot.onclick = ()=>{
-        current = Number(dot.dataset.index);
-        refreshBanner();
-    }
-})
-document.querySelector('.tour-banner').addEventListener('mouseenter',()=>clearInterval(autoTimer));
-document.querySelector('.tour-banner').addEventListener('mouseleave',autoBanner);
-
-// 移动端触摸滑动
-let touchStartX=0,touchEndX=0;
-document.querySelector('.tour-banner').addEventListener('touchstart',e=>{
-    touchStartX = e.changedTouches[0].screenX;
-    clearInterval(autoTimer);
-})
-document.querySelector('.tour-banner').addEventListener('touchend',e=>{
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchEndX - touchStartX;
-    if(Math.abs(diff) > 50){
-        diff>0 ? current-- : current++;
-        if(current<0) current = total-1;
-        if(current>=total) current=0;
-        refreshBanner();
-    }
-    autoBanner();
-})
-
-window.onload = ()=>{
-    refreshBanner();
-    autoBanner();
-    checkScrollAnim();
-}
-</script>
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        });
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = Number(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+        // 自动轮播5秒切换
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+        // 1.顶部图片矩阵滚动动画
+        const imageCards = document.querySelectorAll('.scene-image-card');
+        const imgObserver = new IntersectionObserver((entries)=>{
+            entries.forEach(item=>{
+                if(item.isIntersecting) item.target.classList.add('show');
+            })
+        },{threshold:0.1});
+        imageCards.forEach(card=>imgObserver.observe(card));
+        // 2.下方大图摄影卡片滚动动画
+        const photoCards = document.querySelectorAll('.photo-card');
+        const photoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(item => {
+                if (item.isIntersecting) item.target.classList.add('show');
+            })
+        }, { threshold: 0.12 });
+        photoCards.forEach(card => photoObserver.observe(card));
+    </script>
 </body>
 </html>
