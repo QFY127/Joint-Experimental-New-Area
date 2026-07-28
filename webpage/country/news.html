@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
+    <title>新闻公告 - 联合实验新区</title>
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+    <!-- 页面右上角悬浮标签 -->
+    <div class="page-top-tag">
+        <img src="/image/logo.png" width="160" height="50" alt="" />
+    </div>
+    <!-- 页面头部Logo栏 -->
+    <header class="header-top">
+        <div class="logo">
+            <img src="/image/LZG2logo.png" alt="logo">
+            <div class="logo-text">
+                <h1>联合实验新区</h1>
+                <p>JOINT EXPERIMENTAL NEW AREA</p>
+            </div>
+        </div>
+    </header>
+    <!-- 主导航菜单（吸顶逻辑复用首页样式） -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
+            <li><a href="/webpage/country/about.html">关于我们</a></li>
+            <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
+            <li><a href="/webpage/country/bumenjs.html">部门介绍</a></li>
+            <li><a href="/webpage/country/download.html">存档下载</a></li>
+            <li><a href="/webpage/country/archive.html">档案管理</a></li>
+            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
+            <li><a href="#" class="active">新闻公告</a></li>
+        </ul>
+    </nav>
+
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb">
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container news-container">
+        <!-- 左侧新闻列表主区域 -->
+        <main class="news-main">
+            <div class="section-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                全部新闻公告
+            </div>
+
+            <!-- 新闻筛选分类 -->
+            <div class="news-filter">
+                <span class="filter-item active" data-type="all">全部</span>
+                <span class="filter-item" data-type="notice">建设规划</span>
+                <span class="filter-item" data-type="version">版本更新</span>
+                <span class="filter-item" data-type="activity">活动公告</span>
+                <span class="filter-item" data-type="build">建设动态</span>
+            </div>
+
+            <!-- 新闻条目列表 增加data-type分类标识 -->
+            <ul class="news-article-list">
+                <li class="news-item" data-tag="notice">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="https://mp.weixin.qq.com/s/-9mH7CDM9RsYxsHD1gErqw">联合实验新区启用新版区徽</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">新区通知</span>
+                            <span class="news-time">发布时间：2026-07-18</span>
+                        </div>
+                        <p class="news-desc">为统一新区视觉形象，全新设计官方区徽正式上线，同步更新网站、存档、公众号全部标识素材，统一对外宣传视觉规范。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou1.jpg" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item" data-tag="activity">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="https://mp.weixin.qq.com/s/IBYDM90CWvOjMwsQJ_BaEQ">联合实验新区六周年纪念活动开启</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">活动公告</span>
+                            <span class="news-time">发布时间：2026-01-08</span>
+                        </div>
+                        <p class="news-desc">新区成立六周年纪念建筑、限定道具、周年存档同步开放，欢迎全体建造者参与线下线上共创活动。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou2.jpg" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item" data-tag="build">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="https://mp.weixin.qq.com/s/SY23Qih-r3ELO4JiHhJ8Cw">林沃森分区建设进程公示</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">建设动态</span>
+                            <span class="news-time">发布时间：2025-05-07</span>
+                        </div>
+                        <p class="news-desc">林沃森农业分区主干道、农田片区、配套民居主体结构完工，进入绿化与配套设施施工阶段，预计下半年完整开放。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou3.jpg" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item" data-tag="version">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="#">存档版本更新 Java 26.1.2 发布</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">版本更新</span>
+                            <span class="news-time">发布时间：2026-06-20</span>
+                        </div>
+                        <p class="news-desc">修复地形生成bug，新增东台莱德片区完整建筑，优化存档加载速度，官网下载通道已同步更新。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/cundang.png" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item" data-tag="build">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="#">采矿小镇资源配套管道工程完工</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">建设动态</span>
+                            <span class="news-time">发布时间：2026-05-12</span>
+                        </div>
+                        <p class="news-desc">全域矿物输送管道铺设完成，配套仓储分拣中心投入使用，大幅提升矿物产出与转运效率。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou4.jpg" alt="新闻封面">
+                    </div>
+                </li>
+                <!-- 第二页测试数据 -->
+                <li class="news-item page2" data-tag="notice">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="#">新区管委会人事调整通知</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">新区通知</span>
+                            <span class="news-time">发布时间：2026-07-01</span>
+                        </div>
+                        <p class="news-desc">为优化新区管理架构，对各部门负责人进行岗位调整，相关分工文件已上传档案管理页面。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou5.jpg" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item page2" data-tag="version">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="#">前置资源包 v1.5 更新说明</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">版本更新</span>
+                            <span class="news-time">发布时间：2026-04-11</span>
+                        </div>
+                        <p class="news-desc">修复材质显示错位，新增分区专属方块贴图，整合包下载链接已更新至快速下载栏。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/cundang.png" alt="新闻封面">
+                    </div>
+                </li>
+                <li class="news-item page2" data-tag="activity">
+                    <div class="news-item-left">
+                        <h3 class="news-title">
+                            <a href="#">夏日建造创作大赛开启报名</a>
+                        </h3>
+                        <div class="news-meta">
+                            <span class="news-tag">活动公告</span>
+                            <span class="news-time">发布时间：2026-06-30</span>
+                        </div>
+                        <p class="news-desc">面向全体玩家开放建筑投稿，优胜作品将永久收录进新区展示馆并发放限定纪念道具。</p>
+                    </div>
+                    <div class="news-item-right">
+                        <img src="/image/jing/shou1.jpg" alt="新闻封面">
+                    </div>
+                </li>
+            </ul>
+
+            <!-- 分页 箭头版本 -->
+<div class="page-pagination">
+    <span class="page-btn prev disabled">◀</span>
+    <span class="page-btn active" data-page="1">1</span>
+    <span class="page-btn" data-page="2">2</span>
+    <span class="page-btn" data-page="3">3</span>
+    <span class="page-btn next">▶</span>
+</div>
+        </main>
+
+        <!-- 右侧边栏（复用首页侧边栏模块） -->
+        <aside class="right-column">
+            <!-- 快速链接 -->
+            <div class="quick-link-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13 10h-2v2h2v-2zm0-4h-2v6h2V6zm-1 12c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18C5.93 0 0 5.93 0 12s5.93 12 12 12 12-5.93 12-12S18.07 0 12 0z"></path>
+                    </svg>
+                    快速链接
+                </div>
+                <ul class="quick-link-list">
+                    <li><a href="/webpage/country/scenery.html">风景浏览</a> <span><a href="#">></a></span></li>
+                    <li><a href="https://zh.minecraft.wiki/">我的世界Wiki</a> <span><a href="#">></a></span></li>
+                    <li><a href="#">存档用整合包</a> <span><a href="#">></a></span></li>
+                    <li><a href="#">提交建议</a> <span><a href="#">></a></span></li>
+                    <li><a href="/webpage/country/download.html">其他下载链接</a> <span><a href="#">></a></span></li>
+                </ul>
+            </div>
+            <!-- 存档信息卡片 -->
+            
+            <!-- 热门新闻 -->
+            <div class="hot-news-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.17 3.75 11.46 4.32C8.87 6.4 7.85 10.07 9.07 13.22C9.11 13.32 9.15 13.42 9.15 13.55C9.15 13.77 9 13.97 8.8 14.05C8.54 14.15 8.26 14.09 8 14.09C7.74 14.09 7.48 14.15 7.2 14.05C6.8 13.85 6.65 13.43 6.76 13.02C5.89 14.21 5.46 15.67 5.5 17.06C5.54 18.44 6.03 19.82 6.96 20.89C8.06 22.1 9.7 22.67 11.29 22.67C12.87 22.67 14.45 22.05 15.59 20.88C16.88 19.57 17.55 17.8 17.5 16.04C17.45 14.58 17.92 13.14 17.66 11.2M12.88 18.54C12.53 19.13 11.73 19.66 10.9 19.66C10.12 19.66 9.34 19.23 8.97 18.63C8.6 18 8.5 17.26 8.73 16.6C9.33 16.86 9.97 17 10.64 17C11.31 17 11.95 16.86 12.55 16.6C12.77 17.24 12.65 17.9 12.88 18.54Z"></path>
+                    </svg>
+                    热门资讯
+                </div>
+                <ul class="hot-news-list">
+                    <li><a href="#">联合实验新区启用新版区徽</a></li>
+                    <li><a href="#">六周年纪念活动内容汇总</a></li>
+                    <li><a href="#">林沃森分区建设进度一览</a></li>
+                    <li><a href="#">存档26.1.2更新内容说明</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="#">网站地图</a>
+                <a href="/webpage/country/privacy.html">隐私声明</a>
+                <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
+            </div>
+            <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
+        </div>
+        <div class="footer-qr">
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方交流群">
+                <p>官方交流群</p>
+            </div>
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方论坛">
+                <p>官方论坛</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // 导航吸顶逻辑
+    const navBar = document.querySelector('.main-nav');
+    const headerBox = document.querySelector('.header-top');
+    window.addEventListener('scroll', function() {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const headerHeight = headerBox.offsetHeight;
+        if (scrollTop >= headerHeight) {
+            navBar.classList.add('fixed-nav');
+            headerBox.classList.add('nav-fixed-padding');
+        } else {
+            navBar.classList.remove('fixed-nav');
+            headerBox.classList.remove('nav-fixed-padding');
+        }
+    });
+
+    // ========== 分类筛选 + 分页联动核心JS ==========
+    const filterItems = document.querySelectorAll('.filter-item');
+    const newsItems = document.querySelectorAll('.news-item');
+    const pageBtns = document.querySelectorAll('.page-btn[data-page]');
+    const prevBtn = document.querySelector('.page-btn.prev');
+    const nextBtn = document.querySelector('.page-btn.next');
+
+    let currentType = 'all'; // 当前选中分类
+    let currentPage = 1;     // 当前页码
+    const pageSize = 5;      // 每页显示条数
+
+    // 分类与data-tag映射
+    const typeMap = {
+        all: ['notice','version','activity','build'],
+        notice: ['notice'],
+        version: ['version'],
+        activity: ['activity'],
+        build: ['build']
+    };
+
+    // 渲染新闻列表（根据分类+页码过滤）
+    function renderNews() {
+        // 1. 筛选当前分类所有新闻
+        const allowTags = typeMap[currentType];
+        let list = Array.from(newsItems).filter(item => {
+            const tag = item.dataset.tag;
+            return allowTags.includes(tag);
+        });
+
+        // 2. 分页切片
+        const start = (currentPage - 1) * pageSize;
+        const end = start + pageSize;
+        list.forEach(item => item.style.display = 'none');
+        list.slice(start, end).forEach(item => item.style.display = 'flex');
+
+        // 3. 更新分页按钮状态
+        const totalPage = Math.ceil(list.length / pageSize);
+        // 页码激活
+        pageBtns.forEach(btn => {
+            const p = Number(btn.dataset.page);
+            btn.classList.toggle('active', p === currentPage);
+            btn.style.display = p > totalPage ? 'none' : '';
+        });
+        // 上一页禁用
+        prevBtn.classList.toggle('disabled', currentPage <= 1);
+        // 下一页禁用
+        nextBtn.classList.toggle('disabled', currentPage >= totalPage);
+    }
+
+    // 切换分类
+    filterItems.forEach(item => {
+        item.addEventListener('click', () => {
+            filterItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            currentType = item.dataset.type;
+            currentPage = 1; // 切分类自动回到第一页
+            renderNews();
+        });
+    });
+
+    // 数字页码点击
+    pageBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if(!btn.classList.contains('active')){
+                currentPage = Number(btn.dataset.page);
+                renderNews();
+            }
+        });
+    });
+
+    // 上一页
+    prevBtn.addEventListener('click', () => {
+        if(currentPage > 1){
+            currentPage--;
+            renderNews();
+        }
+    });
+
+    // 下一页
+    nextBtn.addEventListener('click', () => {
+        const allowTags = typeMap[currentType];
+        const list = Array.from(newsItems).filter(item => allowTags.includes(item.dataset.tag));
+        const totalPage = Math.ceil(list.length / pageSize);
+        if(currentPage < totalPage){
+            currentPage++;
+            renderNews();
+        }
+    });
+
+    // 页面初始化渲染
+    renderNews();
+</script>
+</body>
+</html>
