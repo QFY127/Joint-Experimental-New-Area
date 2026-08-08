@@ -6,7 +6,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <link rel="stylesheet" href="welcome.css">
+    <style>
+        /* ===================== 全局基础重置 ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent; /* 移动端去除点击高亮 */
+        }
+        body {
+            overflow: hidden;
+            background-color: #000;
+        }
+        /* ===================== 全屏轮播容器 ===================== */
+        .carousel-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* 轮播图片轨道容器 */
+        .carousel-inner {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        /* 单张轮播项 */
+        .carousel-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        /* ===================== 轮播左右切换按钮 ===================== */
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .carousel-control:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            transform: translateY(-50%) scale(1.1);
+        }
+        /* ===================== 底部轮播指示器 ===================== */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .indicator.active {
+            background-color: #fff;
+            width: 30px;
+            border-radius: 5px;
+        }
+        /* ===================== 居中文字内容区域 ===================== */
+        /* 全屏居中容器，穿透鼠标事件 */
+        .page-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            text-align: center;
+            padding: 0 20px;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+        /* 可交互文字盒子，接收hover/touch */
+        .content-box {
+            pointer-events: auto;
+        }
+        /* 主标题logo文字 */
+        .logo {
+            color: #fff;
+            font-size: 60px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            margin-bottom: 40px;
+            user-select: none;
+        }
+        /* 进入跳转按钮 */
+        .jump-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            user-select: none;
+        }
+        .arrow {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+        .jump-btn:hover {
+            background-color: #fff;
+            color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .jump-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+        /* UI元素隐藏类 */
+        .ui-hide {
+            opacity: 0 !important;
+        }
+        /* ===================== 移动端响应式适配 ===================== */
+        /* 平板 768px及以下 */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 45px;
+                margin-bottom: 30px;
+            }
+            .jump-btn {
+                padding: 12px 35px;
+                font-size: 16px;
+            }
+            .carousel-control {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            .carousel-indicators {
+                bottom: 20px;
+            }
+        }
+        /* 手机 480px及以下 */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 32px;
+                margin-bottom: 24px;
+                letter-spacing: 1px;
+            }
+            .jump-btn {
+                padding: 10px 28px;
+                font-size: 14px;
+                border-width: 1.5px;
+            }
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                left: 10px;
+                right: 10px;
+            }
+            .indicator {
+                width: 8px;
+                height: 8px;
+            }
+            .indicator.active {
+                width: 22px;
+            }
+            .carousel-indicators {
+                bottom: 16px;
+                gap: 8px;
+            }
+        }
+        /* 超小手机 360px及以下 */
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 26px;
+            }
+            .jump-btn {
+                padding: 8px 22px;
+            }
+            .carousel-control {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 全屏轮播外层容器 -->
@@ -23,30 +252,26 @@
                 <img src="image/bg3.jpg" alt="轮播背景3">
             </div>
         </div>
-
         <!-- 左右切换按钮 -->
         <button class="carousel-control prev-btn">❮</button>
         <button class="carousel-control next-btn">❯</button>
-
         <!-- 底部小圆点指示器 -->
         <div class="carousel-indicators">
             <span class="indicator active" data-index="0"></span>
             <span class="indicator" data-index="1"></span>
             <span class="indicator" data-index="2"></span>
         </div>
-
         <!-- 居中标题与跳转按钮区域 -->
         <div class="page-content">
             <div class="content-box" id="hoverBox">
                 <h1 class="logo" id="logo">联合实验新区</h1>
-                <a href="webpage/Homepages/Homepage.html" class="jump-btn" id="jumpBtn">
+                <a href="zy.html" class="jump-btn" id="jumpBtn">
                     进入
                     <span class="arrow">→</span>
                 </a>
             </div>
         </div>
     </div>
-
     <!-- 轮播交互逻辑JS -->
     <script>
        // DOM元素获取
@@ -66,7 +291,6 @@ const autoPlayTime = 5000;
 let autoPlayTimer = null;
 let hideTimer = null;
 const hideDelay = 3000;
-
 /**
  * 显示页面UI（标题、按钮、左右切换控件）
  */
@@ -76,7 +300,6 @@ function showUI() {
     clearTimeout(hideTimer);
     hideTimer = setTimeout(hideUI, hideDelay);
 }
-
 /**
  * 隐藏页面UI
  */
@@ -84,7 +307,6 @@ function hideUI() {
     pageContent.classList.add('ui-hide');
     controlBtns.forEach(btn => btn.classList.add('ui-hide'));
 }
-
 /**
  * 页面加载完成：标题+按钮渐入动画
  */
@@ -110,7 +332,6 @@ window.addEventListener('load', () => {
         }, 500);
     }, 300);
 });
-
 /**
  * 更新轮播位置与激活指示器
  */
@@ -119,7 +340,6 @@ function updateCarousel() {
     carouselItems.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
     indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
 }
-
 /**
  * 切换上一张轮播
  */
@@ -128,7 +348,6 @@ function goToPrev() {
     updateCarousel();
     restartAutoPlay();
 }
-
 /**
  * 切换下一张轮播
  */
@@ -137,7 +356,6 @@ function goToNext() {
     updateCarousel();
     restartAutoPlay();
 }
-
 // 指示器点击切换
 indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => {
@@ -146,7 +364,6 @@ indicators.forEach((indicator, index) => {
         restartAutoPlay();
     });
 });
-
 /**
  * 停止自动轮播
  */
@@ -156,7 +373,6 @@ function stopAutoPlay() {
         autoPlayTimer = null;
     }
 }
-
 /**
  * 开启自动轮播（先清旧定时器再新建）
  */
@@ -164,7 +380,6 @@ function startAutoPlay() {
     stopAutoPlay();
     autoPlayTimer = setInterval(goToNext, autoPlayTime);
 }
-
 /**
  * 手动切换后重置计时
  */
@@ -172,21 +387,17 @@ function restartAutoPlay() {
     stopAutoPlay();
     startAutoPlay();
 }
-
 // 左右按钮点击事件
 prevBtn.addEventListener('click', goToPrev);
 nextBtn.addEventListener('click', goToNext);
-
 // PC端鼠标悬浮文字框显示UI
 hoverBox.addEventListener('mouseenter', showUI);
 hoverBox.addEventListener('mouseleave', () => {
     clearTimeout(hideTimer);
     hideTimer = setTimeout(hideUI, hideDelay);
 });
-
 // 移动端触摸文字区域显示UI
 hoverBox.addEventListener('touchstart', showUI);
-
 // 触摸空白区域计时隐藏UI
 carouselWrapper.addEventListener('touchstart', (e) => {
     if (!hoverBox.contains(e.target)) {
@@ -194,15 +405,12 @@ carouselWrapper.addEventListener('touchstart', (e) => {
         hideTimer = setTimeout(hideUI, hideDelay);
     }
 });
-
 // ========== 关键改动：移除鼠标移入暂停、移出恢复的监听，鼠标放图片不暂停轮播 ==========
 // carouselWrapper.addEventListener('mouseenter', stopAutoPlay);
 // carouselWrapper.addEventListener('mouseleave', startAutoPlay);
-
 // 移动端触摸暂停逻辑保留（可选，不想触摸暂停可删掉下面两行）
 carouselWrapper.addEventListener('touchstart', stopAutoPlay);
 carouselWrapper.addEventListener('touchend', startAutoPlay);
-
 // 页面初始化启动自动轮播
 startAutoPlay();
     </script>

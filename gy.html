@@ -5,15 +5,414 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <!-- 外部独立CSS -->
-    <link rel="stylesheet" href="about.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+    position: relative;
+}
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 40px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+.header-top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #222;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+}
+/* ========== 导航滚动固定核心样式 ========== */
+.main-nav {
+    background-color: #004b93;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+/* 滚动后固定类 */
+.nav-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover {
+    background-color: #00386f;
+}
+.main-nav ul li a.active {
+    background-color: #00386f;
+}
+/* ====================================== */
+.breadcrumb {
+    background-color: white;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+.breadcrumb a {
+    color: #004b93;
+    text-decoration: none;
+}
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 20px;
+    padding: 20px 120px;
+    background-color: white;
+}
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #222;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b93;
+}
+.news-card {
+    margin-bottom: 20px;
+}
+.news-list {
+    list-style: none;
+}
+.news-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.news-list li:last-child {
+    border-bottom: none;
+}
+.news-list li p {
+    font-size: 13px;
+    color: #333;
+}
+.news-list li span {
+    font-size: 12px;
+    color: #999;
+}
+.分区-card {
+    margin-bottom: 20px;
+}
+.分区-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.about-block {
+    margin-bottom: 30px;
+}
+.about-block h3 {
+    font-size: 18px;
+    color: #004b93;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eee;
+}
+.about-block p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+}
+.contact-list {
+    list-style: none;
+    margin-top: 10px;
+}
+.contact-list li {
+    font-size:14px;
+    padding:6px 0;
+    color:#444;
+}
+.contact-list li a {
+    color:#004b93;
+    text-decoration:none;
+}
+.single-adapt-img {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+.single-adapt-img img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* ========== 宣传片视频新增样式 ========== */
+.video-box {
+    width: 100%;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.video-iframe {
+    width: 100%;
+    height: 480px;
+    display: block;
+}
+.video-desc {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+.video-desc h3 {
+    font-size: 16px;
+    color: #004b93;
+    margin-bottom: 8px;
+}
+.video-desc p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+}
+/* ====================================== */
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+.存档-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+.存档-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.存档-card h3 img {
+    width: 20px;
+    height: 20px;
+}
+.存档-info-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+.存档-info-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+    padding: 4px 0;
+}
+.download-btn {
+    display: block;
+    width: 100%;
+    background-color: #004b93;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+footer {
+    background-color: #004b93;
+    color: white;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+.footer-qr {
+    display: flex;
+    gap: 20px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+/* 移动端适配 768px以下 */
+@media screen and (max-width:768px){
+    * {
+        touch-action: manipulation;
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 16px;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .存档-card {
+        padding: 12px;
+    }
+    .download-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+    /* 移动端视频高度自适应 */
+    .video-iframe {
+        height: 240px;
+    }
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 12px;
+    }
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+/* 超小屏360px适配 */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
+    }
+    .video-iframe {
+        height: 180px;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- 顶部悬浮标识 -->
     <div class="page-top-tag">
         <img src="/image/logo.png" width="160" height="50" alt="" />
     </div>
-
     <!-- 头部Logo区域 -->
     <header class="header-top">
         <div class="logo">
@@ -24,25 +423,22 @@
             </div>
         </div>
     </header>
-
     <!-- 导航栏（滚动固定核心区域） -->
     <nav class="main-nav" id="navBar">
         <ul>
-            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
+            <li><a href="zy.html" >首页</a></li>
             <li><a href="#" class="active">关于我们</a></li>
-            <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
-            <li><a href="/webpage/country/bumenjs.html">部门介绍</a></li>
-            <li><a href="/webpage/country/download.html">存档下载</a></li>
-            <li><a href="/webpage/country/archive.html">档案管理</a></li>
-            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
-            <li><a href="/webpage/country/news.html">新闻公告</a></li>
+            <li><a href="fq.html">分区介绍</a></li>
+            <li><a href="bm.html">部门介绍</a></li>
+            <li><a href="xz.html">存档下载</a></li>
+            <li><a href="da.html">档案管理</a></li>
+            <li><a href="yx.html">影像记录</a></li>
+            <li><a href="xw.html">新闻公告</a></li>
         </ul>
     </nav>
-
     <!-- 面包屑 -->
     <div class="breadcrumb">
     </div>
-
     <div class="container">
         <!-- 左侧边栏 -->
         <aside class="left-column">
@@ -64,11 +460,11 @@
                         <p>2023｜三大分区选址收官</p>
                         <span>规划方案初稿完成</span>
                     </li>
-                    <li>
+					<li>
                         <p>2022｜主城区启动建设</p>
                         <span>城区规划初稿完成</span>
                     </li>
-                    <li>
+					<li>
                         <p>2021｜改称联合实验新区</p>
                         <span>城区规划初稿完成&nbsp;</span>
                     </li>
@@ -83,14 +479,12 @@
                 </ul>
             </div>
         </aside>
-
         <!-- 中间主内容：宣传片播放区域 -->
         <main class="center-column">
             <div class="section-title">
                 <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
               联合实验新区官方宣传片
           </div>
-
             <div class="video-box">
     <!-- 六周年宣传片 自动静音播放 -->
 				<iframe class="video-iframe" 
@@ -100,15 +494,12 @@
 			allow="autoplay;fullscreen">
 			</iframe>
 			</div>
-
 			<div class="video-desc">
 			<h3>宣传片介绍｜以方块筑梦六载，怀热忱奔赴远方</h3>
 			<p>六载流光难凉热血之忱，八荒往复犹歌初心之韵
 六年前，梦想的种子破土萌芽，携着未知与期待。从搭建一间小小的房屋开始，几位热血沸腾的伙伴结伴同行，开启了一段如宇宙星尘般漫长的征途。这座倾注无数心血的城市，迎来了属于它的纪念日。
 回首往昔，自第一块基石铺下，一场非凡之旅就此启程。时光荏苒，不知不觉间，紧张繁忙的一年即将落幕。有消沉倦怠的时刻，亦有热血澎湃的瞬间。过去一年的建设进程里，受学业与现实生活影响，建设计划几度停滞。但我们从未轻言放弃：从最初简陋的小屋，到如今宏伟的城区，这片土地见证着我们一路的成长。</p>
 			</div>
-
-
             <div class="about-block contact-block">
                 <h3>联系我们</h3>
                 <ul class="contact-list">
@@ -118,7 +509,6 @@
                 </ul>
             </div>
         </main>
-
         <!-- 右侧边栏 -->
         <aside class="right-column">
             <div class="quick-link-card">
@@ -150,13 +540,12 @@
             </div>
         </aside>
     </div>
-
     <!-- 页脚 -->
     <footer>
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">网站地图</a>
-                <a href="/webpage/country/privacy.html">隐私声明</a>
+                <a href="sm.html">隐私声明</a>
                 <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
             </div>
             <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
@@ -172,7 +561,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         // 导航栏滚动固定逻辑
         const navBar = document.getElementById('navBar');
@@ -184,7 +572,6 @@
                 navBar.classList.remove('nav-fixed');
             }
         })
-
         // 移动端双击缩放禁止
         document.addEventListener('dblclick', e => e.preventDefault());
     </script>

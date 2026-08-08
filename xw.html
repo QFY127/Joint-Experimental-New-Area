@@ -5,7 +5,467 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <link rel="stylesheet" href="news.css">
+    <style>
+/* 全局重置 完全复用首页 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+    position: relative;
+}
+/* 页面顶部悬浮标签 */
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 40px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+/* 顶部头部栏 */
+.header-top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #222;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.lang-switch {
+    font-size: 14px;
+    color: #333;
+}
+/* 主导航栏 + 吸顶样式（关键下滑跟随效果） */
+.main-nav {
+    background-color: #004b93;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover {
+    background-color: #00386f;
+}
+.main-nav ul li a.active {
+    background-color: #00386f;
+}
+/* 导航吸顶样式 下滑跟随固定 */
+.main-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+/* 头部占位，防止导航固定后内容上移 */
+.header-top.nav-fixed-padding {
+    padding-bottom: 52px;
+}
+/* 面包屑导航 */
+.breadcrumb {
+    background-color: white;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+.breadcrumb a {
+    color: #004b93;
+    text-decoration: none;
+}
+/* 主体容器 两栏布局：主新闻+右侧边栏 */
+.container.news-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    padding: 20px 120px;
+    background-color: white;
+}
+/* 通用区块标题 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #222;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b93;
+}
+/* ========== 新闻页面专属样式 ========== */
+/* 新闻分类筛选 */
+.news-filter {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+.filter-item {
+    padding: 6px 16px;
+    border: 1px solid #004b93;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #004b93;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.filter-item.active {
+    background-color: #004b93;
+    color: #fff;
+}
+.filter-item:hover {
+    background-color: #e8f0f9;
+}
+.filter-item.active:hover {
+    background-color: #00386f;
+}
+/* 新闻列表项 */
+.news-article-list {
+    list-style: none;
+}
+.news-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px dashed #eee;
+}
+.news-item:last-child {
+    border-bottom: none;
+}
+.news-item-left {
+    flex: 1;
+}
+.news-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.news-title a {
+    color: #222;
+    text-decoration: none;
+}
+.news-title a:hover {
+    color: #004b93;
+}
+.news-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.news-tag {
+    background-color: #e8f0f9;
+    color: #004b93;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.news-time {
+    color: #999;
+}
+.news-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+.news-item-right img {
+    width: 160px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+/* 分页 */
+.page-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+.page-btn {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+.page-btn.active {
+    background-color: #004b93;
+    border-color: #004b93;
+    color: #fff;
+}
+.page-btn.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+/* 热门资讯侧边栏 */
+.hot-news-card {
+    margin-bottom: 20px;
+}
+.hot-news-list {
+    list-style: none;
+}
+.hot-news-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+.hot-news-list li:last-child {
+    border-bottom: none;
+}
+.hot-news-list li a {
+    font-size: 13px;
+    color: #333;
+    text-decoration: none;
+}
+.hot-news-list li a:hover {
+    color: #004b93;
+}
+/* ========== 复用首页侧边栏通用样式 ========== */
+/* 存档卡片 */
+.存档-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+.存档-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.存档-card h3 img {
+    width: 20px;
+    height: 20px;
+}
+.存档-info-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+.存档-info-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+    padding: 4px 0;
+}
+.download-btn {
+    display: block;
+    width: 100%;
+    background-color: #004b93;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+/* 快速链接列表 */
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+/* 底部页脚 */
+footer {
+    background-color: #004b93;
+    color: white;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+.footer-qr {
+    display: flex;
+    gap: 20px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+/* ========== 移动端适配 768px及以下 ========== */
+@media screen and (max-width:768px){
+    * {
+        touch-action: manipulation;
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    /* 面包屑 */
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    /* 页面容器改为单列 */
+    .container.news-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 16px;
+    }
+    /* 新闻项移动端垂直排列 */
+    .news-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .news-item-right img {
+        width: 100%;
+        height: auto;
+    }
+    /* 通用标题 */
+    .section-title {
+        font-size: 16px;
+    }
+    /* 存档卡片 */
+    .存档-card {
+        padding: 12px;
+    }
+    .download-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+    /* 底部footer适配 */
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 12px;
+    }
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+/* ========== 超小屏兼容 360px以下 ========== */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .news-filter {
+        flex-wrap: wrap;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- 页面右上角悬浮标签 -->
@@ -25,21 +485,19 @@
     <!-- 主导航菜单（吸顶逻辑复用首页样式） -->
     <nav class="main-nav">
         <ul>
-            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
-            <li><a href="/webpage/country/about.html">关于我们</a></li>
-            <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
-            <li><a href="/webpage/country/bumenjs.html">部门介绍</a></li>
-            <li><a href="/webpage/country/download.html">存档下载</a></li>
-            <li><a href="/webpage/country/archive.html">档案管理</a></li>
-            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
+            <li><a href="zy.html" >首页</a></li>
+            <li><a href="gy.html">关于我们</a></li>
+            <li><a href="fq.html">分区介绍</a></li>
+            <li><a href="bm.html">部门介绍</a></li>
+            <li><a href="xz.html">存档下载</a></li>
+            <li><a href="da.html">档案管理</a></li>
+            <li><a href="yx.html">影像记录</a></li>
             <li><a href="#" class="active">新闻公告</a></li>
         </ul>
     </nav>
-
     <!-- 面包屑导航 -->
     <div class="breadcrumb">
     </div>
-
     <!-- 主容器 -->
     <div class="container news-container">
         <!-- 左侧新闻列表主区域 -->
@@ -50,7 +508,6 @@
                 </svg>
                 全部新闻公告
             </div>
-
             <!-- 新闻筛选分类 -->
             <div class="news-filter">
                 <span class="filter-item active" data-type="all">全部</span>
@@ -59,7 +516,6 @@
                 <span class="filter-item" data-type="activity">活动公告</span>
                 <span class="filter-item" data-type="build">建设动态</span>
             </div>
-
             <!-- 新闻条目列表 增加data-type分类标识 -->
             <ul class="news-article-list">
                 <li class="news-item" data-tag="notice">
@@ -184,7 +640,6 @@
                     </div>
                 </li>
             </ul>
-
             <!-- 分页 箭头版本 -->
 <div class="page-pagination">
     <span class="page-btn prev disabled">◀</span>
@@ -194,7 +649,6 @@
     <span class="page-btn next">▶</span>
 </div>
         </main>
-
         <!-- 右侧边栏（复用首页侧边栏模块） -->
         <aside class="right-column">
             <!-- 快速链接 -->
@@ -232,13 +686,12 @@
             </div>
         </aside>
     </div>
-
     <!-- 页脚 -->
     <footer>
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">网站地图</a>
-                <a href="/webpage/country/privacy.html">隐私声明</a>
+                <a href="sm.html">隐私声明</a>
                 <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
             </div>
             <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
@@ -254,7 +707,6 @@
             </div>
         </div>
     </footer>
-
     <script>
     // 导航吸顶逻辑
     const navBar = document.querySelector('.main-nav');
@@ -270,18 +722,15 @@
             headerBox.classList.remove('nav-fixed-padding');
         }
     });
-
     // ========== 分类筛选 + 分页联动核心JS ==========
     const filterItems = document.querySelectorAll('.filter-item');
     const newsItems = document.querySelectorAll('.news-item');
     const pageBtns = document.querySelectorAll('.page-btn[data-page]');
     const prevBtn = document.querySelector('.page-btn.prev');
     const nextBtn = document.querySelector('.page-btn.next');
-
     let currentType = 'all'; // 当前选中分类
     let currentPage = 1;     // 当前页码
     const pageSize = 5;      // 每页显示条数
-
     // 分类与data-tag映射
     const typeMap = {
         all: ['notice','version','activity','build'],
@@ -290,7 +739,6 @@
         activity: ['activity'],
         build: ['build']
     };
-
     // 渲染新闻列表（根据分类+页码过滤）
     function renderNews() {
         // 1. 筛选当前分类所有新闻
@@ -299,13 +747,11 @@
             const tag = item.dataset.tag;
             return allowTags.includes(tag);
         });
-
         // 2. 分页切片
         const start = (currentPage - 1) * pageSize;
         const end = start + pageSize;
         list.forEach(item => item.style.display = 'none');
         list.slice(start, end).forEach(item => item.style.display = 'flex');
-
         // 3. 更新分页按钮状态
         const totalPage = Math.ceil(list.length / pageSize);
         // 页码激活
@@ -319,7 +765,6 @@
         // 下一页禁用
         nextBtn.classList.toggle('disabled', currentPage >= totalPage);
     }
-
     // 切换分类
     filterItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -330,7 +775,6 @@
             renderNews();
         });
     });
-
     // 数字页码点击
     pageBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -340,7 +784,6 @@
             }
         });
     });
-
     // 上一页
     prevBtn.addEventListener('click', () => {
         if(currentPage > 1){
@@ -348,7 +791,6 @@
             renderNews();
         }
     });
-
     // 下一页
     nextBtn.addEventListener('click', () => {
         const allowTags = typeMap[currentType];
@@ -359,7 +801,6 @@
             renderNews();
         }
     });
-
     // 页面初始化渲染
     renderNews();
 </script>

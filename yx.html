@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
+    <title>联合实验新区</title>
+    <style>
+        /* ========== 全局基础样式 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            scroll-padding-top: 50px;
+        }
+        .page-top-tag {
+            position: absolute;
+            z-index: 999;
+            top: 10px;
+            right: 40px;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            line-height: 0;
+        }
+        .page-top-tag img {
+            width: auto;
+            height: 50px;
+            max-width: 260px;
+            max-height: 80px;
+            display: block;
+            object-fit: contain;
+        }
+        /* 网站头部 完全复用zy样式 */
+        .header-top {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            border-bottom: 1px solid #eee;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+        .logo-text h1 {
+            font-size: 24px;
+            color: #222;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .lang-switch {
+            font-size: 14px;
+            color: #333;
+        }
+        /* 搜索框 zy原版 */
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 6px 12px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 180px;
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #004b93;
+        }
+        /* ========== 主导航栏 完全替换为zy原版样式，删除sticky ========== */
+        .main-nav {
+            background-color: #004b93;
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .main-nav ul li a {
+            display: block;
+            padding: 12px 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background-color 0.2s;
+        }
+        .main-nav ul li a:hover {
+            background-color: #00386f;
+        }
+        /* 导航吸顶样式 zy专属，仅新增 */
+        .main-nav.fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        /* 头部占位，防止导航固定后内容上移 */
+        .header-top.nav-fixed-padding {
+            padding-bottom: 52px;
+        }
+        /* 面包屑 */
+        .breadcrumb {
+            background: #fff;
+            padding: 10px 120px;
+            font-size: 14px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        .breadcrumb a {
+            color: #004b93;
+            text-decoration: none;
+        }
+        /* 主体两栏布局 */
+        .container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+            padding: 30px 100px;
+            background-color: #fff;
+            align-items: flex-start;
+        }
+        /* 左侧悬浮导航栏 */
+        .left-column {
+            height: fit-content;
+            position: sticky;
+            top: 52px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #222;
+        }
+        .section-title svg {
+            width: 20px;
+            height: 20px;
+            fill: #004b93;
+        }
+        /* 分页切换按钮 */
+        .page-switch-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .switch-btn-group {
+            display: flex;
+            gap: 12px;
+        }
+        .switch-btn {
+            flex: 1;
+            padding: 10px 0;
+            border: 1px solid #004b93;
+            background: #fff;
+            color: #004b93;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .switch-btn.active {
+            background: #004b93;
+            color: #fff;
+        }
+        .switch-btn:hover:not(.active) {
+            background: #f0f7ff;
+        }
+        /* 侧边快捷导航容器 */
+        .side-nav-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        /* 两套导航默认隐藏 */
+        .nav-list {
+            list-style: none;
+            display: none;
+        }
+        .nav-list.show {
+            display: block;
+        }
+        .nav-list li {
+            margin-bottom: 10px;
+        }
+        .nav-list li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 14px;
+            border-radius: 6px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .nav-list li a.active,
+        .nav-list li a:hover {
+            background-color: #004b93;
+            color: #fff;
+        }
+        /* ========== 顶部轮播图 ========== */
+        .carousel-section {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+        .carousel-slide {
+            position: relative;
+            width: 33.333%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-text {
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: #fff;
+            max-width: 600px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+        .carousel-text h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .carousel-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .carousel-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 28px;
+            background: #fff;
+            color: #004b93;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .carousel-btn:hover {
+            background: #00386f;
+            color: #fff;
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: #fff;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            color: #004b93;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .carousel-arrow:hover {
+            background: #f0f7ff;
+        }
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+        .carousel-arrow.next {
+            right: 20px;
+        }
+        /* ========== 景区纯图片矩阵 ========== */
+        .scene-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 24px 0 40px;
+        }
+        .scene-image-card {
+            position: relative;
+            height: 240px;
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scene-image-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scene-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .scene-image-card:hover img {
+            transform: scale(1.08);
+        }
+        .scene-image-mask {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.65));
+            color: #fff;
+        }
+        .scene-image-mask h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .scene-image-mask p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        /* ========== 摄影大图卡片 ========== */
+        .photo-card {
+            width: 100%;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .photo-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .photo-card-img-wrap {
+            width: 100%;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        .photo-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .photo-card:hover .photo-card-img-wrap img {
+            transform: scale(1.04);
+        }
+        .photo-card-text h3 {
+            font-size: 24px;
+            color: #1a1a1;
+            margin-bottom: 10px;
+        }
+        .photo-card-tag {
+            display: inline-block;
+            background: #e8f0f9;
+            color: #004b93;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom:12px;
+        }
+        .photo-card-text p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+        /* 返回顶部图片按钮 */
+        .back-top-box {
+            text-align: center;
+            margin: 60px 0 20px;
+        }
+        .back-top-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #004b93;
+            transition: 0.3s;
+        }
+        .back-top-btn img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .back-top-btn span {
+            display: block;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .back-top-btn:hover img {
+            transform: translateY(-4px);
+        }
+        .content-block {
+            display:none;
+        }
+        .content-block.active {
+            display:block;
+        }
+        /* ===== 人员合影左右交替、向中间倾斜核心样式 ===== */
+        .team-vertical-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 24px;
+        }
+        .team-item {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 18px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 0.8s ease-out;
+        }
+        .team-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .team-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        /* 奇数卡片：图片向右倾斜3度（往中间） */
+        .team-img-box {
+            width: 380px;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 10px;
+            transform: rotate(3deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+            flex-shrink: 0;
+        }
+        /* 偶数卡片：图片向左倾斜3度（往中间收拢） */
+        .team-item:nth-child(even) .team-img-box {
+            transform: rotate(-3deg);
+        }
+        .team-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .team-img-box:hover img {
+            transform: scale(1.06);
+        }
+        .team-text-box {
+            flex: 1;
+        }
+        .team-text-box h4 {
+            font-size: 20px;
+            color: #004b93;
+            margin-bottom: 12px;
+        }
+        .team-text-box p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.8;
+        }
+        /* ========== 页脚样式 ========== */
+        footer {
+            background-color: #004b93;
+            color: #fff;
+            padding: 40px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+        .footer-left .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .footer-qr {
+            display: flex;
+            gap: 20px;
+        }
+        .qr-code {
+            text-align: center;
+        }
+        .qr-code img {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+        .qr-code p {
+            font-size: 11px;
+        }
+        /* ========== 移动端768px适配 同步zy ========== */
+        @media screen and (max-width:768){
+            * {
+                touch-action: manipulation; /* 移除移动端300ms点击延迟 */
+            }
+            .page-top-tag {
+                right: 10px;
+            }
+            .page-top-tag img {
+                height: 36px;
+                max-width: 160px;
+            }
+            /* 顶部头部 */
+            .header-top {
+                padding: 10px 15px;
+            }
+            .logo img {
+                width: 36px;
+                height: 36px;
+            }
+            .logo-text h1 {
+                font-size: 18px;
+            }
+            .logo-text p {
+                font-size: 10px;
+            }
+            .header-right {
+                gap: 10px;
+            }
+            .search-box {
+                padding: 4px 8px;
+            }
+            .search-box input {
+                width: 100px;
+                font-size: 12px;
+            }
+            /* 导航移动端 */
+            .main-nav ul li a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            /* 轮播适配 */
+            .carousel-section {
+                height: 240px;
+            }
+            .carousel-text {
+                left: 5%;
+                max-width: 90%;
+            }
+            .carousel-text h2 {
+                font-size: 24px;
+            }
+            .carousel-text p {
+                font-size: 14px;
+            }
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            /* 面包屑 */
+            .breadcrumb {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            /* 两栏布局改为单列 */
+            .container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            .left-column {
+                position: static;
+                top: auto;
+            }
+            .scene-image-grid {
+                grid-template-columns: 1fr;
+            }
+            .scene-image-card {
+                height: 200px;
+            }
+            .photo-card-img-wrap{
+                height:260px;
+            }
+            .team-item,
+            .team-item:nth-child(even) {
+                flex-direction: column;
+            }
+            .team-img-box {
+                width: 100%;
+                height: 220px;
+                transform: rotate(0deg) !important;
+            }
+            /* 底部footer适配 */
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 25px 15px;
+            }
+            .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            .footer-links a {
+                margin-right: 8px;
+                font-size: 11px;
+            }
+            .footer-qr {
+                gap: 12px;
+            }
+            .qr-code img {
+                width: 50px;
+                height: 50px;
+            }
+            .qr-code p {
+                font-size: 10px;
+            }
+        }
+        /* 超小屏兼容 360px以下 同步zy */
+        @media screen and (max-width: 360px) {
+            .banner-text h2 {
+                font-size: 16px;
+            }
+            .logo {
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部锚点 -->
+    <div id="page-top"></div>
+    <!-- 页面右上角悬浮标签 zy原版 -->
+    <div class="page-top-tag">
+        <img src="/image/logo.png" width="160" height="50" alt="" />
+    </div>
+    <!-- 页面头部Logo栏 完全替换zy结构 -->
+    <header class="header-top">
+        <div class="logo">
+            <img src="/image/LZG2logo.png" alt="logo">
+            <div class="logo-text">
+                <h1>联合实验新区</h1>
+                <p>JOINT EXPERIMENTAL NEW AREA</p>
+            </div>
+        </div>
+        <!-- 恢复zy原版header-right搜索框区域 -->
+        <div class="header-right">
+        </div>
+    </header>
+    <!-- 主导航菜单 HTML结构完全同步zy -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="zy.html" >首页</a></li>
+            <li><a href="gy.html">关于我们</a></li>
+            <li><a href="fq.html">分区介绍</a></li>
+            <li><a href="bm.html">部门介绍</a></li>
+            <li><a href="xz.html">存档下载</a></li>
+            <li><a href="da.html">档案管理</a></li>
+            <li><a href="#" style="background:#00386f" >影像记录</a></li>
+            <li><a href="xw.html">新闻公告</a></li>
+        </ul>
+    </nav>
+    <!-- 顶部轮播 -->
+    <div class="carousel-section">
+        <div class="carousel" id="carousel">
+            <div class="carousel-slide">
+                <img src="/image/jing/shou1.jpg" alt="全域风光">
+                <div class="carousel-text">
+                    <h2>四大特色景区</h2>
+                    <p>城市人文、工业地貌、田园山水，一站式游览新区全域风光。</p>
+                    <a href="#city-scene" class="carousel-btn">开始游览</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="/image/jing/shou2.jpg" alt="城市夜景">
+                <div class="carousel-text">
+                    <h2>东台莱德夜景</h2>
+                    <p>中央公园、商业街与红石建筑群夜景灯火璀璨，是城市观光核心打卡点。</p>
+                    <a href="#city-scene" class="carousel-btn">查看城市景区</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="/image/jing/shou3.jpg" alt="跨海大桥">
+                <div class="carousel-text">
+                    <h2>眼镜岛海岸风光</h2>
+                    <p>跨海长桥、海防堡垒与白沙滩组成独特滨海景观，日出绝美。</p>
+                    <a href="#island-scene" class="carousel-btn">查看海岛景区</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-arrow prev" id="prevBtn">‹</button>
+        <button class="carousel-arrow next" id="nextBtn">›</button>
+        <div class="carousel-dots" id="dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </div>
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <a href="/webpage/Homepage.html">首页</a> / <span>风景观光</span>
+    </div>
+    <!-- 主体两栏容器 -->
+    <div class="container">
+        <!-- 左侧悬浮栏 -->
+        <aside class="left-column">
+            <!-- 侧边动态切换导航容器 -->
+            <div class="side-nav-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    <span id="navTitle">景区快速导航</span>
+                </div>
+                <!-- 风景导航 -->
+                <ul class="nav-list" id="sceneNav">
+                    <li><a href="#city-scene" class="active">城市人文景区</a></li>
+                    <li><a href="#mine-scene">工业地貌景区</a></li>
+                    <li><a href="#farm-scene">田园山水景区</a></li>
+                    <li><a href="#island-scene">海岛海岸景区</a></li>
+                    <li><a href="#panorama">全域航拍全景</a></li>
+                </ul>
+                <!-- 合影导航 -->
+                <ul class="nav-list" id="teamNav">
+                    <li><a href="#t1">一期城市班组</a></li>
+                    <li><a href="#t2">采矿小镇团队</a></li>
+                    <li><a href="#t3">跨海工程班组</a></li>
+                    <li><a href="#t4">田园生态团队</a></li>
+                    <li><a href="#t5">全体总合影</a></li>
+                    <li><a href="#t6">规划设计小组</a></li>
+                </ul>
+            </div>
+            <!-- 分页切换按钮 -->
+            <div class="page-switch-card">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    内容切换
+                </div>
+                <div class="switch-btn-group">
+                    <button class="switch-btn active" data-target="scene-block">风景展览</button>
+                    <button class="switch-btn" data-target="team-block">人员合影</button>
+                </div>
+            </div>
+        </aside>
+        <!-- 主内容区 -->
+        <main class="center-column">
+            <!-- 风景模块 -->
+            <div class="content-block active" id="scene-block">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    新区热门景区总览
+                </div>
+                <p style="font-size:14px;color:#666;margin-bottom:20px;line-height:1.7;">
+                    向下滑动浏览四大特色景区，每张风景大图都会平滑浮现。鼠标悬停图片可放大预览。
+                </p>
+                <div class="scene-image-grid">
+                    <div class="scene-image-card">
+                        <img src="/image/jing/city3.jpg" alt="东台莱德城市景区">
+                        <div class="scene-image-mask">
+                            <h4>东台莱德 · 城市人文</h4>
+                            <p>夜景灯光、中央公园、网红商业街</p>
+                        </div>
+                    </div>
+                    <div class="scene-image-card">
+                        <img src="/image/jing/mine1.jpg" alt="采矿小镇工业景区">
+                        <div class="scene-image-mask">
+                            <h4>采矿小镇 · 工业地貌</h4>
+                            <p>巨型矿坑、冶炼工厂、货运铁路线</p>
+                        </div>
+                    </div>
+                    <div class="scene-image-card">
+                        <img src="/image/jing/farm1.jpg" alt="林沃森田园景区">
+                        <div class="scene-image-mask">
+                            <h4>林沃森 · 田园山水</h4>
+                            <p>连片农田、温室大棚、临水乡村</p>
+                        </div>
+                    </div>
+                    <div class="scene-image-card">
+                        <img src="/image/jing/island3.jpg" alt="眼镜岛海岸景区">
+                        <div class="scene-image-mask">
+                            <h4>眼镜岛 · 海岛海岸</h4>
+                            <p>跨海大桥、海防堡垒、海上日出</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-card" id="city-scene">
+                    <div class="photo-card-img-wrap">
+                        <img src="/image/jing/city3.jpg" alt="东台莱德 · 城市人文观光区">
+                    </div>
+                    <div class="photo-card-text">
+                        <h3>东台莱德 · 城市人文观光区</h3>
+                        <span class="photo-card-tag">城市打卡</span>
+                        <span class="photo-card-tag">夜景胜地</span>
+                        <span class="photo-card-tag">休闲公园</span>
+                        <p>新区核心人文游览区，规整现代居民建筑群、中央景观湖、商业步行街、红石科技展馆全部对外开放。白天城市整洁开阔，黄昏灯光逐步亮起，夜间全景氛围感拉满，是游客拍照打卡首选地点。</p>
+                    </div>
+                </div>
+                <div class="photo-card" id="mine-scene">
+                    <div class="photo-card-img-wrap">
+                        <img src="/image/jing/mine1.jpg" alt="采矿小镇 · 工业地貌观光区">
+                    </div>
+                    <div class="photo-card-text">
+                        <h3>采矿小镇 · 工业地貌观光区</h3>
+                        <span class="photo-card-tag">工业风摄影</span>
+                        <span class="photo-card-tag">巨型矿坑</span>
+                        <span class="photo-card-tag">铁路沿线</span>
+                        <p>独特重工业地貌观光点，多层阶梯露天矿场、大型冶炼工厂、货运铁路干线构成硬核工业景观。高低错落山体与机械厂房结合，适合工业风、废墟风摄影，沿途设有多处铁路观景台。</p>
+                    </div>
+                </div>
+                <div class="photo-card" id="farm-scene">
+                    <div class="photo-card-img-wrap">
+                        <img src="/image/jing/farm1.jpg" alt="林沃森 · 田园山水观光区">
+                    </div>
+                    <div class="photo-card-text">
+                        <h3>林沃森 · 田园山水观光区</h3>
+                        <span class="photo-card-tag">治愈田园</span>
+                        <span class="photo-card-tag">溪流湿地</span>
+                        <span class="photo-card-tag">乡村民宿</span>
+                        <p>新区生态休闲核心，连片方格农田、温室果蔬大棚、沿河乡村聚落与天然内河湿地融为一体。水系环绕植被茂密，四季风光柔和治愈，适合散心漫步、田园写生、静水摄影。</p>
+                    </div>
+                </div>
+                <div class="photo-card" id="island-scene">
+                    <div class="photo-card-img-wrap">
+                        <img src="/image/jing/island3.jpg" alt="眼镜岛 · 海岛海岸观光区">
+                    </div>
+                    <div class="photo-card-text">
+                        <h3>眼镜岛 · 海岛海岸观光区</h3>
+                        <span class="photo-card-tag">滨海日出</span>
+                        <span class="photo-card-tag">跨海大桥</span>
+                        <span class="photo-card-tag">海岛堡垒</span>
+                        <p>独立近海岛屿观光点，四面环海白色沙滩环绕，海防古堡、港口码头、跨海长桥构成独特滨海景观。东岸海面视野开阔，是全域最佳日出拍摄地，跨海大桥远景氛围感极强。</p>
+                    </div>
+                </div>
+                <div class="photo-card" id="panorama">
+                    <div class="photo-card-img-wrap">
+                        <img src="/image/jing/pano1.jpg" alt="全域高空航拍全景">
+                    </div>
+                    <div class="photo-card-text">
+                        <h3>全域高空航拍全景</h3>
+                        <span class="photo-card-tag">上帝视角</span>
+                        <span class="photo-card-tag">全域规划</span>
+                        <span class="photo-card-tag">昼夜双景</span>
+                        <p>高空俯瞰完整收录四大景区整体布局，清晰展示城市、矿区、田园、海岛地理分布与交通路网，包含白昼清晰版图、夜间全域灯光两套全景素材，直观感受整片观光区域规模。</p>
+                    </div>
+                </div>
+                <!-- 返回顶部 -->
+                <div class="back-top-box">
+                    <a href="#page-top" class="back-top-btn">
+                        <img src="/image/top.png" alt="返回顶部">
+                        <span>返回顶部</span>
+                    </a>
+                </div>
+            </div>
+            <!-- 合影模块 图片向中间倾斜 -->
+            <div class="content-block" id="team-block">
+                <div class="section-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    新区建筑建设人员合影展示
+                </div>
+                <p style="font-size:14px;color:#666;margin-bottom:20px;line-height:1.7;">
+                    向下竖向滑动浏览团队合影，照片左右交替向中间倾斜，并依次平滑显现。
+                </p>
+                <div class="team-vertical-wrap">
+                    <div class="team-item" id="t1">
+                        <div class="team-img-box">
+                            <img src="/image/team/team1.jpg" alt="一期城市施工班组">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>一期城市项目班组</h4>
+                            <p>东台莱德城区初代建设团队，负责城市道路、居民住宅、中央公园整体施工，耗时三个月完成主城区基础框架搭建，奠定新区城市核心风貌。</p>
+                        </div>
+                    </div>
+                    <div class="team-item" id="t2">
+                        <div class="team-img-box">
+                            <img src="/image/team/team2.jpg" alt="采矿小镇开发团队">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>采矿小镇开发团队</h4>
+                            <p>露天矿场、冶炼工厂、货运铁路专属施工队伍，攻克山地开挖、重型设备安装难题，打造独特工业地貌观光片区。</p>
+                        </div>
+                    </div>
+                    <div class="team-item" id="t3">
+                        <div class="team-img-box">
+                            <img src="/image/team/team3.jpg" alt="眼镜岛跨海工程班组">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>眼镜岛跨海工程班组</h4>
+                            <p>跨海长桥、海岸堡垒、沙滩防护基建团队，克服海上风浪施工难点，建成全域热门滨海日出打卡区域。</p>
+                        </div>
+                    </div>
+                    <div class="team-item" id="t4">
+                        <div class="team-img-box">
+                            <img src="/image/team/team4.jpg" alt="林沃森田园生态团队">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>林沃森田园生态团队</h4>
+                            <p>农田改造、温室大棚、内河湿地生态修复小组，兼顾生产与景观，打造治愈系田园山水观光带。</p>
+                        </div>
+                    </div>
+                    <div class="team-item" id="t5">
+                        <div class="team-img-box">
+                            <img src="/image/team/team5.jpg" alt="新区全体总合影">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>新区全体总合影</h4>
+                            <p>四大景区全部竣工纪念集体照，汇聚所有施工、设计、后勤工作人员，记录整片新区落成时刻。</p>
+                        </div>
+                    </div>
+                    <div class="team-item" id="t6">
+                        <div class="team-img-box">
+                            <img src="/image/team/team6.jpg" alt="全域规划设计小组">
+                        </div>
+                        <div class="team-text-box">
+                            <h4>整体规划设计小组</h4>
+                            <p>负责全域地形布局、景观配色、交通路网规划，统筹四大片区风格统一又各具特色。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 返回顶部 -->
+                <div class="back-top-box">
+                    <a href="#page-top" class="back-top-btn">
+                        <img src="/image/top.png" alt="返回顶部">
+                        <span>返回顶部</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="#">网站地图</a>
+                <a href="sm.html">隐私声明</a>
+                <a href="https://qfy127.github.io/LZGArchivo/webpage/Homepages/officialaccount.html">联系我们</a>
+            </div>
+            <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
+        </div>
+        <div class="footer-qr">
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方交流群">
+                <p>官方交流群</p>
+            </div>
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方论坛">
+                <p>官方论坛</p>
+            </div>
+        </footer>
+    <script>
+        // 新增zy原版导航滚动吸顶逻辑
+        const navBar = document.querySelector('.main-nav');
+        const headerBox = document.querySelector('.header-top');
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const headerHeight = headerBox.offsetHeight;
+            if (scrollTop >= headerHeight) {
+                navBar.classList.add('fixed-nav');
+                headerBox.classList.add('nav-fixed-padding');
+            } else {
+                navBar.classList.remove('fixed-nav');
+                headerBox.classList.remove('nav-fixed-padding');
+            }
+        });
+
+        // 原有切换逻辑保留
+        const switchBtns = document.querySelectorAll('.switch-btn');
+        const contentBlocks = document.querySelectorAll('.content-block');
+        const sceneNav = document.getElementById('sceneNav');
+        const teamNav = document.getElementById('teamNav');
+        const navTitle = document.getElementById('navTitle');
+        const sceneNavLinks = document.querySelectorAll('#sceneNav a');
+        const teamNavLinks = document.querySelectorAll('#teamNav a');
+        sceneNav.classList.add('show');
+        switchBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                contentBlocks.forEach(block => block.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+                if (targetId === "scene-block") {
+                    sceneNav.classList.add('show');
+                    teamNav.classList.remove('show');
+                    navTitle.innerText = "景区快速导航";
+                } else {
+                    sceneNav.classList.remove('show');
+                    teamNav.classList.add('show');
+                    navTitle.innerText = "合影分组导航";
+                }
+            });
+        });
+        sceneNavLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: "smooth" });
+                sceneNavLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        teamNavLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                setTimeout(() => {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: "smooth" });
+                    teamNavLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }, 80);
+            });
+        });
+        // 轮播
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        const totalSlides = 3;
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 33.333}%)`;
+            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+        }
+        nextBtn.onclick = () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+        prevBtn.onclick = () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        dots.forEach(dot => dot.onclick = () => {
+            currentIndex = Number(dot.dataset.index);
+            updateCarousel();
+        });
+        setInterval(updateCarousel, 5000);
+        // 风景图片滚动动画
+        const imageCards = document.querySelectorAll('.scene-image-card');
+        const imgObserver = new IntersectionObserver(entries => {
+            entries.forEach(item => {
+                if (item.isIntersecting) item.target.classList.add('show');
+            })
+        }, { threshold: 0.1 });
+        imageCards.forEach(card => imgObserver.observe(card));
+        const photoCards = document.querySelectorAll('.photo-card');
+        const photoObserver = new IntersectionObserver(entries => {
+            entries.forEach(item => {
+                if (item.isIntersecting) item.target.classList.add('show');
+            })
+        }, { threshold: 0.12 });
+        photoCards.forEach(card => photoObserver.observe(card));
+        // 合影卡片渐入
+        const teamItems = document.querySelectorAll('.team-item');
+        const teamObserver = new IntersectionObserver(entries => {
+            entries.forEach(item => {
+                if (item.isIntersecting) item.target.classList.add('show');
+            })
+        }, { threshold: 0.15 });
+        teamItems.forEach(item => teamObserver.observe(item));
+    </script>
+</body>
+</html>

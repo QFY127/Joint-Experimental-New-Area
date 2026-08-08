@@ -5,19 +5,616 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <!-- 独立专属样式文件 -->
-    <link rel="stylesheet" href="bumenjs.css">
+    <!-- 原bm.css全部样式内嵌到style标签中 -->
+    <style>
+/* ==============================================
+                全局基础通用样式 同步zy基础
+============================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #f6f7f9;
+    position: relative;
+    scroll-padding-top: 52px;
+}
+/* 顶部悬浮LOGO 完全复用zy */
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 40px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+/* 头部LOGO栏 完全同步zy */
+.header-top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #222;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* ========== 主导航栏 完全替换为zy原版 移除sticky ========== */
+.main-nav {
+    background-color: #004b93;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover {
+    background-color: #00386f;
+}
+/* zy专属导航吸顶样式 */
+.main-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+/* 头部占位，防止导航fixed后内容上移 */
+.header-top.nav-fixed-padding {
+    padding-bottom: 52px;
+}
+/* 面包屑 */
+.breadcrumb {
+    background-color: #fff;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+.breadcrumb a {
+    color: #004b93;
+    text-decoration: none;
+}
+/* 主体三栏容器 */
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 24px;
+    padding: 24px 120px;
+    background-color: #ffffff;
+    align-items: flex-start;
+}
+/* 板块标题通用样式 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    color: #1d1d1f;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b93;
+}
+/* 资讯列表 */
+.news-list {
+    list-style: none;
+}
+.news-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed #e5e8ec;
+}
+.news-list li:last-child {
+    border-bottom: none;
+}
+.news-list li p {
+    font-size: 13px;
+    color: #303133;
+}
+.news-list li span {
+    font-size: 12px;
+    color: #909399;
+}
+/* 快速链接列表 */
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid #e5e8ec;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #303133;
+    text-decoration: none;
+    font-size: 14px;
+}
+/* 指挥架构卡片外层 */
+.structure-card {
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.structure-card h3 {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1d1d1f;
+}
+/* ====================== 竖版树形架构CSS ====================== */
+.tree-container {
+    margin-top:12px;
+    padding-left:6px;
+}
+.tree-root, .tree-child {
+    list-style: none;
+    position: relative;
+}
+.tree-root {
+    padding-left: 14px;
+}
+.tree-child {
+    padding-left: 24px;
+}
+/* 竖连接线 */
+.tree-root::before,
+.tree-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #004b93;
+}
+.tree-root > li::before,
+.tree-child > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 16px;
+    height: 1px;
+    background: #004b93;
+}
+.tree-node {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 4px 0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.tree-level1 .tree-node {
+    background: #004b93;
+    color: #fff;
+}
+.tree-level2 .tree-node {
+    background: #e6f0fb;
+    color: #004b93;
+    font-weight: 500;
+}
+.tree-level3 .tree-node {
+    background: #f4f9ff;
+    color: #333;
+}
+/* 页脚区域 */
+footer {
+    background-color: #004b93;
+    color: #fff;
+    padding: 24px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 16px;
+}
+.footer-qr {
+    display: flex;
+    gap: 22px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 62px;
+    height: 62px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+/* ==============================================
+                侧边悬浮跟随配置
+============================================== */
+.left-column,
+.right-column {
+    height: fit-content;
+    position: sticky;
+    top: 52px;
+}
+/* 侧边卡片统一类 */
+.side-card {
+    background: #fff;
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+/* ==============================================
+                页面横幅样式
+============================================== */
+.page-banner {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #ffffff;
+}
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.banner-text-wrap {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 14px 28px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0.9);
+}
+.banner-text-wrap h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+.banner-text-wrap p {
+    font-size: 17px;
+    opacity: 0.96;
+}
+/* ==============================================
+                页面专属组件（保留原有业务样式）
+============================================== */
+/* 全域总览地图 */
+.overview-map {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    border: 1px solid #e5e8ec;
+}
+.overview-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* 侧边导航卡片 */
+.side-nav-card {
+    background: #fff;
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.side-nav-list {
+    list-style: none;
+}
+.side-nav-list li {
+    margin-bottom: 9px;
+}
+.side-nav-list li a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 5px;
+    color: #303133;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.24s ease;
+}
+.side-nav-list li a.active,
+.side-nav-list li a:hover {
+    background-color: #004b93;
+    color: #ffffff;
+}
+/* 单部门详情卡片 */
+.detail-card {
+    background: #ffffff;
+    border: 1px solid #e5e8ec;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0.04);
+}
+.detail-top {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+.detail-thumb {
+    width: 260px;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.detail-head h3 {
+    font-size: 22px;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.detail-head h3 img {
+    width: 28px;
+    height: 28px;
+}
+.tag-group {
+    margin-bottom: 16px;
+}
+.detail-tag {
+    display: inline-block;
+    background: #e6f0fb;
+    color: #004b93;
+    padding: 4px 11px;
+    border-radius: 14px;
+    font-size: 12px;
+    margin-right: 7px;
+}
+.detail-desc {
+    margin: 18px 0;
+    line-height: 1.75;
+    color: #444649;
+    font-size: 14px;
+}
+/* 数据统计四栏 */
+.detail-data {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 22px 0;
+}
+.data-item {
+    background: #f4f9ff;
+    padding: 14px;
+    text-align: center;
+    border-radius: 6px;
+}
+.data-item h4 {
+    font-size: 22px;
+    color: #004b93;
+    margin-bottom: 5px;
+}
+.data-item p {
+    font-size: 12px;
+    color: #606266;
+}
+/* 图片图集三栏 */
+.detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+}
+.gallery-img {
+    width: 100%;
+    height: 145px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+/* 详情跳转按钮 */
+.enter-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 26px;
+    background: #004b93;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.24s ease;
+}
+.enter-btn:hover {
+    background: #00386f;
+}
+/* ==============================================
+                移动端响应式 完全同步zy
+============================================== */
+@media screen and (max-width:768){
+    * {
+        touch-action: manipulation; /* 移动端移除300ms延迟 */
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    /* 头部 */
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+    /* 导航移动端 */
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    /* 面包屑 */
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    /* 布局 */
+    .container {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 20px;
+    }
+    .left-column,
+    .right-column {
+        position: static;
+        top: auto;
+    }
+    .page-banner {
+        height: 150px;
+    }
+    .banner-text-wrap h2 {
+        font-size: 26px;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .detail-top {
+        flex-direction: column;
+    }
+    .detail-thumb {
+        width: 100%;
+        height: auto;
+    }
+    .detail-data {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    footer {
+        padding: 18px;
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 14px;
+    }
+    .qr-code img {
+        width: 52px;
+        height: 52px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+}
+/* 超小屏360px 同步zy */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .banner-text-wrap h2 {
+        font-size: 18px;
+    }
+    .logo {
+        gap: 6px;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
+    }
+    .main-nav, .left-column, .right-column {
+        position: static;
+        top: auto;
+    }
+}
+    </style>
 </head>
 <body>
-    <!-- 顶部悬浮品牌标识 -->
+    <!-- 顶部悬浮品牌标识 zy原版 -->
     <div class="page-top-tag">
-        <img src="/image/logo.png" width="160" height="50" alt="新区顶部LOGO">
+        <img src="/image/logo.png" width="160" height="50" alt="LOGO">
     </div>
-
-    <!-- 网站头部Logo区域 -->
+    <!-- 网站头部Logo区域 纯logo，无搜索框 -->
     <header class="header-top">
         <div class="logo">
-            <img src="/image/LZG2logo.png" alt="站点主LOGO">
+            <img src="/image/LZG2logo.png" alt="LOGO">
             <div class="logo-text">
                 <h1>联合实验新区</h1>
                 <p>JOINT EXPERIMENTAL NEW AREA</p>
@@ -25,21 +622,19 @@
         </div>
         <div class="header-right"></div>
     </header>
-
-    <!-- 全局导航栏（滚动吸顶） -->
+    <!-- 全局导航栏（移除sticky，改用JS滚动fixed，当前页面active高亮保留） -->
     <nav class="main-nav">
         <ul>
-            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
-            <li><a href="/webpage/country/about.html">关于我们</a></li>
-            <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
+            <li><a href="zy.html" >首页</a></li>
+            <li><a href="gy.html">关于我们</a></li>
+            <li><a href="fq.html">分区介绍</a></li>
             <li><a href="#" style="background:#00386f">部门介绍</a></li>
-            <li><a href="/webpage/country/download.html">存档下载</a></li>
-            <li><a href="/webpage/country/archive.html">档案管理</a></li>
-            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
-            <li><a href="/webpage/country/news.html">新闻公告</a></li>
+            <li><a href="xz.html">存档下载</a></li>
+            <li><a href="da.html">档案管理</a></li>
+            <li><a href="yx.html">影像记录</a></li>
+            <li><a href="xw.html">新闻公告</a></li>
         </ul>
     </nav>
-
     <!-- 页面头部横幅 -->
     <div class="page-banner">
         <img src="/image/ui/bumenjsui.png" alt="部门介绍横幅背景图" class="banner-bg-img">
@@ -48,10 +643,8 @@
             <p>统筹 · 分工 · 协同 · 共建</p>
         </div>
     </div>
-
     <!-- 面包屑导航预留位 -->
     <div class="breadcrumb"></div>
-
     <!-- 页面主体三栏布局容器 -->
     <div class="container">
         <!-- 左侧悬浮侧边栏 -->
@@ -72,11 +665,10 @@
                     <li><a href="#fangwu">综合管理部</a></li>
                 </ul>
             </div>
-
             <!-- 部门动态资讯卡片 -->
-            <div class="news-card">
+            <div class="news-card side-card">
                 <div class="section-title">
-                    <svg viewBox="0 0 24 24">
+                    <svg viewBox="0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
                     </svg>
                     部门近期动态
@@ -97,7 +689,6 @@
                 </ul>
             </div>
         </aside>
-
         <!-- 中间主内容区域 -->
         <main class="center-column">
             <div class="section-title">
@@ -106,16 +697,13 @@
                 </svg>
                 全域职能总览
             </div>
-
             <!-- 部门职能总图 -->
             <div class="overview-map">
                 <img src="/image/jing/shou4.jpg" alt="新区六大部门职能规划总图">
             </div>
-
             <p style="font-size:13px;color:#666;line-height:1.6;margin-bottom:28px;">
               新区各部门分工协作，建设规划部统筹规划审批宣传，工程建设部承接基建施工，公管部管护公共设施，分区部管控片区，综合管理部仅留存档案管理。
           </p>
-
             <!-- 1. 建设规划部 -->
             <div class="detail-card" id="yanfa">
                 <div class="detail-top">
@@ -161,7 +749,6 @@
                     <img src="/image/jing/bm3.jpg" class="gallery-img" alt="研发办公主楼">
                 </div>
             </div>
-
             <!-- 2. 工程建设部 -->
             <div class="detail-card" id="gongcheng">
                 <div class="detail-top">
@@ -207,7 +794,6 @@
                     <img src="/image/jing/gc3.jpg" class="gallery-img" alt="建材堆放堆场">
                 </div>
             </div>
-
             <!-- 3. 公共设施管理部 -->
             <div class="detail-card" id="nongken">
                 <div class="detail-top">
@@ -253,7 +839,6 @@
                     <img src="/image/jing/nk3.jpg" class="gallery-img" alt="果蔬加工工坊">
                 </div>
             </div>
-
             <!-- 4. 分区规划管理部 -->
             <div class="detail-card" id="cangchu">
                 <div class="detail-top">
@@ -299,7 +884,6 @@
                     <img src="/image/jing/cc3.jpg" class="gallery-img" alt="货运铁路枢纽">
                 </div>
             </div>
-
             <!-- 5. 综合管理部 -->
             <div class="detail-card" id="fangwu">
                 <div class="detail-top">
@@ -345,17 +929,15 @@
                     <img src="/image/jing/fw3.jpg" class="gallery-img" alt="海岸巡逻步道">
                 </div>
             </div>
-
             
         </main>
-
         <!-- 右侧悬浮侧边栏 -->
         <aside class="right-column">
             <!-- 【置顶】全域指挥架构卡片（竖版树形） -->
             <div class="structure-card side-card">
                 <h3>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#00478e">
-                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#004b93">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
                     </svg>
                     全域管理架构树
               </h3>
@@ -405,7 +987,6 @@
                 <p style="font-size:13px;color:#505256;line-height:1.6;margin-top:12px;">
                 &nbsp; </p>
             </div>
-
             <!-- 站点快速导航（移至架构卡片下方） -->
             <div class="quick-link-card side-card">
                 <div class="section-title">
@@ -424,13 +1005,12 @@
             </div>
         </aside>
     </div>
-
     <!-- 页面底部页脚 -->
     <footer>
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">站点地图</a>
-                <a href="/webpage/country/privacy.html">隐私声明</a>
+                <a href="sm.html">隐私声明</a>
                 <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
             </div>
             <p style="margin-top:10px;">© 2026 我的世界联合实验新区及公众号平台 保留全部版权</p>
@@ -446,9 +1026,22 @@
             </div>
         </div>
     </footer>
-
-    <!-- 平滑滚动JS逻辑 -->
+    <!-- 滚动吸顶JS（zy原版导航逻辑） -->
     <script>
+        const navBar = document.querySelector('.main-nav');
+        const headerBox = document.querySelector('.header-top');
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const headerHeight = headerBox.offsetHeight;
+            if (scrollTop >= headerHeight) {
+                navBar.classList.add('fixed-nav');
+                headerBox.classList.add('nav-fixed-padding');
+            } else {
+                navBar.classList.remove('fixed-nav');
+                headerBox.classList.remove('nav-fixed-padding');
+            }
+        });
+        // 原有平滑滚动JS
         document.querySelectorAll('.side-nav-list a').forEach(item => {
             item.addEventListener('click', function (e) {
                 e.preventDefault();

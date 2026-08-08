@@ -5,7 +5,514 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <link rel="stylesheet" href="archive.css">
+    <style>
+/* 全局重置 全站统一 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+    position: relative;
+}
+/* 页面顶部悬浮标签 */
+.page-top-tag {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 40px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    line-height: 0;
+}
+.page-top-tag img {
+    width: auto;
+    height: 50px;
+    max-width: 280px;
+    max-height: 80px;
+    display: block;
+    object-fit: contain;
+}
+/* 顶部头部栏 */
+.header-top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+}
+.logo-text h1 {
+    font-size: 24px;
+    color: #222;
+    line-height: 1.2;
+}
+.logo-text p {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+}
+/* 主导航 + 吸顶样式 */
+.main-nav {
+    background-color: #004b93;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+.main-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.header-top.nav-fixed-padding {
+    padding-bottom: 52px;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-nav ul li a {
+    display: block;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    background-color: #00386f;
+}
+/* 面包屑导航 */
+.breadcrumb {
+    background-color: white;
+    padding: 10px 120px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+.breadcrumb a {
+    color: #004b93;
+    text-decoration: none;
+}
+/* 主体三栏容器 同首页布局 */
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 20px;
+    padding: 20px 120px;
+    background-color: white;
+}
+/* 左侧边栏：悬浮固定 */
+.left-column {
+    height: fit-content;
+    position: sticky;
+    top: 55px;
+}
+.side-sticky-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+/* 通用区块标题 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #222;
+}
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b93;
+}
+/* 发展历程时间线 */
+.timeline-list {
+    list-style: none;
+}
+.timeline-list li {
+    padding: 9px 0;
+    border-bottom: 1px dashed #eee;
+}
+.timeline-list li:last-child {
+    border-bottom: none;
+}
+.timeline-list li p {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 4px;
+}
+.timeline-list li span {
+    font-size: 12px;
+    color: #777;
+}
+/* 档案侧边导航 */
+.archive-nav-list {
+    list-style: none;
+}
+.archive-nav-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+.archive-nav-list li:last-child {
+    border-bottom: none;
+}
+.archive-nav-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+.archive-nav-list li a:hover {
+    color: #004b93;
+}
+/* 页面简介文字 */
+.page-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+/* 档案区块通用 */
+.archive-block {
+    margin-bottom: 36px;
+}
+.archive-block h3 {
+    font-size: 19px;
+    color: #004b93;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eee;
+}
+/* 档案卡片 */
+.archive-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+.archive-img-box {
+    margin-bottom: 14px;
+}
+.archive-info {
+    list-style: none;
+    margin-bottom: 16px;
+}
+.archive-info li {
+    font-size: 14px;
+    color: #444;
+    padding: 5px 0;
+    display: flex;
+}
+.archive-info li span:first-child {
+    width: 120px;
+    color: #666;
+}
+/* 通用自适应图片 */
+.single-adapt-img {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.single-adapt-img img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* 下载按钮 */
+.download-btn {
+    display: block;
+    width: 100%;
+    background-color: #004b93;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.25s;
+}
+.download-btn:hover {
+    background-color: #00386f;
+}
+/* 右侧边栏 存档卡片 */
+.存档-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+.存档-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.存档-card h3 img {
+    width: 20px;
+    height: 20px;
+}
+.存档-info-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+.存档-info-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+    padding: 4px 0;
+}
+/* 快速链接列表 */
+.quick-link-list {
+    list-style: none;
+}
+.quick-link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.quick-link-list li:last-child {
+    border-bottom: none;
+}
+.quick-link-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+.quick-link-list li span a {
+    color: #004b93;
+}
+/* 底部页脚 全站统一 */
+footer {
+    background-color: #004b93;
+    color: white;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+.footer-qr {
+    display: flex;
+    gap: 20px;
+}
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+.qr-code p {
+    font-size: 11px;
+}
+/* ===================== 弹窗核心样式（已按你的需求修改） ===================== */
+/* 外层遮罩：低透明度透明背景 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+/* 弹窗整体盒子 */
+.modal-box {
+    display: flex;
+    width: min(1100px, 96vw);
+    max-height: 85vh;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+/* 左侧图片区域：去除黑色底色，图片完整自适应无黑边 */
+.modal-img {
+    flex: 6;
+    background: transparent;
+}
+.modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent;
+    display: block;
+}
+/* 右侧信息面板：半透明白色背景 */
+.modal-info {
+    flex: 4;
+    padding: 30px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.78);
+}
+.modal-info h3 {
+    font-size: 20px;
+    color: #004b93;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,75,147,0.2);
+}
+.modal-info div {
+    line-height: 2;
+    font-size: 15px;
+    color: #222;
+}
+.modal-info div br {
+    margin: 8px 0;
+}
+/* 关闭按钮 */
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+.modal-close:hover {
+    color: #eee;
+}
+/* ========== 移动端适配768px ========== */
+@media screen and (max-width:768px){
+    * {
+        touch-action: manipulation;
+    }
+    .page-top-tag {
+        right: 10px;
+    }
+    .page-top-tag img {
+        height: 36px;
+        max-width: 160px;
+    }
+    .header-top {
+        padding: 10px 15px;
+    }
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    .logo-text p {
+        font-size: 10px;
+    }
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 12;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 16px;
+    }
+    .left-column {
+        position: static;
+        top: auto;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .archive-block h3 {
+        font-size: 17px;
+    }
+    .存档-card {
+        padding: 12px;
+    }
+    .download-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+    footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    .footer-links a {
+        margin-right: 8px;
+        font-size: 11px;
+    }
+    .footer-qr {
+        gap: 12px;
+    }
+    .qr-code img {
+        width: 50px;
+        height: 50px;
+    }
+    .qr-code p {
+        font-size: 10px;
+    }
+    /* 手机弹窗上下布局 */
+    .modal-box {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+    .modal-img {
+        flex: unset;
+        height: 42vh;
+    }
+    .modal-info {
+        flex: unset;
+        padding: 20px;
+    }
+}
+/* 超小屏360px */
+@media screen and (max-width: 360px) {
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .quick-link-list li a {
+        font-size: 13px;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- 顶部悬浮标识 -->
@@ -25,14 +532,14 @@
     <!-- 主导航（滚动吸顶） -->
     <nav class="main-nav" id="navBar">
         <ul>
-            <li><a href="/webpage/Homepages/Homepage.html">首页</a></li>
-            <li><a href="/webpage/country/about.html">关于我们</a></li>
-            <li><a href="/webpage/country/fenqujs.html">分区介绍</a></li>
-            <li><a href="/webpage/country/bumenjs.html">部门介绍</a></li>
-            <li><a href="/webpage/country/download.html">存档下载</a></li>
+            <li><a href="zy.html" >首页</a></li>
+            <li><a href="gy.html">关于我们</a></li>
+            <li><a href="fq.html">分区介绍</a></li>
+            <li><a href="bm.html">部门介绍</a></li>
+            <li><a href="xz.html">存档下载</a></li>
             <li><a href="#" class="active">档案管理</a></li>
-            <li><a href="https://qm.qq.com/q/dQHwMfowp4">社区交流</a></li>
-            <li><a href="/webpage/country/news.html">新闻公告</a></li>
+            <li><a href="yx.html">影像记录</a></li>
+            <li><a href="xw.html">新闻公告</a></li>
         </ul>
     </nav>
     <!-- 面包屑 -->
@@ -95,9 +602,8 @@
                 <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path></svg>
                 新区规划方案档案
             </div>
-
             <!-- 1.主城区建设档案 -->
-            <div class="archive-card" 
+            <div id="city-file" class="archive-card" 
                  data-img="C:\Users\33667\下载\js20211012.jpeg"
                  data-desc="档案编号：ZC-001<br>归档年份：2020-2021<br>包含内容：初代行政大楼图纸、老城区道路规划、早期施工实拍留影">
                 <div class="archive-img-box single-adapt-img">
@@ -109,9 +615,8 @@
                 </ul>
                 <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
             </div>
-
             <!-- 2.三大分区规划档案 -->
-            <div class="archive-card" 
+            <div id="fenqu-file" class="archive-card" 
                  data-img="/image/jing/pano1.jpg"
                  data-desc="档案编号：FQ-002<br>归档年份：2022-2023<br>包含内容：东台莱德/林沃森/采矿小镇选址报告、全域分区规划图纸">
                 <div class="archive-img-box single-adapt-img">
@@ -123,9 +628,8 @@
                 </ul>
                 <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
             </div>
-
             <!-- 3.建设人员履历档案 -->
-            <div class="archive-card" 
+            <div id="staff-file" class="archive-card" 
                  data-img="/image/LZG2logo.png"
                  data-desc="区长：幽谷陌人<br>副区长：默默的小伙<br>工程部委员：金拉恩、敌力·凯、不太辣的Pepper<br>档案说明：全体核心建设者分工记录、历年参与建设记录汇总">
                 <ul class="archive-info">
@@ -136,9 +640,8 @@
                 </ul>
                 <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
             </div>
-
             <!-- 4.历年建设方案报告 -->
-            <div class="archive-card" 
+            <div id="plan-file" class="archive-card" 
                  data-img="/image/LZG2logo.png"
                  data-desc="档案编号：BG-003<br>文件类型：文字规划文档<br>包含内容：五年整体建设规划、年度施工计划、各部门管理规章">
                 <ul class="archive-info">
@@ -148,9 +651,8 @@
                 </ul>
                 <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
             </div>
-
             <!-- 5.宣传片/摄影素材档案 -->
-            <div class="archive-card" 
+            <div id="media-file" class="archive-card" 
                  data-img="/image/jing/island3.jpg"
                  data-desc="档案编号：YS-004<br>素材内容：六周年宣传片、四大景区摄影原图、历年建设实拍图集<br>使用说明：个人非商用免费使用，禁止二次售卖">
                 <div class="archive-img-box single-adapt-img">
@@ -196,7 +698,6 @@
             </div>
         </aside>
     </div>
-
     <!-- 弹窗结构 -->
     <div class="modal-overlay" id="archiveModal">
         <div class="modal-box">
@@ -212,13 +713,12 @@
             <span class="modal-close">×</span>
         </div>
     </div>
-
     <!-- 统一页脚 -->
     <footer>
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">网站地图</a>
-                <a href="/webpage/country/privacy.html">隐私声明</a>
+                <a href="sm.html">隐私声明</a>
                 <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
             </div>
             <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
@@ -250,7 +750,6 @@
                 headerBox.classList.remove('nav-fixed-padding');
             }
         });
-
         // 侧边导航平滑滚动
         document.querySelectorAll('.archive-nav-list a').forEach(item => {
             item.addEventListener('click', function(e) {
@@ -259,14 +758,12 @@
                 document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
             })
         })
-
         // 弹窗逻辑
         const modalOverlay = document.getElementById('archiveModal');
         const modalImg = document.getElementById('modalImage');
         const modalDesc = document.getElementById('modalDesc');
         const closeBtn = document.querySelector('.modal-close');
         const openBtns = document.querySelectorAll('.open-modal-btn');
-
         openBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const card = this.closest('.archive-card');
@@ -276,7 +773,6 @@
                 document.body.style.overflow = 'hidden';
             })
         })
-
         modalOverlay.addEventListener('click', function(e) {
             if(e.target === modalOverlay) closeModal();
         })
@@ -284,12 +780,10 @@
         document.addEventListener('keydown', e => {
             if(e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
         })
-
         function closeModal() {
             modalOverlay.style.display = 'none';
             document.body.style.overflow = '';
         }
-
         // 禁止双击缩放
         document.addEventListener('dblclick', e => e.preventDefault());
     </script>
