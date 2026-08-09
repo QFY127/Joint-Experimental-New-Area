@@ -207,7 +207,7 @@ body {
     padding-bottom: 6px;
     border-bottom: 1px solid #eee;
 }
-/* 档案卡片 */
+/* 档案卡片核心：新增隐藏大图、隐藏描述 */
 .archive-card {
     border: 1px solid #eee;
     border-radius: 8px;
@@ -216,6 +216,12 @@ body {
 }
 .archive-img-box {
     margin-bottom: 14px;
+}
+.archive-modal-source {
+    display: none; /* 隐藏弹窗大图，仅给JS读取地址 */
+}
+.archive-desc-source {
+    display: none; /* 隐藏弹窗文字，仅给JS读取 */
 }
 .archive-info {
     list-style: none;
@@ -624,18 +630,114 @@ footer {
                     </li>
                 </ul>
             </div>
-            <!-- 档案分类快速导航 -->
-            
         </aside>
-        <!-- 中间主内容：档案主体（分页容器） -->
+        <!-- 中间主内容：档案全部写死HTML，分页逻辑不变 -->
         <main class="center-column">
             <div class="section-title">
                 <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path></svg>
               规划方案档案
           </div>
             <p class="page-desc">收录联合实验新区从2020年至今全部官方规划施工档案。</p>
-            <!-- 档案列表渲染容器 -->
-            <div id="archiveListWrap"></div>
+            <!-- 档案列表容器，所有卡片直接写HTML，不用JS生成 -->
+            <div id="archiveListWrap">
+                <!-- 档案1 手动修改弹窗图：改下面.archive-modal-source img的src -->
+                <div class="archive-card">
+                    <!-- 卡片预览图 -->
+                    <div class="archive-img-box single-adapt-img">
+                        <img src="/image/LZG2logo.png" alt="档案预览">
+                    </div>
+                    <!-- 隐藏弹窗大图，改这里src就是点进去的图片！！ -->
+                    <div class="archive-modal-source">
+                        <img src="D:\JENA\Joint-Experimental-New-Area\image\da\20211012.jpg" alt="弹窗大图">
+                    </div>
+                    <!-- 隐藏弹窗文字描述，改这里就是弹窗右侧文字 -->
+                    <div class="archive-desc-source">
+档案编号：ZC-001<br>归档年份：2020-2021<br>包含内容：初代行政大楼图纸、老城区道路规划、早期施工实拍留影
+                    </div>
+                    <ul class="archive-info">
+                        <li><span>档案编号：</span>ZC-001</li>
+                        <li><span>归档年份：</span>2020-2021</li>
+                        <li><span>包含内容：</span>初代行政大楼图纸、老城区道路规划、早期施工留影</li>
+                    </ul>
+                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
+                </div>
+
+                <!-- 档案2 -->
+                <div class="archive-card">
+                    <div class="archive-img-box single-adapt-img">
+                        <img src="/image/jing/pano1.jpg" alt="档案预览">
+                    </div>
+                    <div class="archive-modal-source">
+                        <img src="/image/jing/pano1.jpg" alt="弹窗大图">
+                    </div>
+                    <div class="archive-desc-source">
+档案编号：FQ-002<br>归档年份：2022-2023<br>包含内容：东台莱德/林沃森/采矿小镇选址报告、全域分区规划图纸
+                    </div>
+                    <ul class="archive-info">
+                        <li><span>档案编号：</span>FQ-002</li>
+                        <li><span>归档年份：</span>2022-2023</li>
+                        <li><span>包含内容：</span>东台莱德/林沃森/采矿小镇选址报告、分区功能规划图</li>
+                    </ul>
+                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
+                </div>
+
+                <!-- 档案3 -->
+                <div class="archive-card">
+                    <div class="archive-img-box single-adapt-img">
+                        <img src="/image/LZG2logo.png" alt="档案预览">
+                    </div>
+                    <div class="archive-modal-source">
+                        <img src="/image/da/20230620.png" alt="弹窗大图">
+                    </div>
+                    <div class="archive-desc-source">
+                        档案编号：20230620<br>副区长：默默的小伙<br>工程部委员：金拉恩、敌力·凯、不太辣的Pepper<br>档案说明：全体核心建设者分工记录、历年参与建设记录汇总
+                    </div>
+                    <ul class="archive-info">
+                        <li><span>档案编号：</span>20230620</li>
+                        <li><span>方案代号：</span>走向蔚蓝</li>
+                        <li><span>说明：</span>新区港口区大规模重建</li>
+                    </ul>
+                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
+                </div>
+
+                <!-- 档案4 -->
+                <div class="archive-card">
+                    <div class="archive-img-box single-adapt-img">
+                        <img src="/image/LZG2logo.png" alt="档案预览">
+                    </div>
+                    <div class="archive-modal-source">
+                        <img src="/image/da/20211012.jpg" alt="弹窗大图">
+                    </div>
+                    <div class="archive-desc-source">
+                        档案编号：20211012<br>方案代号：北区扩建建设方案<br>说明：本方案修订依据为2020 年 5 月 23 日初代全域规划草案，该文件为新区初创阶段临时草拟文稿，仅内部口头流转、无标准化归档流程，未留存可对外公示的完整电子 / 纸质存档原件，原始底稿因早期存储设备迭代遗失，暂无复原渠道。本次 2021 北区扩建方案完整继承其核心框架，并对基建、行政分区、交通规划等内容完成规范化修订落地。
+                    </div>
+                    <ul class="archive-info">
+                        <li><span>档案编号：</span>20211012</li>
+                        <li><span>方案代号：</span>北区扩建建设方案(新稿)</li>
+                        <li><span>说明：</span>此为新稿</li>
+                    </ul>
+                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
+                </div>
+
+                <!-- 档案5 -->
+                <div class="archive-card">
+                    <div class="archive-img-box single-adapt-img">
+                        <img src="/image/LZG2logo.png" alt="档案预览">
+                    </div>
+                    <div class="archive-modal-source">
+                        <img src="/image/da/20211012.png" alt="弹窗大图">
+                    </div>
+                    <div class="archive-desc-source">
+                        档案编号：20211012<br>方案代号：北区扩建建设方案<br>说明：本方案修订依据为2020 年 5 月 23 日初代全域规划草案，该文件为新区初创阶段临时草拟文稿，仅内部口头流转、无标准化归档流程，未留存可对外公示的完整电子 / 纸质存档原件，原始底稿因早期存储设备迭代遗失，暂无复原渠道。本次 2021 北区扩建方案完整继承其核心框架，并对基建、行政分区、交通规划等内容完成规范化修订落地。
+                    </div>
+                    <ul class="archive-info">
+                        <li><span>档案编号：</span>20211012</li>
+                        <li><span>方案代号：</span>北区扩建建设方案</li>
+                        <li><span>说明：</span>此为原稿</li>
+                    </ul>
+                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
+                </div>
+            </div>
             <!-- 分页控件容器 -->
             <div class="page-pagination" id="paginationBox"></div>
         </main>
@@ -675,11 +777,9 @@ footer {
     <!-- 弹窗结构 -->
     <div class="modal-overlay" id="archiveModal">
         <div class="modal-box">
-            <!-- 左侧图片：无黑边自适应 -->
             <div class="modal-img">
                 <img id="modalImage" src="" alt="档案大图">
             </div>
-            <!-- 右侧半透明信息面板 -->
             <div class="modal-info">
                 <h3>档案详情</h3>
                 <div id="modalDesc"></div>
@@ -708,112 +808,45 @@ footer {
             </div>
         </div>
     </footer>
-    <!-- JS -->
+    <!-- JS 仅做分页、弹窗读取HTML内图片，不存储图片地址 -->
     <script>
-        // ========== 全局档案数据（全部5条档案） ==========
-        const archiveData = [
-            {
-                id:1,
-                img:"C:\\Users\\33667\\下载\\js20211012.jpeg",
-                desc:"档案编号：ZC-001<br>归档年份：2020-2021<br>包含内容：初代行政大楼图纸、老城区道路规划、早期施工实拍留影",
-                info:[
-                    {label:"档案编号：",val:"ZC-001"},
-                    {label:"归档年份：",val:"2020-2021"},
-                    {label:"包含内容：",val:"初代行政大楼图纸、老城区道路规划、早期施工留影"}
-                ]
-            },
-            {
-                id:2,
-                img:"/image/jing/pano1.jpg",
-                desc:"档案编号：FQ-002<br>归档年份：2022-2023<br>包含内容：东台莱德/林沃森/采矿小镇选址报告、全域分区规划图纸",
-                info:[
-                    {label:"档案编号：",val:"FQ-002"},
-                    {label:"归档年份：",val:"2022-2023"},
-                    {label:"包含内容：",val:"东台莱德/林沃森/采矿小镇选址报告、分区功能规划图"}
-                ]
-            },
-            {
-                id:3,
-                img:"/image/LZG2logo.png",
-                desc:"区长：幽谷陌人<br>副区长：默默的小伙<br>工程部委员：金拉恩、敌力·凯、不太辣的Pepper<br>档案说明：全体核心建设者分工记录、历年参与建设记录汇总",
-                info:[
-                    {label:"区长：",val:"幽谷陌人"},
-                    {label:"副区长：",val:"默默的小伙"},
-                    {label:"工程部委员：",val:"金拉恩、敌力·凯、不太辣的Pepper"},
-                    {label:"档案说明：",val:"全体核心建设者分工记录、历年参与建设记录汇总"}
-                ]
-            },
-            {
-                id:4,
-                img:"/image/LZG2logo.png",
-                desc:"档案编号：BG-003<br>文件类型：文字规划文档<br>包含内容：五年整体建设规划、年度施工计划、各部门管理规章",
-                info:[
-                    {label:"档案编号：",val:"BG-003"},
-                    {label:"文件类型：",val:"文字方案、规划文档"},
-                    {label:"包含内容：",val:"五年建设规划、年度施工计划、部门管理规章"}
-                ]
-            },
-            {
-                id:5,
-                img:"/image/jing/island3.jpg",
-                desc:"档案编号：YS-004<br>素材内容：六周年宣传片、四大景区摄影原图、历年建设实拍图集<br>使用说明：个人非商用免费使用，禁止二次售卖",
-                info:[
-                    {label:"档案编号：",val:"YS-004"},
-                    {label:"素材内容：",val:"六周年宣传片、四大景区摄影原图、历史建设实拍图"},
-                    {label:"使用说明：",val:"个人免费使用，禁止商用"}
-                ]
-            }
-        ];
-        // 分页配置
+        // 档案卡片全部写在HTML，JS不再维护图片路径，只读取DOM
+        const allArchiveCards = document.querySelectorAll(".archive-card");
         const pageConfig = {
-            pageSize: 3, // 每页2条档案
+            pageSize: 3,
             currentPage: 1
         };
-        // DOM容器
         const listWrap = document.getElementById("archiveListWrap");
         const paginationBox = document.getElementById("paginationBox");
-        // ========== 渲染单页档案列表 ==========
+
+        // 渲染分页：控制卡片显示隐藏
         function renderArchiveList(){
-            const {pageSize, currentPage} = pageConfig;
-            // 切片当前页数据
-            const start = (currentPage - 1) * pageSize;
-            const end = start + pageSize;
-            const pageData = archiveData.slice(start, end);
-            // 清空容器
-            listWrap.innerHTML = "";
-            // 循环生成卡片HTML
-            pageData.forEach(item=>{
-                let infoHtml = "";
-                item.info.forEach(i=>{
-                    infoHtml += `<li><span>${i.label}</span>${i.val}</li>`;
-                })
-                const cardDom = `
-                <div class="archive-card" data-img="${item.img}" data-desc="${item.desc}">
-                    ${item.img ? `<div class="archive-img-box single-adapt-img"><img src="${item.img}" alt="档案预览"></div>` : ""}
-                    <ul class="archive-info">${infoHtml}</ul>
-                    <a href="javascript:;" class="open-modal-btn download-btn">查看完整档案</a>
-                </div>
-                `;
-                listWrap.innerHTML += cardDom;
+            const total = allArchiveCards.length;
+            const pageTotal = Math.ceil(total / pageConfig.pageSize);
+            const start = (pageConfig.currentPage - 1) * pageConfig.pageSize;
+            const end = start + pageConfig.pageSize;
+            // 全部先隐藏
+            allArchiveCards.forEach((card,idx)=>{
+                if(idx >= start && idx < end){
+                    card.style.display = "block";
+                }else{
+                    card.style.display = "none";
+                }
             })
-            // 渲染分页按钮
             renderPagination();
-            // 重新绑定弹窗点击事件
-            bindModalEvent();
         }
-        // ========== 渲染分页按钮 ==========
+
+        // 分页按钮渲染
         function renderPagination(){
-            const total = archiveData.length;
+            const total = allArchiveCards.length;
             const pageTotal = Math.ceil(total / pageConfig.pageSize);
             const {currentPage} = pageConfig;
             let pageHtml = "";
-            // 上一页
             if(currentPage > 1){
                 pageHtml += `<button class="page-btn prev-btn" data-page="${currentPage-1}">上一页</button>`;
             }else{
                 pageHtml += `<button class="page-btn disabled" disabled>上一页</button>`;
             }
-            // 页码数字
             for(let i=1;i<=pageTotal;i++){
                 if(i === currentPage){
                     pageHtml += `<button class="page-btn active" data-page="${i}">${i}</button>`;
@@ -821,7 +854,6 @@ footer {
                     pageHtml += `<button class="page-btn" data-page="${i}">${i}</button>`;
                 }
             }
-            // 下一页
             if(currentPage < pageTotal){
                 pageHtml += `<button class="page-btn next-btn" data-page="${currentPage+1}">下一页</button>`;
             }else{
@@ -829,69 +861,64 @@ footer {
             }
             pageHtml += `<span class="page-tip">共 ${total} 份档案，${pageTotal} 页</span>`;
             paginationBox.innerHTML = pageHtml;
-            // 绑定分页点击切换页面
             document.querySelectorAll(".page-btn").forEach(btn=>{
-                btn.addEventListener("click",function(){
-                    const targetPage = Number(this.dataset.page);
-                    pageConfig.currentPage = targetPage;
+                btn.onclick = function(){
+                    pageConfig.currentPage = Number(this.dataset.page);
                     renderArchiveList();
-                    // 切换页面后滚动到档案顶部
                     document.querySelector(".center-column").scrollIntoView({behavior:"smooth"});
-                })
+                }
             })
         }
-        // ========== 弹窗事件绑定（每次分页后重新绑定） ==========
+
+        // 弹窗读取当前卡片内部隐藏图片、文字，不用JS存路径
         function bindModalEvent(){
             const modalOverlay = document.getElementById('archiveModal');
             const modalImg = document.getElementById('modalImage');
             const modalDesc = document.getElementById('modalDesc');
             const closeBtn = document.querySelector('.modal-close');
             const openBtns = document.querySelectorAll('.open-modal-btn');
-            openBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const card = this.closest('.archive-card');
-                    modalImg.src = card.dataset.img;
-                    modalDesc.innerHTML = card.dataset.desc;
-                    modalOverlay.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                })
+            openBtns.forEach(btn=>{
+                btn.onclick = function(){
+                    const card = this.closest(".archive-card");
+                    // 从卡片内部读取弹窗大图地址
+                    const sourceImg = card.querySelector(".archive-modal-source img").src;
+                    // 从卡片内部读取弹窗文字
+                    const sourceText = card.querySelector(".archive-desc-source").innerHTML;
+                    modalImg.src = sourceImg;
+                    modalDesc.innerHTML = sourceText;
+                    modalOverlay.style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                }
             })
-            // 关闭弹窗
-            function closeModal() {
-                modalOverlay.style.display = 'none';
-                document.body.style.overflow = '';
+            function closeModal(){
+                modalOverlay.style.display = "none";
+                document.body.style.overflow = "";
             }
-            modalOverlay.onclick = function(e){if(e.target === modalOverlay) closeModal()};
+            modalOverlay.onclick = e=>{if(e.target === modalOverlay) closeModal()};
             closeBtn.onclick = closeModal;
-            document.onkeydown = e=>{if(e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal()};
+            document.onkeydown = e=>{if(e.key=="Escape" && modalOverlay.style.display=="flex") closeModal()};
         }
-        // ========== 导航吸顶原有逻辑 ==========
+
+        // 导航吸顶
         const navBar = document.getElementById('navBar');
         const headerBox = document.querySelector('.header-top');
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const headerHeight = headerBox.offsetHeight;
-            if (scrollTop >= headerHeight) {
-                navBar.classList.add('fixed-nav');
-                headerBox.classList.add('nav-fixed-padding');
-            } else {
-                navBar.classList.remove('fixed-nav');
-                headerBox.classList.remove('nav-fixed-padding');
+        window.onscroll = function(){
+            const st = document.documentElement.scrollTop || document.body.scrollTop;
+            const h = headerBox.offsetHeight;
+            if(st >= h){
+                navBar.classList.add("fixed-nav");
+                headerBox.classList.add("nav-fixed-padding");
+            }else{
+                navBar.classList.remove("fixed-nav");
+                headerBox.classList.remove("nav-fixed-padding");
             }
-        });
-        // 侧边锚点平滑滚动
-        document.querySelectorAll('.archive-nav-list a').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-            })
-        })
+        }
         // 禁止双击缩放
-        document.addEventListener('dblclick', e => e.preventDefault());
-        // 页面初始化渲染第一页
+        document.addEventListener('dblclick',e=>e.preventDefault());
+        // 初始化
         window.onload = function(){
             renderArchiveList();
+            bindModalEvent();
         }
     </script>
 </body>

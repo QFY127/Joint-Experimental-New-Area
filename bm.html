@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 强化移动端视口，禁止双指缩放，消除横向滚动 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
-    <title>联合实验新区</title>
-    <!-- 原bm.css全部样式内嵌到style标签中 -->
+    <title>联合实验新区 - 部门介绍</title>
     <style>
 /* ==============================================
                 全局基础通用样式 同步zy基础
@@ -19,7 +19,9 @@
 body {
     background-color: #f6f7f9;
     position: relative;
-    scroll-padding-top: 52px;
+    /* 适配固定导航偏移滚动距离 */
+    scroll-padding-top: 60px;
+    overflow-x: hidden; /* 全局禁止横向滚动条 */
 }
 /* 顶部悬浮LOGO 完全复用zy */
 .page-top-tag {
@@ -152,6 +154,7 @@ body {
     justify-content: space-between;
     padding: 9px 0;
     border-bottom: 1px dashed #e5e8ec;
+    gap: 8px;
 }
 .news-list li:last-child {
     border-bottom: none;
@@ -159,10 +162,12 @@ body {
 .news-list li p {
     font-size: 13px;
     color: #303133;
+    flex: 1;
 }
 .news-list li span {
     font-size: 12px;
     color: #909399;
+    white-space: nowrap;
 }
 /* 快速链接列表 */
 .quick-link-list {
@@ -201,6 +206,8 @@ body {
 .tree-container {
     margin-top:12px;
     padding-left:6px;
+    overflow-x: auto; /* 小屏树形横向滚动，不破坏布局 */
+    padding-bottom: 4px;
 }
 .tree-root, .tree-child {
     list-style: none;
@@ -239,6 +246,7 @@ body {
     margin: 4px 0;
     border-radius: 4px;
     font-size: 13px;
+    white-space: nowrap; /* 节点文字不换行 */
 }
 .tree-level1 .tree-node {
     background: #004b93;
@@ -426,6 +434,7 @@ footer {
     border-radius: 14px;
     font-size: 12px;
     margin-right: 7px;
+    margin-bottom: 6px;
 }
 .detail-desc {
     margin: 18px 0;
@@ -484,7 +493,7 @@ footer {
     background: #00386f;
 }
 /* ==============================================
-                移动端响应式 完全同步zy
+                移动端响应式 增强优化版
 ============================================== */
 @media screen and (max-width:768){
     * {
@@ -524,7 +533,7 @@ footer {
         padding: 8px 15px;
         font-size: 12px;
     }
-    /* 布局 */
+    /* 布局改为单列，清除侧边sticky */
     .container {
         grid-template-columns: 1fr;
         padding: 12px;
@@ -532,9 +541,10 @@ footer {
     }
     .left-column,
     .right-column {
-        position: static;
+        position: static !important;
         top: auto;
     }
+    /* 横幅适配 */
     .page-banner {
         height: 150px;
     }
@@ -544,6 +554,7 @@ footer {
     .section-title {
         font-size: 16px;
     }
+    /* 详情头部垂直排列 */
     .detail-top {
         flex-direction: column;
     }
@@ -551,12 +562,19 @@ footer {
         width: 100%;
         height: auto;
     }
+    /* 数据卡片2列 */
     .detail-data {
         grid-template-columns: repeat(2, 1fr);
     }
+    /* 图集单列 */
     .detail-gallery {
         grid-template-columns: repeat(1, 1fr);
     }
+    /* 详情卡片缩小内边距 */
+    .detail-card {
+        padding: 16px;
+    }
+    /* 页脚垂直排版居中 */
     footer {
         padding: 18px;
         flex-direction: column;
@@ -583,12 +601,19 @@ footer {
     .qr-code p {
         font-size: 10px;
     }
+    /* 侧边卡片缩小内边距 */
+    .side-card, .side-nav-card, .structure-card {
+        padding: 14px;
+    }
 }
-/* 超小屏360px 同步zy */
+/* 超小屏360px 深度优化 */
 @media screen and (max-width: 360px) {
+    body {
+        scroll-padding-top: 52px;
+    }
     .main-nav ul li a {
-        padding: 8px 10px;
-        font-size: 12px;
+        padding: 6px 8px;
+        font-size: 11px;
     }
     .banner-text-wrap h2 {
         font-size: 18px;
@@ -602,6 +627,24 @@ footer {
     .main-nav, .left-column, .right-column {
         position: static;
         top: auto;
+    }
+    /* 树形节点缩小字号 */
+    .tree-node {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    /* 数据数字缩小 */
+    .data-item h4 {
+        font-size: 18px;
+    }
+    /* 按钮缩小 */
+    .enter-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    /* 标题字号压缩 */
+    .detail-head h3 {
+        font-size: 18px;
     }
 }
     </style>
@@ -1026,7 +1069,7 @@ footer {
             </div>
         </div>
     </footer>
-    <!-- 滚动吸顶JS（zy原版导航逻辑） -->
+    <!-- 滚动吸顶JS（zy原版导航逻辑）+ 修复锚点偏移 -->
     <script>
         const navBar = document.querySelector('.main-nav');
         const headerBox = document.querySelector('.header-top');
@@ -1041,12 +1084,20 @@ footer {
                 headerBox.classList.remove('nav-fixed-padding');
             }
         });
-        // 原有平滑滚动JS
+        // 修复平滑滚动，减去固定导航高度，避免内容被遮挡
         document.querySelectorAll('.side-nav-list a').forEach(item => {
             item.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                const targetEl = document.querySelector(targetId);
+                if(!targetEl) return;
+                // 获取导航高度做偏移
+                const navHeight = navBar.offsetHeight;
+                const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+                window.scrollTo({
+                    top: targetTop,
+                    behavior: 'smooth'
+                });
                 // 清除全部激活状态
                 document.querySelectorAll('.side-nav-list a').forEach(link => link.classList.remove('active'));
                 // 当前导航高亮
