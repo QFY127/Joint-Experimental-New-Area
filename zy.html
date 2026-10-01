@@ -668,6 +668,10 @@
             }
         }
     </style>
+
+<!-- BEGIN added music player styles -->
+<link rel="stylesheet" href="assets/music-player.css">
+<!-- END added music player styles -->
 </head>
 <body>
     <!-- 页面右上角悬浮标签 -->
@@ -1120,5 +1124,54 @@ window.addEventListener('scroll', function() {
     }
 });
     </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"83892b4efc3a4d55b57eeeed8d72eb16","r":1,"spa":2}' crossorigin="anonymous"></script>
+
+<!-- BEGIN added music player module -->
+    <!-- 唱片机：默认展开；音乐配置位于 music/playlist.js。 -->
+    <section class="music-player" id="music-player" data-side="right" aria-label="音乐播放器">
+        <div class="music-header">
+            <button type="button" class="music-drag" aria-label="上下移动播放器" title="按住上下拖动，也可使用方向键"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"/></svg></button>
+            <div class="music-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></svg>
+                <div><h2>新区音乐角</h2><p class="music-header-subtitle">让世界慢下来</p></div>
+            </div>
+            <button type="button" class="music-volume-toggle" aria-label="调节音量" aria-controls="music-volume-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"/></svg></button>
+            <button type="button" class="music-list-toggle" aria-label="展开或收起歌单" aria-controls="music-playlist" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+            <button type="button" class="music-dock" aria-label="移动播放器到屏幕左侧" title="移动到左侧"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16M19 12H8m5-5l-5 5 5 5"/></svg></button>
+            <button type="button" class="music-mini-play" data-music-play aria-label="播放音乐" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"/></svg></button>
+            <button type="button" class="music-toggle" aria-controls="music-body" aria-expanded="true" aria-label="收起音乐播放器"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="music-body" id="music-body">
+            <div class="turntable" aria-hidden="true">
+                <div class="record"><div class="record-surface"></div><div class="record-label"><strong>JOINT AREA</strong><span>33⅓ RPM</span></div></div>
+                <div class="tonearm"><i class="arm-pivot"></i></div>
+            </div>
+            <div class="music-info">
+                <p class="music-kicker">NOW PLAYING</p>
+                <h3 class="music-title">载入歌单…</h3>
+                <p class="music-artist">联合实验新区音乐角</p>
+                <span class="music-track-count">00 / 00</span>
+            </div>
+            <div class="music-progress">
+                <input type="range" class="music-seek" min="0" max="1000" step="1" value="0" aria-label="播放进度" disabled>
+                <div class="music-time"><span class="music-current-time">0:00</span><span class="music-duration">0:00</span></div>
+            </div>
+            <div class="music-transport">
+                <button type="button" class="music-prev" aria-label="上一首"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5L8 12l11 7z"/></svg></button>
+                <button type="button" class="music-play" data-music-play aria-label="播放音乐" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"/></svg></button>
+                <button type="button" class="music-next" aria-label="下一首"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l11 7-11 7z"/></svg></button>
+            </div>
+            <div class="music-volume-row" id="music-volume-panel" role="group" aria-label="音量控制">
+                <button type="button" class="music-mute" aria-label="静音" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"/></svg></button>
+                <input type="range" class="music-volume" min="0" max="1" step="0.01" value="0.65" aria-label="音乐音量">
+                <output class="music-volume-value">65%</output>
+            </div>
+            <p class="music-status" role="status" aria-live="polite">点击播放，开启音乐</p>
+            <ol class="music-playlist" id="music-playlist" aria-label="播放歌单" hidden></ol>
+        </div>
+        <audio preload="metadata"></audio>
+    </section>
+<script src="music/playlist.js"></script>
+<script src="assets/music-player.js"></script>
+<!-- END added music player module -->
 </body>
 </html>
