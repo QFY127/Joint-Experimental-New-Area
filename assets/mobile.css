@@ -1,0 +1,51 @@
+/* Responsive corrections only; desktop card design and page colors are unchanged. */
+#page-content img { max-width: 100%; }
+#page-content .container > * { min-width: 0; }
+#page-content .left-column, #page-content .right-column { top: calc(var(--nav-height, 44px) + 12px); }
+@media (min-width: 769px) and (max-width: 1199px) {
+  body[data-page] #page-content .container { padding-left: 24px; padding-right: 24px; grid-template-columns: 220px minmax(0, 1fr); }
+  body[data-page] #page-content .container > .right-column { grid-column: 1 / -1; position: static; }
+  body[data-page="xz"] #page-content .container,
+  body[data-page="xw"] #page-content .container { grid-template-columns: minmax(0, 1fr) 240px; }
+  body[data-page="xz"] #page-content .container > .right-column,
+  body[data-page="xw"] #page-content .container > .right-column { grid-column: auto; }
+  body[data-page] #page-content .breadcrumb { padding-left: 24px; padding-right: 24px; }
+  body[data-page] #page-content .detail-top { flex-wrap: wrap; }
+  body[data-page] #page-content .detail-data, body[data-page] #page-content .archive-data-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  body[data-page] #page-content .container, body[data-page] #page-content .container.news-container { width: 100%; grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 16px; }
+  body[data-page] #page-content .left-column, body[data-page] #page-content .right-column,
+  body[data-page] #page-content .side-sticky-card, body[data-page] #page-content .side-nav-card { position: static; top: auto; width: 100%; }
+  body[data-page] #page-content .breadcrumb { padding: 8px 15px; }
+  body[data-page] #page-content .detail-data, body[data-page] #page-content .archive-data-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body[data-page] #page-content .detail-top { flex-direction: column; }
+  body[data-page] #page-content .detail-head { min-width: 0; }
+  body[data-page] #page-content .detail-desc, body[data-page] #page-content .article-wrap,
+  body[data-page] #page-content .archive-title, body[data-page] #page-content .news-item-left,
+  body[data-page] #page-content .team-text-box { overflow-wrap: anywhere; min-width: 0; }
+  body[data-page] #page-content .download-buttons, body[data-page] #page-content .archive-top-row,
+  body[data-page] #page-content .news-filter, body[data-page] #page-content .page-pagination,
+  body[data-page] #page-content #paginationBox { flex-wrap: wrap; }
+  body[data-page] #page-content .version-item { gap: 12px; }
+  body[data-page] #page-content .version-left { min-width: 0; overflow-wrap: anywhere; }
+  body[data-page] #page-content .version-down-link { flex-shrink: 0; }
+  body[data-page] #page-content .news-item { flex-direction: column; gap: 12px; }
+  body[data-page] #page-content .news-item-right { width: 100%; }
+  body[data-page] #page-content .news-item-right img { width: 100%; height: auto; }
+  body[data-page] #page-content .video-box { width: 100%; }
+  body[data-page] #page-content .video-iframe { width: 100%; }
+  body[data-page] #page-content .modal-box { width: min(96vw, 1100px); max-height: 90vh; max-height: 90dvh; flex-direction: column; overflow-y: auto; }
+  body[data-page] #page-content .modal-info { padding: 18px; flex: auto; }
+  body[data-page] #page-content .modal-img { flex: auto; }
+  body[data-page] #page-content .team-item { flex-direction: column; align-items: stretch; }
+  body[data-page] #page-content .team-img-box { width: 100%; flex-basis: auto; }
+}
+@media (max-width: 480px) {
+  body[data-page] #page-content .detail-gallery { grid-template-columns: minmax(0, 1fr); }
+  body[data-page] #page-content .data-item { padding: 10px 6px; min-width: 0; overflow-wrap: anywhere; }
+  body[data-page] #page-content .news-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  body[data-page] #page-content .banner-text-wrap { padding-left: 16px; padding-right: 16px; text-align: center; }
+  body[data-page] #page-content .banner-overlay { overflow-wrap: anywhere; }
+  body[data-page] #page-content .tree-node { max-width: 100%; overflow-wrap: anywhere; }
+}

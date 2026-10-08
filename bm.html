@@ -2,662 +2,27 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 强化移动端视口，禁止双指缩放，消除横向滚动 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>联合实验新区 - 部门介绍</title>
-    <style>
-/* ==============================================
-                全局基础通用样式 同步zy基础
-============================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft Yahei", sans-serif;
-}
-body {
-    background-color: #f6f7f9;
-    position: relative;
-    /* 适配固定导航偏移滚动距离 */
-    scroll-padding-top: 60px;
-    overflow-x: hidden; /* 全局禁止横向滚动条 */
-}
-/* 顶部悬浮LOGO 完全复用zy */
-.page-top-tag {
-    position: absolute;
-    z-index: 999;
-    top: 10px;
-    right: 40px;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    line-height: 0;
-}
-.page-top-tag img {
-    width: auto;
-    height: 50px;
-    max-width: 280px;
-    max-height: 80px;
-    display: block;
-    object-fit: contain;
-}
-/* 头部LOGO栏 完全同步zy */
-.header-top {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 40px;
-    border-bottom: 1px solid #eee;
-}
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo img {
-    width: 48px;
-    height: 48px;
-}
-.logo-text h1 {
-    font-size: 24px;
-    color: #222;
-    line-height: 1.2;
-}
-.logo-text p {
-    font-size: 12px;
-    color: #666;
-    letter-spacing: 1px;
-}
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-/* ========== 主导航栏 完全替换为zy原版 移除sticky ========== */
-.main-nav {
-    background-color: #004b93;
-}
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.main-nav ul li a {
-    display: block;
-    padding: 12px 30px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    transition: background-color 0.2s;
-}
-.main-nav ul li a:hover {
-    background-color: #00386f;
-}
-/* zy专属导航吸顶样式 */
-.main-nav.fixed-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 998;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-/* 头部占位，防止导航fixed后内容上移 */
-.header-top.nav-fixed-padding {
-    padding-bottom: 52px;
-}
-/* 面包屑 */
-.breadcrumb {
-    background-color: #fff;
-    padding: 10px 120px;
-    font-size: 14px;
-    color: #666;
-    border-bottom: 1px solid #eee;
-}
-.breadcrumb a {
-    color: #004b93;
-    text-decoration: none;
-}
-/* 主体三栏容器 */
-.container {
-    display: grid;
-    grid-template-columns: 280px 1fr 300px;
-    gap: 24px;
-    padding: 24px 120px;
-    background-color: #ffffff;
-    align-items: flex-start;
-}
-/* 板块标题通用样式 */
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 18px;
-    color: #1d1d1f;
-}
-.section-title svg {
-    width: 20px;
-    height: 20px;
-    fill: #004b93;
-}
-/* 资讯列表 */
-.news-list {
-    list-style: none;
-}
-.news-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 9px 0;
-    border-bottom: 1px dashed #e5e8ec;
-    gap: 8px;
-}
-.news-list li:last-child {
-    border-bottom: none;
-}
-.news-list li p {
-    font-size: 13px;
-    color: #303133;
-    flex: 1;
-}
-.news-list li span {
-    font-size: 12px;
-    color: #909399;
-    white-space: nowrap;
-}
-/* 快速链接列表 */
-.quick-link-list {
-    list-style: none;
-}
-.quick-link-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 11px 0;
-    border-bottom: 1px solid #e5e8ec;
-}
-.quick-link-list li:last-child {
-    border-bottom: none;
-}
-.quick-link-list li a {
-    color: #303133;
-    text-decoration: none;
-    font-size: 14px;
-}
-/* 指挥架构卡片外层 */
-.structure-card {
-    border: 1px solid #e5e8ec;
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 22px;
-}
-.structure-card h3 {
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #1d1d1f;
-}
-/* ====================== 竖版树形架构CSS ====================== */
-.tree-container {
-    margin-top:12px;
-    padding-left:6px;
-    overflow-x: auto; /* 小屏树形横向滚动，不破坏布局 */
-    padding-bottom: 4px;
-}
-.tree-root, .tree-child {
-    list-style: none;
-    position: relative;
-}
-.tree-root {
-    padding-left: 14px;
-}
-.tree-child {
-    padding-left: 24px;
-}
-/* 竖连接线 */
-.tree-root::before,
-.tree-child::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background: #004b93;
-}
-.tree-root > li::before,
-.tree-child > li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 16px;
-    height: 1px;
-    background: #004b93;
-}
-.tree-node {
-    display: inline-block;
-    padding: 4px 10px;
-    margin: 4px 0;
-    border-radius: 4px;
-    font-size: 13px;
-    white-space: nowrap; /* 节点文字不换行 */
-}
-.tree-level1 .tree-node {
-    background: #004b93;
-    color: #fff;
-}
-.tree-level2 .tree-node {
-    background: #e6f0fb;
-    color: #004b93;
-    font-weight: 500;
-}
-.tree-level3 .tree-node {
-    background: #f4f9ff;
-    color: #333;
-}
-/* 页脚区域 */
-footer {
-    background-color: #004b93;
-    color: #fff;
-    padding: 24px 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-}
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 16px;
-}
-.footer-qr {
-    display: flex;
-    gap: 22px;
-}
-.qr-code {
-    text-align: center;
-}
-.qr-code img {
-    width: 62px;
-    height: 62px;
-    background-color: #fff;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-.qr-code p {
-    font-size: 11px;
-}
-/* ==============================================
-                侧边悬浮跟随配置
-============================================== */
-.left-column,
-.right-column {
-    height: fit-content;
-    position: sticky;
-    top: 52px;
-}
-/* 侧边卡片统一类 */
-.side-card {
-    background: #fff;
-    border: 1px solid #e5e8ec;
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 22px;
-}
-/* ==============================================
-                页面横幅样式
-============================================== */
-.page-banner {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    color: #ffffff;
-}
-.banner-bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-.banner-text-wrap {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    padding: 14px 28px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0.9);
-}
-.banner-text-wrap h2 {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-.banner-text-wrap p {
-    font-size: 17px;
-    opacity: 0.96;
-}
-/* ==============================================
-                页面专属组件（保留原有业务样式）
-============================================== */
-/* 全域总览地图 */
-.overview-map {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 28px;
-    border: 1px solid #e5e8ec;
-}
-.overview-map img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-/* 侧边导航卡片 */
-.side-nav-card {
-    background: #fff;
-    border: 1px solid #e5e8ec;
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 22px;
-}
-.side-nav-list {
-    list-style: none;
-}
-.side-nav-list li {
-    margin-bottom: 9px;
-}
-.side-nav-list li a {
-    display: block;
-    padding: 11px 14px;
-    border-radius: 5px;
-    color: #303133;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.24s ease;
-}
-.side-nav-list li a.active,
-.side-nav-list li a:hover {
-    background-color: #004b93;
-    color: #ffffff;
-}
-/* 单部门详情卡片 */
-.detail-card {
-    background: #ffffff;
-    border: 1px solid #e5e8ec;
-    border-radius: 10px;
-    padding: 28px;
-    margin-bottom: 28px;
-    box-shadow: 0 1px 4px rgba(0,0,0.04);
-}
-.detail-top {
-    display: flex;
-    gap: 22px;
-    margin-bottom: 22px;
-}
-.detail-thumb {
-    width: 260px;
-    height: 180px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-.detail-head h3 {
-    font-size: 22px;
-    color: #1d1d1f;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.detail-head h3 img {
-    width: 28px;
-    height: 28px;
-}
-.tag-group {
-    margin-bottom: 16px;
-}
-.detail-tag {
-    display: inline-block;
-    background: #e6f0fb;
-    color: #004b93;
-    padding: 4px 11px;
-    border-radius: 14px;
-    font-size: 12px;
-    margin-right: 7px;
-    margin-bottom: 6px;
-}
-.detail-desc {
-    margin: 18px 0;
-    line-height: 1.75;
-    color: #444649;
-    font-size: 14px;
-}
-/* 数据统计四栏 */
-.detail-data {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin: 22px 0;
-}
-.data-item {
-    background: #f4f9ff;
-    padding: 14px;
-    text-align: center;
-    border-radius: 6px;
-}
-.data-item h4 {
-    font-size: 22px;
-    color: #004b93;
-    margin-bottom: 5px;
-}
-.data-item p {
-    font-size: 12px;
-    color: #606266;
-}
-/* 图片图集三栏 */
-.detail-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 22px;
-}
-.gallery-img {
-    width: 100%;
-    height: 145px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-/* 详情跳转按钮 */
-.enter-btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 26px;
-    background: #004b93;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background 0.24s ease;
-}
-.enter-btn:hover {
-    background: #00386f;
-}
-/* ==============================================
-                移动端响应式 增强优化版
-============================================== */
-@media screen and (max-width:768){
-    * {
-        touch-action: manipulation; /* 移动端移除300ms延迟 */
-    }
-    .page-top-tag {
-        right: 10px;
-    }
-    .page-top-tag img {
-        height: 36px;
-        max-width: 160px;
-    }
-    /* 头部 */
-    .header-top {
-        padding: 10px 15px;
-    }
-    .logo img {
-        width: 36px;
-        height: 36px;
-    }
-    .logo-text h1 {
-        font-size: 18px;
-    }
-    .logo-text p {
-        font-size: 10px;
-    }
-    .header-right {
-        gap: 10px;
-    }
-    /* 导航移动端 */
-    .main-nav ul li a {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
-    /* 面包屑 */
-    .breadcrumb {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    /* 布局改为单列，清除侧边sticky */
-    .container {
-        grid-template-columns: 1fr;
-        padding: 12px;
-        gap: 20px;
-    }
-    .left-column,
-    .right-column {
-        position: static !important;
-        top: auto;
-    }
-    /* 横幅适配 */
-    .page-banner {
-        height: 150px;
-    }
-    .banner-text-wrap h2 {
-        font-size: 26px;
-    }
-    .section-title {
-        font-size: 16px;
-    }
-    /* 详情头部垂直排列 */
-    .detail-top {
-        flex-direction: column;
-    }
-    .detail-thumb {
-        width: 100%;
-        height: auto;
-    }
-    /* 数据卡片2列 */
-    .detail-data {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    /* 图集单列 */
-    .detail-gallery {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    /* 详情卡片缩小内边距 */
-    .detail-card {
-        padding: 16px;
-    }
-    /* 页脚垂直排版居中 */
-    footer {
-        padding: 18px;
-        flex-direction: column;
-        gap: 18px;
-        text-align: center;
-    }
-    .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-    .footer-links a {
-        margin-right: 8px;
-        font-size: 11px;
-    }
-    .footer-qr {
-        gap: 14px;
-    }
-    .qr-code img {
-        width: 52px;
-        height: 52px;
-    }
-    .qr-code p {
-        font-size: 10px;
-    }
-    /* 侧边卡片缩小内边距 */
-    .side-card, .side-nav-card, .structure-card {
-        padding: 14px;
-    }
-}
-/* 超小屏360px 深度优化 */
-@media screen and (max-width: 360px) {
-    body {
-        scroll-padding-top: 52px;
-    }
-    .main-nav ul li a {
-        padding: 6px 8px;
-        font-size: 11px;
-    }
-    .banner-text-wrap h2 {
-        font-size: 18px;
-    }
-    .logo {
-        gap: 6px;
-    }
-    .quick-link-list li a {
-        font-size: 13px;
-    }
-    .main-nav, .left-column, .right-column {
-        position: static;
-        top: auto;
-    }
-    /* 树形节点缩小字号 */
-    .tree-node {
-        font-size: 11px;
-        padding: 3px 6px;
-    }
-    /* 数据数字缩小 */
-    .data-item h4 {
-        font-size: 18px;
-    }
-    /* 按钮缩小 */
-    .enter-btn {
-        padding: 8px 16px;
-        font-size: 13px;
-    }
-    /* 标题字号压缩 */
-    .detail-head h3 {
-        font-size: 18px;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="assets/site.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/editorial.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/pages/bm.css?v=20261002-motion-v9" data-page-style="bm">
+    <link rel="stylesheet" href="assets/mobile.css?v=20261002-motion-v9" data-site-responsive>
+    <link rel="stylesheet" href="assets/music-player.css?v=20261002-motion-v9">
+    <script defer src="music/playlist.js"></script>
+    <script defer src="assets/music-player.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site-motion.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/page-features.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site.js?v=20261002-motion-v9"></script>
 </head>
-<body>
-    <!-- 顶部悬浮品牌标识 zy原版 -->
-    <div class="page-top-tag">
-        <img src="/image/logo.png" width="160" height="50" alt="LOGO">
+<body data-page="bm">
+<div class="page-top-tag" id="site-brand">
+        <img src="/image/logo.png" width="160" height="50" alt="LOGO" decoding="async">
     </div>
-    <!-- 网站头部Logo区域 纯logo，无搜索框 -->
-    <header class="header-top">
+<header class="header-top" id="site-header">
         <div class="logo">
-            <img src="/image/LZG2logo.png" alt="LOGO">
+            <img src="/image/LZG2logo.png" alt="LOGO" decoding="async">
             <div class="logo-text">
                 <h1>联合实验新区</h1>
                 <p>JOINT EXPERIMENTAL NEW AREA</p>
@@ -665,53 +30,37 @@ footer {
         </div>
         <div class="header-right"></div>
     </header>
-    <!-- 全局导航栏（移除sticky，改用JS滚动fixed，当前页面active高亮保留） -->
-    <nav class="main-nav">
+<nav class="main-nav" id="site-nav" aria-label="主导航">
         <ul>
-            <li><a href="zy.html" >首页</a></li>
-            <li><a href="gy.html">关于我们</a></li>
-            <li><a href="fq.html">分区介绍</a></li>
-            <li><a href="#" style="background:#00386f">部门介绍</a></li>
-            <li><a href="xz.html">存档下载</a></li>
-            <li><a href="da.html">档案管理</a></li>
-            <li><a href="yx.html">影像记录</a></li>
-            <li><a href="xw.html">新闻公告</a></li>
+            <li><a href="zy.html" data-route="zy">首页</a></li>
+            <li><a href="gy.html" data-route="gy">关于我们</a></li>
+            <li><a href="fq.html" data-route="fq">分区介绍</a></li>
+            <li><a href="#" style="background:#00386f" data-route="bm" aria-current="page" class="active">部门介绍</a></li>
+            <li><a href="xz.html" data-route="xz">存档下载</a></li>
+            <li><a href="da.html" data-route="da">档案管理</a></li>
+            <li><a href="yx.html" data-route="yx">影像记录</a></li>
+            <li><a href="xw.html" data-route="xw">新闻公告</a></li>
         </ul>
     </nav>
-    <!-- 页面头部横幅 -->
-    <div class="page-banner">
-        <img src="/image/ui/bumenjsui.png" alt="部门介绍横幅背景图" class="banner-bg-img">
-        <div class="banner-text-wrap">
-            <h2>职能部门介绍</h2>
-            <p>统筹 · 分工 · 协同 · 共建</p>
-        </div>
-    </div>
-    <!-- 面包屑导航预留位 -->
-    <div class="breadcrumb"></div>
-    <!-- 页面主体三栏布局容器 -->
-    <div class="container">
-        <!-- 左侧悬浮侧边栏 -->
-        <aside class="left-column">
-            <!-- 侧边导航卡片 -->
-            <div class="side-nav-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    部门快速导航
-                </div>
+<div id="page-content" tabindex="-1">
+    <section class="editorial-hero bm-hero" aria-labelledby="bm-hero-title" data-site-reveal><img class="editorial-hero-photo bm-hero-photo" src="image/backgrounds/bm/hero.png" width="1920" height="1051" alt="新区建设与交通实景" fetchpriority="high" decoding="async"><div class="editorial-hero-shade bm-hero-overlay" aria-hidden="true"></div><div class="editorial-hero-copy bm-hero-copy"><p class="editorial-eyebrow">PEOPLE WHO BUILD THE AREA</p><h1 id="bm-hero-title">让每一份建设<br>各有担当</h1><p>从规划、施工到公共服务，认识维系新区日常运转的职能部门。</p><a href="#department-overview">了解部门职能 <span aria-hidden="true">↓</span></a></div><div class="editorial-hero-end bm-hero-stamp" aria-hidden="true">05 DEPARTMENTS · ONE NEW AREA</div></section><nav class="editorial-breadcrumb" aria-label="当前位置"><a href="zy.html">首页</a><span aria-hidden="true">/</span><span aria-current="page">部门介绍</span></nav><div class="container department-container bm-layout">
+        <aside class="left-column" aria-label="部门导航与动态">
+            <button class="department-follow-toggle" type="button" data-department-toggle aria-expanded="false" aria-controls="department-sidebar-content"><span>部门职能目录 · 近期动态</span><span class="department-follow-indicator" aria-hidden="true">＋</span></button>
+            <div class="department-sidebar-content" id="department-sidebar-content">
+            <nav class="side-nav-card" aria-label="部门职能目录">
+                <h2 class="section-title">部门职能目录</h2>
                 <ul class="side-nav-list">
-                    <li><a href="#yanfa" class="active">建设规划部</a></li>
+                    <li><a href="#department-overview" class="active">机构概况与职责分工</a></li>
+                    <li><a href="#yanfa">建设规划部</a></li>
                     <li><a href="#gongcheng">工程建设部</a></li>
                     <li><a href="#nongken">公共设施管理部</a></li>
                     <li><a href="#cangchu">分区规划管理部</a></li>
                     <li><a href="#fangwu">综合管理部</a></li>
                 </ul>
-            </div>
-            <!-- 部门动态资讯卡片 -->
+            </nav>
             <div class="news-card side-card">
                 <div class="section-title">
-                    <svg viewBox="0 24 24">
+                    <svg viewbox="0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
                     </svg>
                     部门近期动态
@@ -731,325 +80,156 @@ footer {
                     </li>
                 </ul>
             </div>
+            </div>
         </aside>
-        <!-- 中间主内容区域 -->
-        <main class="center-column">
-            <div class="section-title">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                全域职能总览
-            </div>
-            <!-- 部门职能总图 -->
-            <div class="overview-map">
-                <img src="/image/jing/shou4.jpg" alt="新区六大部门职能规划总图">
-            </div>
-            <p style="font-size:13px;color:#666;line-height:1.6;margin-bottom:28px;">
-              新区各部门分工协作，建设规划部统筹规划审批宣传，工程建设部承接基建施工，公管部管护公共设施，分区部管控片区，综合管理部仅留存档案管理。
-          </p>
-            <!-- 1. 建设规划部 -->
-            <div class="detail-card" id="yanfa">
-                <div class="detail-top">
-                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="红石研发部办公区全景">
-                    <div class="detail-head">
-                        <h3>
-                            <img src="/image/LZG2logo.png">
-                          建设规划部
-                      </h3>
-                        <div class="tag-group">
-                            <span class="detail-tag">统筹规划</span>
-                            <span class="detail-tag">文件签发</span>
-                            <span class="detail-tag">文化宣传</span>
-                        </div>
-                        <div class="detail-desc">
-                          建设规划部作为统筹新区发展布局的核心职能部门，主要负责全域土地分区、片区开发、道路配套等中长期建设规划编制与方案优化，统一受理各类建筑修建、工程改造、场地开发等项目申报，完成资质核验、许可文书审核签发与全套审批档案留存管理，同时牵头统筹新区城市形象打造、主题文化展览、节庆特色活动、对外宣传推广等相关工作，从规划建设、行政审批到文化宣传全方位塑造规范有序、特色鲜明的新区整体风貌。
-                      </div>
-                        <a href="/webpage/country/archive.html" class="enter-btn">查看建设规划方案 ></a>
+        <main class="center-column department-main" aria-label="机构与部门职能">
+            <section class="department-overview" id="department-overview" aria-labelledby="department-overview-title">
+                <p class="editorial-eyebrow">HOW WE WORK TOGETHER</p><h2 id="department-overview-title">机构概况</h2>
+                <p>联合实验新区各职能部门围绕规划编制、项目审核、工程建设、公共设施运营、片区管理和历史档案管理开展工作。各部门按职责分工处理相应事务，做好规划、建设、运营与资料管理之间的衔接。</p>
+                <div class="responsibility-overview">
+                    <h3>职责分工概览</h3>
+                    <dl class="responsibility-list">
+                        <div><dt><a href="#yanfa">建设规划部</a></dt><dd>统筹规划、项目审核与文化宣传</dd></div>
+                        <div><dt><a href="#gongcheng">工程建设部</a></dt><dd>工程施工、建设调度与修缮</dd></div>
+                        <div><dt><a href="#nongken">公共设施管理部</a></dt><dd>公共设施运营、巡检与养护</dd></div>
+                        <div><dt><a href="#cangchu">分区规划管理部</a></dt><dd>片区管控、规划细化与协调</dd></div>
+                        <div><dt><a href="#fangwu">综合管理部</a></dt><dd>历史资料整理、归档与查询</dd></div>
+                    </dl>
+                </div>
+            </section>
+            <section class="department-section" id="yanfa" aria-labelledby="yanfa-title">
+                <span class="bm-section-number" aria-hidden="true">DEPARTMENT / 01</span><header class="department-heading">
+                    <img class="department-flag" src="/image/qizhi/ghb.png" width="100" height="195" alt="建设规划部旗帜" loading="lazy" decoding="async">
+                    <div class="department-heading-text">
+                        <h2 id="yanfa-title">建设规划部</h2>
+                        <p>统筹规划、项目审核与文化宣传</p>
+                    </div>
+                </header>
+                <div class="department-body">
+                    <h3>部门概况</h3>
+                    <p>建设规划部负责新区整体建设布局、项目申报审核及文化宣传工作，统筹中长期发展规划和各类建设方案，推动新区建设有序开展。</p>
+                    <h3>主要职责</h3>
+                    <ol class="duty-list">
+                        <li>负责全域土地分区、片区开发、道路配套等中长期建设规划的编制与方案优化。</li>
+                        <li>统一受理建筑修建、工程改造、场地开发等项目申报，核验相关申报资料与资质。</li>
+                        <li>负责建设许可文书的审核、签发及审批资料的整理留存。</li>
+                        <li>衔接各片区建设安排与公共配套布局，协调规划方案的细化和实施。</li>
+                        <li>统筹新区形象建设、主题文化展览、节庆活动和对外宣传推广工作。</li>
+                    </ol>
+                    <div class="coordination-note">
+                        <h3>职责分工</h3>
+                        <p>负责规划编制与项目审核；工程建设部按确定的方案组织施工，分区规划管理部配合细化片区安排并跟进规划落实。</p>
                     </div>
                 </div>
-                <div class="detail-data">
-                    <div class="data-item">
-                        <h4>0</h4>
-                        <p>签发规划方案</p>
+            </section>
+            <section class="department-section" id="gongcheng" aria-labelledby="gongcheng-title">
+                <span class="bm-section-number" aria-hidden="true">DEPARTMENT / 02</span><header class="department-heading">
+                    <img class="department-flag" src="/image/qizhi/jsb.png" width="100" height="195" alt="工程建设部旗帜" loading="lazy" decoding="async">
+                    <div class="department-heading-text">
+                        <h2 id="gongcheng-title">工程建设部</h2>
+                        <p>工程施工、建设调度与修缮</p>
                     </div>
-                    <div class="data-item">
-                        <h4>46</h4>
-                        <p>文化宣传条数</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>100%</h4>
-                        <p>部门运营完成度</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>8</h4>
-                        <p>下辖单位</p>
-                    </div>
-                </div>
-                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
-                <div class="detail-gallery">
-                    <img src="/image/jing/bm1.jpg" class="gallery-img" alt="红石实验室内部">
-                    <img src="/image/jing/bm2.jpg" class="gallery-img" alt="全自动生产装置">
-                    <img src="/image/jing/bm3.jpg" class="gallery-img" alt="研发办公主楼">
-                </div>
-            </div>
-            <!-- 2. 工程建设部 -->
-            <div class="detail-card" id="gongcheng">
-                <div class="detail-top">
-                    <img src="/image/qizhi/jsb.png" class="detail-thumb" alt="基建工程部施工现场全景">
-                    <div class="detail-head">
-                        <h3>
-                            <img src="/image/LZG2logo.png">
-                            工程建设部
-                        </h3>
-                        <div class="tag-group">
-                            <span class="detail-tag">房屋建造</span>
-                            <span class="detail-tag">设施建造</span>
-                            <span class="detail-tag">道路基建</span>
-                        </div>
-                        <div class="detail-desc">
-                          工程建设部承接建设规划部下达的各项工程建设任务与施工方案，统筹负责新区道路路面、桥梁隧道、管线通道等全域基础配套设施的施工搭建、现场施工调度、建材调配以及工程落地实施与后期修缮作业。
-                      </div>
-                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                </header>
+                <div class="department-body">
+                    <h3>部门概况</h3>
+                    <p>工程建设部负责新区工程建设的组织实施，承接建设规划部确定的建设任务与施工方案，统筹基础设施施工、现场调度和建材配置。</p>
+                    <h3>主要职责</h3>
+                    <ol class="duty-list">
+                        <li>承接新区工程建设任务，依据建设方案组织施工搭建和工程实施。</li>
+                        <li>负责道路路面、桥梁隧道、管线通道等基础配套设施的建设工作。</li>
+                        <li>统筹施工现场调度、建材调配和建设进度，协调工程实施中的衔接事项。</li>
+                        <li>负责相关工程和基础设施的后期修缮，配合处理设施使用中涉及施工改造的问题。</li>
+                    </ol>
+                    <div class="coordination-note">
+                        <h3>职责分工</h3>
+                        <p>负责工程实施与修缮；建设规划部负责规划和方案审核，公共设施管理部负责公共配套设施的日常运营与管护。</p>
                     </div>
                 </div>
-                <div class="detail-data">
-                    <div class="data-item">
-                        <h4>56</h4>
-                        <p>接受建设方案</p>
+            </section>
+            <section class="department-section" id="nongken" aria-labelledby="nongken-title">
+                <span class="bm-section-number" aria-hidden="true">DEPARTMENT / 03</span><header class="department-heading">
+                    <img class="department-flag" src="/image/qizhi/ggb.png" width="99" height="192" alt="公共设施管理部旗帜" loading="lazy" decoding="async">
+                    <div class="department-heading-text">
+                        <h2 id="nongken-title">公共设施管理部</h2>
+                        <p>公共设施运营、巡检与养护</p>
                     </div>
-                    <div class="data-item">
-                        <h4>28</h4>
-                        <p>当前在建工程项目</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>72%</h4>
-                        <p>完工建筑</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>12</h4>
-                        <p>下辖部门</p>
-                    </div>
-                </div>
-                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
-                <div class="detail-gallery">
-                    <img src="/image/jing/gc1.jpg" class="gallery-img" alt="住宅施工工地">
-                    <img src="/image/jing/gc2.jpg" class="gallery-img" alt="铁路铺设现场">
-                    <img src="/image/jing/gc3.jpg" class="gallery-img" alt="建材堆放堆场">
-                </div>
-            </div>
-            <!-- 3. 公共设施管理部 -->
-            <div class="detail-card" id="nongken">
-                <div class="detail-top">
-                    <img src="/image/qizhi/ggb.png" class="detail-thumb" alt="农林垦殖部田园全景">
-                    <div class="detail-head">
-                        <h3>
-                            <img src="/image/LZG2logo.png">
-                            公共设施管理部
-                      </h3>
-                        <div class="tag-group">
-                            <span class="detail-tag">自然绿化</span>
-                            <span class="detail-tag">红石管理</span>
-                            <span class="detail-tag">仓储管理</span>
-                        </div>
-                        <div class="detail-desc">
-                          公共设施管理部统筹辖区内交通、绿化、水利各类城市公共配套设施的日常运营、巡检维护与常态化管护工作，持续保障城市道路通行、景观绿化养护、水系管网运行稳定有序，同步跟进各类公共配套设施损耗检修、功能优化与环境提质相关工作，为新区居民提供完善稳定的公共服务保障。
-                      </div>
-                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                </header>
+                <div class="department-body">
+                    <h3>部门概况</h3>
+                    <p>公共设施管理部负责新区交通、绿化、水利等公共配套设施的日常运营与维护，为道路通行、景观环境和水系管网的稳定运行提供保障。</p>
+                    <h3>主要职责</h3>
+                    <ol class="duty-list">
+                        <li>统筹辖区公共配套设施的日常运营、巡检维护和常态化管护工作。</li>
+                        <li>负责城市道路通行保障、景观绿化养护及水系管网运行维护。</li>
+                        <li>跟进设施损耗和运行问题，组织日常检修与维护事项。</li>
+                        <li>推进公共设施功能优化与环境提质，持续完善新区公共服务配套。</li>
+                    </ol>
+                    <div class="coordination-note">
+                        <h3>职责分工</h3>
+                        <p>负责公共设施的日常运行和养护；涉及工程建设、改造或规划调整的事项，分别与工程建设部、建设规划部及分区规划管理部衔接。</p>
                     </div>
                 </div>
-                <div class="detail-data">
-                    <div class="data-item">
-                        <h4>24</h4>
-                        <p>绿化项目</p>
+            </section>
+            <section class="department-section" id="cangchu" aria-labelledby="cangchu-title">
+                <span class="bm-section-number" aria-hidden="true">DEPARTMENT / 04</span><header class="department-heading">
+                    <img class="department-flag" src="/image/qizhi/ghb.png" width="100" height="195" alt="分区规划管理部旗帜" loading="lazy" decoding="async">
+                    <div class="department-heading-text">
+                        <h2 id="cangchu-title">分区规划管理部</h2>
+                        <p>片区管控、规划细化与协调</p>
                     </div>
-                    <div class="data-item">
-                        <h4>32</h4>
-                        <p>区域生态区</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>90%</h4>
-                        <p>道路配套养护</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>7</h4>
-                        <p>下辖部门</p>
-                    </div>
-                </div>
-                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
-                <div class="detail-gallery">
-                    <img src="/image/jing/nk1.jpg" class="gallery-img" alt="连片灌溉农田">
-                    <img src="/image/jing/nk2.jpg" class="gallery-img" alt="大型畜牧养殖场">
-                    <img src="/image/jing/nk3.jpg" class="gallery-img" alt="果蔬加工工坊">
-                </div>
-            </div>
-            <!-- 4. 分区规划管理部 -->
-            <div class="detail-card" id="cangchu">
-                <div class="detail-top">
-                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="资源仓储物流枢纽全景">
-                    <div class="detail-head">
-                        <h3>
-                            <img src="/image/LZG2logo.png">
-                            分区规划管理部
-                      </h3>
-                        <div class="tag-group">
-                            <span class="detail-tag">协调发展</span>
-                            <span class="detail-tag">分区建设</span>
-                            <span class="detail-tag">统筹规划</span>
-                        </div>
-                        <div class="detail-desc">
-                          分区规划管理部负责新区各片区细分地块管控、分区发展方案细化落地，跟进片区用地规范监督、区域配套布局统筹，配合建设规划部完成分区图纸核验、片区建设进度跟进，协调各区域基建、绿化、水利配套适配规划标准，维护各分区建设秩序与区域发展均衡性。
-                      </div>
-                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                </header>
+                <div class="department-body">
+                    <h3>部门概况</h3>
+                    <p>分区规划管理部负责新区各片区的用地管控与发展方案落实，协调区域配套布局，跟进片区建设秩序与发展进度。</p>
+                    <h3>主要职责</h3>
+                    <ol class="duty-list">
+                        <li>细化各片区发展方案和地块安排，推动分区规划要求落实到具体建设事项。</li>
+                        <li>跟进片区用地规范执行，配合建设规划部开展分区图纸核验与规划衔接。</li>
+                        <li>统筹片区配套布局，协调基建、绿化、水利等设施与分区规划相适配。</li>
+                        <li>跟进各片区建设进度，协调区域建设问题，维护建设秩序与区域发展均衡。</li>
+                    </ol>
+                    <div class="coordination-note">
+                        <h3>职责分工</h3>
+                        <p>负责片区层面的规划落实与协调；新区整体规划和项目审核由建设规划部负责，具体施工及日常公共设施管护由相应职能部门承担。</p>
                     </div>
                 </div>
-                <div class="detail-data">
-                    <div class="data-item">
-                        <h4>28</h4>
-                        <p>仓储物流工作人员</p>
+            </section>
+            <section class="department-section" id="fangwu" aria-labelledby="fangwu-title">
+                <span class="bm-section-number" aria-hidden="true">DEPARTMENT / 05</span><header class="department-heading">
+                    <img class="department-flag" src="/image/qizhi/ghb.png" width="100" height="195" alt="综合管理部旗帜" loading="lazy" decoding="async">
+                    <div class="department-heading-text">
+                        <h2 id="fangwu-title">综合管理部</h2>
+                        <p>历史资料整理、归档与查询</p>
                     </div>
-                    <div class="data-item">
-                        <h4>14</h4>
-                        <p>大型露天矿坑</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>100%</h4>
-                        <p>仓储物流体系完成度</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>3&nbsp;</h4>
-                        <p>下辖分区</p>
-                    </div>
-                </div>
-                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
-                <div class="detail-gallery">
-                    <img src="/image/jing/cc1.jpg" class="gallery-img" alt="大型物资仓库">
-                    <img src="/image/jing/cc2.jpg" class="gallery-img" alt="矿石冶炼厂区">
-                    <img src="/image/jing/cc3.jpg" class="gallery-img" alt="货运铁路枢纽">
-                </div>
-            </div>
-            <!-- 5. 综合管理部 -->
-            <div class="detail-card" id="fangwu">
-                <div class="detail-top">
-                    <img src="/image/qizhi/ghb.png" class="detail-thumb" alt="边境防务海岛基地全景">
-                    <div class="detail-head">
-                        <h3>
-                            <img src="/image/LZG2logo.png">
-                        	综合管理部
-                      </h3>
-                        <div class="tag-group">
-                            <span class="detail-tag">旧区转移</span>
-                            <span class="detail-tag">细分事务</span>
-                            <span class="detail-tag">文档管理</span>
-                        </div>
-                        <div class="detail-desc">
-                          综合管理部原有全域统筹、协调管控、事务督办等管理职权已全部下放至各职能部门，现阶段部门职能大幅收缩、处于待解散过渡阶段，不再参与新区各类建设规划、工程施工、公共运维、片区管理等日常事务决策与管控工作，仅专职负责新区各类历史文书、审批档案、工程资料、部门台账等各类文件资料的收集、整理、归档、保管与查询调取工作，妥善留存新区发展全过程档案资料，保障各类历史资料完整可溯，平稳推进部门收尾过渡工作。
-                      </div>
-                        <a href="#" class="enter-btn">查看部门完整详情 ></a>
+                </header>
+                <div class="department-body">
+                    <h3>部门概况</h3>
+                    <p>综合管理部现处于职能调整和收尾过渡阶段。原有统筹、协调和督办职权已下放至相关职能部门，现阶段主要承担新区历史文件与档案资料的管理工作。</p>
+                    <h3>主要职责</h3>
+                    <ol class="duty-list">
+                        <li>收集新区历史文书、审批档案、工程资料和部门台账等文件资料。</li>
+                        <li>负责资料分类、整理、归档与保管，保持档案完整和来源可溯。</li>
+                        <li>提供历史资料查询和调取，支持相关部门查阅既有建设与管理记录。</li>
+                        <li>做好部门收尾过渡期间的资料留存和档案管理衔接。</li>
+                    </ol>
+                    <div class="coordination-note">
+                        <h3>职责分工</h3>
+                        <p>现阶段职责限于历史资料与档案管理，不承担新区日常建设规划、施工、公共运维和片区管理的决策与管控工作。相关事项由各职能部门按分工负责。</p>
                     </div>
                 </div>
-                <div class="detail-data">
-                    <div class="data-item">
-                        <h4>36</h4>
-                        <p>驻防巡逻人员</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>12</h4>
-                        <p>海防防御塔楼</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>85%</h4>
-                        <p>海岛基地建设完成度</p>
-                    </div>
-                    <div class="data-item">
-                        <h4>1</h4>
-                        <p>跨海连通主干大桥</p>
-                    </div>
-                </div>
-                <p style="font-size:14px;color:#222;margin:16px 0 10px;">部门实景实拍</p>
-                <div class="detail-gallery">
-                    <img src="/image/jing/fw1.jpg" class="gallery-img" alt="海岛海防堡垒">
-                    <img src="/image/jing/fw2.jpg" class="gallery-img" alt="港口安全检查站">
-                    <img src="/image/jing/fw3.jpg" class="gallery-img" alt="海岸巡逻步道">
-                </div>
-            </div>
-            
+            </section>
+            <nav class="related-pages" aria-label="相关栏目">
+                <h2>相关栏目</h2>
+                <a href="fq.html" data-route="fq">分区介绍<span aria-hidden="true"> →</span></a>
+                <a href="da.html" data-route="da">档案管理<span aria-hidden="true"> →</span></a>
+                <a href="xw.html" data-route="xw">新闻公告<span aria-hidden="true"> →</span></a>
+            </nav>
         </main>
-        <!-- 右侧悬浮侧边栏 -->
-        <aside class="right-column">
-            <!-- 【置顶】全域指挥架构卡片（竖版树形） -->
-            <div class="structure-card side-card">
-                <h3>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#004b93">
-                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
-                    </svg>
-                    全域管理架构树
-              </h3>
-                <!-- 纯CSS竖版树形架构：联众国→3大部→各分局 -->
-                <div class="tree-container">
-                    <ul class="tree-root">
-                        <li class="tree-level1">
-                            <span class="tree-node">联众国（最高统筹）</span>
-                            <ul class="tree-child">
-                                <!-- 第一大部：综合行政部 -->
-                                <li class="tree-level2">
-                                    <span class="tree-node">建设规划部</span>
-                                    <ul class="tree-child">
-                                        <li class="tree-level3"><span class="tree-node">分区规划管理部</span></li>
-                                        <li class="tree-level3"><span class="tree-node">社区规划局</span></li>
-                                        <li class="tree-level3"><span class="tree-node">紧急委员会</span></li>
-                                    </ul>
-                                </li>
-                                <!-- 第二大部：生产建设部 -->
-                                <li class="tree-level2">
-                                    <span class="tree-node">工程建设部&nbsp;</span>
-                                    <ul class="tree-child">
-                                        <li class="tree-level3"><span class="tree-node">基建工程局</span></li>
-                                        <li class="tree-level3"><span class="tree-node">建材分配局</span></li>
-                                        <li class="tree-level3"><span class="tree-node">交通管理局</span></li>
-                                        <li class="tree-level3"><span class="tree-node">水利工程局</span></li>
-                                    </ul>
-                                </li>
-                                <!-- 第三大部：边境防务部 -->
-                                <li class="tree-level2">
-                                    <span class="tree-node">公共设施管理部&nbsp;</span>
-                                    <ul class="tree-child">
-                                        <li class="tree-level3"><span class="tree-node">绿化局</span></li>
-                                        <li class="tree-level3"><span class="tree-node">安保局</span></li>
-                                    </ul>
-                                </li>
-								<li class="tree-level2">
-                                    <span class="tree-node">综合管理部&nbsp;</span>
-                                    <ul class="tree-child">
-                                        <li class="tree-level3"><span class="tree-node">档案管理局</span></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <p style="font-size:13px;color:#505256;line-height:1.6;margin-top:12px;">
-                &nbsp; </p>
-            </div>
-            <!-- 站点快速导航（移至架构卡片下方） -->
-            <div class="quick-link-card side-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M13 10h-2v2h2v-2zm0-4h-2v6h2V6zm-1 12c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18C5.93 0 0 5.93 0 12s5.93 12 12 12 12-5.93 12-12S18.07 0 12 0z"></path>
-                    </svg>
-                    站点快速导航
-                </div>
-                <ul class="quick-link-list">
-                    <li><a href="#">风景浏览专区</a> <span><a href="#">></a></span></li>
-                    <li><a href="https://zh.minecraft.wiki/">我的世界Wiki</a> <span><a href="#">></a></span></li>
-                    <li><a href="#">存档配套整合包</a> <span><a href="#">></a></span></li>
-                    <li><a href="#">提交建议反馈</a> <span><a href="#">></a></span></li>
-                    <li><a href="/webpage/country/download.html">全部下载资源</a> <span><a href="#">></a></span></li>
-                </ul>
-            </div>
-        </aside>
     </div>
-    <!-- 页面底部页脚 -->
-    <footer>
+</div>
+
+
+<footer id="site-footer">
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">站点地图</a>
@@ -1060,50 +240,57 @@ footer {
         </div>
         <div class="footer-qr">
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方交流群二维码">
+                <img src="/image/gzh.jpg" alt="官方交流群二维码" decoding="async">
                 <p>玩家交流群</p>
             </div>
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方论坛二维码">
+                <img src="/image/gzh.jpg" alt="官方论坛二维码" decoding="async">
                 <p>新区官方论坛</p>
             </div>
         </div>
     </footer>
-    <!-- 滚动吸顶JS（zy原版导航逻辑）+ 修复锚点偏移 -->
-    <script>
-        const navBar = document.querySelector('.main-nav');
-        const headerBox = document.querySelector('.header-top');
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const headerHeight = headerBox.offsetHeight;
-            if (scrollTop >= headerHeight) {
-                navBar.classList.add('fixed-nav');
-                headerBox.classList.add('nav-fixed-padding');
-            } else {
-                navBar.classList.remove('fixed-nav');
-                headerBox.classList.remove('nav-fixed-padding');
-            }
-        });
-        // 修复平滑滚动，减去固定导航高度，避免内容被遮挡
-        document.querySelectorAll('.side-nav-list a').forEach(item => {
-            item.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetEl = document.querySelector(targetId);
-                if(!targetEl) return;
-                // 获取导航高度做偏移
-                const navHeight = navBar.offsetHeight;
-                const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
-                window.scrollTo({
-                    top: targetTop,
-                    behavior: 'smooth'
-                });
-                // 清除全部激活状态
-                document.querySelectorAll('.side-nav-list a').forEach(link => link.classList.remove('active'));
-                // 当前导航高亮
-                this.classList.add('active');
-            })
-        })
-    </script>
+<section class="music-player" id="music-player" data-side="right" aria-label="音乐播放器">
+        <div class="music-header">
+            <button type="button" class="music-drag" aria-label="上下移动播放器" title="按住上下拖动，也可使用方向键"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"></path></svg></button>
+            <div class="music-heading"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"></path><ellipse cx="6" cy="18" rx="3" ry="2"></ellipse><ellipse cx="17" cy="16" rx="3" ry="2"></ellipse></svg>
+                <div><h2>新区音乐角</h2><p class="music-header-subtitle">让世界慢下来</p></div>
+            </div>
+            <button type="button" class="music-volume-toggle" aria-label="调节音量" aria-controls="music-volume-panel" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+            <button type="button" class="music-list-toggle" aria-label="展开或收起歌单" aria-controls="music-playlist" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></button>
+            <button type="button" class="music-dock" aria-label="移动播放器到屏幕左侧" title="移动到左侧"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 4v16M19 12H8m5-5l-5 5 5 5"></path></svg></button>
+            <button type="button" class="music-mini-play" data-music-play aria-label="播放音乐" aria-pressed="false" hidden><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+            <button type="button" class="music-toggle" aria-controls="music-body" aria-expanded="true" aria-label="收起音乐播放器"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+        <div class="music-body" id="music-body">
+            <div class="turntable" aria-hidden="true">
+                <div class="record"><div class="record-surface"></div><div class="record-label"><strong>JOINT AREA</strong><span>33⅓ RPM</span></div></div>
+                <div class="tonearm"><i class="arm-pivot"></i></div>
+            </div>
+            <div class="music-info">
+                <p class="music-kicker">NOW PLAYING</p>
+                <h3 class="music-title">载入歌单…</h3>
+                <p class="music-artist">联合实验新区音乐角</p>
+                <span class="music-track-count">00 / 00</span>
+            </div>
+            <div class="music-progress">
+                <input type="range" class="music-seek" min="0" max="1000" step="1" value="0" aria-label="播放进度" disabled>
+                <div class="music-time"><span class="music-current-time">0:00</span><span class="music-duration">0:00</span></div>
+            </div>
+            <div class="music-transport">
+                <button type="button" class="music-prev" aria-label="上一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5L8 12l11 7z"></path></svg></button>
+                <button type="button" class="music-play" data-music-play aria-label="播放音乐" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+                <button type="button" class="music-next" aria-label="下一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l11 7-11 7z"></path></svg></button>
+            </div>
+            <div class="music-volume-row" id="music-volume-panel" role="group" aria-label="音量控制">
+                <button type="button" class="music-mute" aria-label="静音" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+                <input type="range" class="music-volume" min="0" max="1" step="0.01" value="0.65" aria-label="音乐音量">
+                <output class="music-volume-value">65%</output>
+            </div>
+            <p class="music-status" role="status" aria-live="polite">点击播放，开启音乐</p>
+            <ol class="music-playlist" id="music-playlist" aria-label="播放歌单" hidden></ol>
+        </div>
+        <audio preload="metadata"></audio>
+    </section>
+<p id="route-status" class="route-status" role="status" aria-live="polite" hidden></p>
 </body>
 </html>

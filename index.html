@@ -2,254 +2,57 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 移动端强制适配，禁止缩放 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" type="image/png" href="image/LZG2logo1.png">
     <title>联合实验新区</title>
-    <style>
-        /* ===================== 全局基础重置 ===================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent; /* 移动端去除点击高亮 */
-        }
-        body {
-            overflow: hidden;
-            background-color: #000;
-        }
-        /* ===================== 全屏轮播容器 ===================== */
-        .carousel-wrapper {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
-        /* 轮播图片轨道容器 */
-        .carousel-inner {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        /* 单张轮播项 */
-        .carousel-item {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        .carousel-item.active {
-            opacity: 1;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        /* ===================== 轮播左右切换按钮 ===================== */
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-        .prev-btn {
-            left: 20px;
-        }
-        .next-btn {
-            right: 20px;
-        }
-        .carousel-control:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            transform: translateY(-50%) scale(1.1);
-        }
-        /* ===================== 底部轮播指示器 ===================== */
-        .carousel-indicators {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-        .indicator.active {
-            background-color: #fff;
-            width: 30px;
-            border-radius: 5px;
-        }
-        /* ===================== 居中文字内容区域 ===================== */
-        /* 全屏居中容器，穿透鼠标事件 */
-        .page-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-            text-align: center;
-            padding: 0 20px;
-            transition: all 0.5s ease;
-            pointer-events: none;
-        }
-        /* 可交互文字盒子，接收hover/touch */
-        .content-box {
-            pointer-events: auto;
-        }
-        /* 主标题logo文字 */
-        .logo {
-            color: #fff;
-            font-size: 60px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-            margin-bottom: 40px;
-            user-select: none;
-        }
-        /* 进入跳转按钮 */
-        .jump-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 40px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            border: 2px solid #fff;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
-            user-select: none;
-        }
-        .arrow {
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-        }
-        .jump-btn:hover {
-            background-color: #fff;
-            color: #333;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        .jump-btn:hover .arrow {
-            transform: translateX(5px);
-        }
-        /* UI元素隐藏类 */
-        .ui-hide {
-            opacity: 0 !important;
-        }
-        /* ===================== 移动端响应式适配 ===================== */
-        /* 平板 768px及以下 */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 45px;
-                margin-bottom: 30px;
-            }
-            .jump-btn {
-                padding: 12px 35px;
-                font-size: 16px;
-            }
-            .carousel-control {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            .carousel-indicators {
-                bottom: 20px;
-            }
-        }
-        /* 手机 480px及以下 */
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 32px;
-                margin-bottom: 24px;
-                letter-spacing: 1px;
-            }
-            .jump-btn {
-                padding: 10px 28px;
-                font-size: 14px;
-                border-width: 1.5px;
-            }
-            .carousel-control {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-                left: 10px;
-                right: 10px;
-            }
-            .indicator {
-                width: 8px;
-                height: 8px;
-            }
-            .indicator.active {
-                width: 22px;
-            }
-            .carousel-indicators {
-                bottom: 16px;
-                gap: 8px;
-            }
-        }
-        /* 超小手机 360px及以下 */
-        @media (max-width: 360px) {
-            .logo {
-                font-size: 26px;
-            }
-            .jump-btn {
-                padding: 8px 22px;
-            }
-            .carousel-control {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/site.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/editorial.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/pages/index.css?v=20261002-motion-v9" data-page-style="index">
+    <link rel="stylesheet" href="assets/mobile.css?v=20261002-motion-v9" data-site-responsive>
+    <link rel="stylesheet" href="assets/music-player.css?v=20261002-motion-v9">
+    <script defer src="music/playlist.js"></script>
+    <script defer src="assets/music-player.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site-motion.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/page-features.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site.js?v=20261002-motion-v9"></script>
 </head>
-<body>
-    <!-- 全屏轮播外层容器 -->
-    <div class="carousel-wrapper">
+<body data-page="index">
+<div class="page-top-tag" id="site-brand">
+        <img src="/image/logo.png" width="160" height="50" alt="" decoding="async">
+    </div>
+<header class="header-top" id="site-header">
+        <div class="logo">
+            <img src="/image/LZG2logo.png" alt="logo" decoding="async">
+            <div class="logo-text">
+                <h1>联合实验新区</h1>
+                <p>JOINT EXPERIMENTAL NEW AREA</p>
+            </div>
+        </div>
+    </header>
+<nav class="main-nav" id="site-nav" aria-label="主导航">
+        <ul>
+            <li><a href="https://www.lhsyxq.cc.cd/" style="background:#00386f" data-route="zy">首页</a></li>
+            <li><a href="gy.html" data-route="gy">关于我们</a></li>
+            <li><a href="fq.html" data-route="fq">分区介绍</a></li>
+            <li><a href="bm.html" data-route="bm">部门介绍</a></li>
+            <li><a href="xz.html" data-route="xz">存档下载</a></li>
+            <li><a href="da.html" data-route="da">档案管理</a></li>
+            <li><a href="yx.html" data-route="yx">影像记录</a></li>
+            <li><a href="xw.html" data-route="xw">新闻公告</a></li>
+        </ul>
+    </nav>
+<div id="page-content" tabindex="-1">
+<div class="carousel-wrapper">
         <!-- 轮播图片轨道 -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="image/bg1.jpg" alt="轮播背景1">
+                <img src="image/backgrounds/index/slide-01.png" alt="轮播背景1" decoding="async">
             </div>
             <div class="carousel-item">
-                <img src="image/bg2.jpg" alt="轮播背景2">
+                <img src="image/backgrounds/index/slide-02.png" alt="轮播背景2" decoding="async">
             </div>
             <div class="carousel-item">
-                <img src="image/bg3.jpg" alt="轮播背景3">
+                <img src="image/backgrounds/index/slide-03.png" alt="轮播背景3" decoding="async">
             </div>
         </div>
         <!-- 左右切换按钮 -->
@@ -272,147 +75,69 @@
             </div>
         </div>
     </div>
-    <!-- 轮播交互逻辑JS -->
-    <script>
-       // DOM元素获取
-const carouselWrapper = document.querySelector('.carousel-wrapper');
-const carouselInner = document.querySelector('.carousel-inner');
-const carouselItems = document.querySelectorAll('.carousel-item');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const indicators = document.querySelectorAll('.indicator');
-const pageContent = document.querySelector('.page-content');
-const hoverBox = document.getElementById('hoverBox');
-const controlBtns = document.querySelectorAll('.carousel-control');
-// 全局配置变量
-let currentIndex = 0;
-const itemCount = carouselItems.length;
-const autoPlayTime = 5000;
-let autoPlayTimer = null;
-let hideTimer = null;
-const hideDelay = 3000;
-/**
- * 显示页面UI（标题、按钮、左右切换控件）
- */
-function showUI() {
-    pageContent.classList.remove('ui-hide');
-    controlBtns.forEach(btn => btn.classList.remove('ui-hide'));
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(hideUI, hideDelay);
-}
-/**
- * 隐藏页面UI
- */
-function hideUI() {
-    pageContent.classList.add('ui-hide');
-    controlBtns.forEach(btn => btn.classList.add('ui-hide'));
-}
-/**
- * 页面加载完成：标题+按钮渐入动画
- */
-window.addEventListener('load', () => {
-    const logo = document.getElementById('logo');
-    const jumpBtn = document.getElementById('jumpBtn');
-    // 初始隐藏偏移
-    logo.style.opacity = '0';
-    logo.style.transform = 'translateY(-20px)';
-    jumpBtn.style.opacity = '0';
-    jumpBtn.style.transform = 'translateY(20px)';
-    // 标题渐入
-    setTimeout(() => {
-        logo.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-        logo.style.opacity = '1';
-        logo.style.transform = 'translateY(0)';
-        // 延迟后按钮渐入
-        setTimeout(() => {
-            jumpBtn.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-            jumpBtn.style.opacity = '1';
-            jumpBtn.style.transform = 'translateY(0)';
-            hideTimer = setTimeout(hideUI, hideDelay);
-        }, 500);
-    }, 300);
-});
-/**
- * 更新轮播位置与激活指示器
- */
-function updateCarousel() {
-    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-    carouselItems.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
-    indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
-}
-/**
- * 切换上一张轮播
- */
-function goToPrev() {
-    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-    updateCarousel();
-    restartAutoPlay();
-}
-/**
- * 切换下一张轮播
- */
-function goToNext() {
-    currentIndex = (currentIndex + 1) % itemCount;
-    updateCarousel();
-    restartAutoPlay();
-}
-// 指示器点击切换
-indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
-        restartAutoPlay();
-    });
-});
-/**
- * 停止自动轮播
- */
-function stopAutoPlay() {
-    if (autoPlayTimer) {
-        clearInterval(autoPlayTimer);
-        autoPlayTimer = null;
-    }
-}
-/**
- * 开启自动轮播（先清旧定时器再新建）
- */
-function startAutoPlay() {
-    stopAutoPlay();
-    autoPlayTimer = setInterval(goToNext, autoPlayTime);
-}
-/**
- * 手动切换后重置计时
- */
-function restartAutoPlay() {
-    stopAutoPlay();
-    startAutoPlay();
-}
-// 左右按钮点击事件
-prevBtn.addEventListener('click', goToPrev);
-nextBtn.addEventListener('click', goToNext);
-// PC端鼠标悬浮文字框显示UI
-hoverBox.addEventListener('mouseenter', showUI);
-hoverBox.addEventListener('mouseleave', () => {
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(hideUI, hideDelay);
-});
-// 移动端触摸文字区域显示UI
-hoverBox.addEventListener('touchstart', showUI);
-// 触摸空白区域计时隐藏UI
-carouselWrapper.addEventListener('touchstart', (e) => {
-    if (!hoverBox.contains(e.target)) {
-        clearTimeout(hideTimer);
-        hideTimer = setTimeout(hideUI, hideDelay);
-    }
-});
-// ========== 关键改动：移除鼠标移入暂停、移出恢复的监听，鼠标放图片不暂停轮播 ==========
-// carouselWrapper.addEventListener('mouseenter', stopAutoPlay);
-// carouselWrapper.addEventListener('mouseleave', startAutoPlay);
-// 移动端触摸暂停逻辑保留（可选，不想触摸暂停可删掉下面两行）
-carouselWrapper.addEventListener('touchstart', stopAutoPlay);
-carouselWrapper.addEventListener('touchend', startAutoPlay);
-// 页面初始化启动自动轮播
-startAutoPlay();
-    </script>
+</div>
+<footer id="site-footer">
+        <div class="footer-left">
+            <div class="footer-links">
+                <a href="https://space.bilibili.com/487328861">宣传账号</a>
+                <a href="sm.html">隐私声明</a>
+                <a href="https://qm.qq.com/q/dQHwMfowp4">联系我们</a>
+            </div>
+            <p style="margin-top:8px;">© 2026 我的世界联合实验新区及公众号平台 版权所有</p>
+        </div>
+        <div class="footer-qr">
+            <div class="qr-code">
+                <img src="/image/xc.png" alt="官方宣传片" decoding="async">
+                <p>官方交流群</p>
+            </div>
+            <div class="qr-code">
+                <img src="/image/gzh.jpg" alt="官方论坛" decoding="async">
+                <p>官方论坛</p>
+            </div>
+        </div>
+    </footer>
+<section class="music-player" id="music-player" data-side="right" aria-label="音乐播放器">
+        <div class="music-header">
+            <button type="button" class="music-drag" aria-label="上下移动播放器" title="按住上下拖动，也可使用方向键"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"></path></svg></button>
+            <div class="music-heading"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"></path><ellipse cx="6" cy="18" rx="3" ry="2"></ellipse><ellipse cx="17" cy="16" rx="3" ry="2"></ellipse></svg>
+                <div><h2>新区音乐角</h2><p class="music-header-subtitle">让世界慢下来</p></div>
+            </div>
+            <button type="button" class="music-volume-toggle" aria-label="调节音量" aria-controls="music-volume-panel" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+            <button type="button" class="music-list-toggle" aria-label="展开或收起歌单" aria-controls="music-playlist" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></button>
+            <button type="button" class="music-dock" aria-label="移动播放器到屏幕左侧" title="移动到左侧"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 4v16M19 12H8m5-5l-5 5 5 5"></path></svg></button>
+            <button type="button" class="music-mini-play" data-music-play aria-label="播放音乐" aria-pressed="false" hidden><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+            <button type="button" class="music-toggle" aria-controls="music-body" aria-expanded="true" aria-label="收起音乐播放器"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+        <div class="music-body" id="music-body">
+            <div class="turntable" aria-hidden="true">
+                <div class="record"><div class="record-surface"></div><div class="record-label"><strong>JOINT AREA</strong><span>33⅓ RPM</span></div></div>
+                <div class="tonearm"><i class="arm-pivot"></i></div>
+            </div>
+            <div class="music-info">
+                <p class="music-kicker">NOW PLAYING</p>
+                <h3 class="music-title">载入歌单…</h3>
+                <p class="music-artist">联合实验新区音乐角</p>
+                <span class="music-track-count">00 / 00</span>
+            </div>
+            <div class="music-progress">
+                <input type="range" class="music-seek" min="0" max="1000" step="1" value="0" aria-label="播放进度" disabled>
+                <div class="music-time"><span class="music-current-time">0:00</span><span class="music-duration">0:00</span></div>
+            </div>
+            <div class="music-transport">
+                <button type="button" class="music-prev" aria-label="上一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5L8 12l11 7z"></path></svg></button>
+                <button type="button" class="music-play" data-music-play aria-label="播放音乐" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+                <button type="button" class="music-next" aria-label="下一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l11 7-11 7z"></path></svg></button>
+            </div>
+            <div class="music-volume-row" id="music-volume-panel" role="group" aria-label="音量控制">
+                <button type="button" class="music-mute" aria-label="静音" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+                <input type="range" class="music-volume" min="0" max="1" step="0.01" value="0.65" aria-label="音乐音量">
+                <output class="music-volume-value">65%</output>
+            </div>
+            <p class="music-status" role="status" aria-live="polite">点击播放，开启音乐</p>
+            <ol class="music-playlist" id="music-playlist" aria-label="播放歌单" hidden></ol>
+        </div>
+        <audio preload="metadata"></audio>
+    </section>
+<p id="route-status" class="route-status" role="status" aria-live="polite" hidden></p>
 </body>
 </html>

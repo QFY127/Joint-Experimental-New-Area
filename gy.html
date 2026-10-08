@@ -2,546 +2,158 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
-    <title>联合实验新区</title>
-    <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft Yahei", sans-serif;
-}
-body {
-    background-color: #f5f5f5;
-    position: relative;
-}
-.page-top-tag {
-    position: absolute;
-    z-index: 999;
-    top: 10px;
-    right: 40px;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    line-height: 0;
-}
-.page-top-tag img {
-    width: auto;
-    height: 50px;
-    max-width: 280px;
-    max-height: 80px;
-    display: block;
-    object-fit: contain;
-}
-.header-top {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 40px;
-    border-bottom: 1px solid #eee;
-}
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo img {
-    width: 48px;
-    height: 48px;
-}
-.logo-text h1 {
-    font-size: 24px;
-    color: #222;
-    line-height: 1.2;
-}
-.logo-text p {
-    font-size: 12px;
-    color: #666;
-    letter-spacing: 1px;
-}
-/* ========== 导航滚动固定核心样式 ========== */
-.main-nav {
-    background-color: #004b93;
-    width: 100%;
-    transition: all 0.3s ease;
-    z-index: 998;
-}
-/* 滚动后固定类 */
-.nav-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.main-nav ul li a {
-    display: block;
-    padding: 12px 30px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    transition: background-color 0.2s;
-}
-.main-nav ul li a:hover {
-    background-color: #00386f;
-}
-.main-nav ul li a.active {
-    background-color: #00386f;
-}
-/* ====================================== */
-.breadcrumb {
-    background-color: white;
-    padding: 10px 120px;
-    font-size: 14px;
-    color: #666;
-    border-bottom: 1px solid #eee;
-}
-.breadcrumb a {
-    color: #004b93;
-    text-decoration: none;
-}
-.container {
-    display: grid;
-    grid-template-columns: 280px 1fr 300px;
-    gap: 20px;
-    padding: 20px 120px;
-    background-color: white;
-}
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #222;
-}
-.section-title svg {
-    width: 20px;
-    height: 20px;
-    fill: #004b93;
-}
-.news-card {
-    margin-bottom: 20px;
-}
-.news-list {
-    list-style: none;
-}
-.news-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee;
-}
-.news-list li:last-child {
-    border-bottom: none;
-}
-.news-list li p {
-    font-size: 13px;
-    color: #333;
-}
-.news-list li span {
-    font-size: 12px;
-    color: #999;
-}
-.分区-card {
-    margin-bottom: 20px;
-}
-.分区-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-.about-block {
-    margin-bottom: 30px;
-}
-.about-block h3 {
-    font-size: 18px;
-    color: #004b93;
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid #eee;
-}
-.about-block p {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.7;
-}
-.contact-list {
-    list-style: none;
-    margin-top: 10px;
-}
-.contact-list li {
-    font-size:14px;
-    padding:6px 0;
-    color:#444;
-}
-.contact-list li a {
-    color:#004b93;
-    text-decoration:none;
-}
-.single-adapt-img {
-    width: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-    margin: 12px 0;
-}
-.single-adapt-img img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
-}
-/* ========== 宣传片视频新增样式 ========== */
-.video-box {
-    width: 100%;
-    background: #000;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-.video-iframe {
-    width: 100%;
-    height: 480px;
-    display: block;
-}
-.video-desc {
-    padding: 16px;
-    background: #f8fafc;
-    border-radius: 6px;
-    margin-bottom: 30px;
-}
-.video-desc h3 {
-    font-size: 16px;
-    color: #004b93;
-    margin-bottom: 8px;
-}
-.video-desc p {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #444;
-}
-/* ====================================== */
-.quick-link-list {
-    list-style: none;
-}
-.quick-link-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-.quick-link-list li:last-child {
-    border-bottom: none;
-}
-.quick-link-list li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-}
-.存档-card {
-    border: 1px solid #eee;
-    border-radius: 6px;
-    padding: 16px;
-    margin-bottom: 20px;
-}
-.存档-card h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.存档-card h3 img {
-    width: 20px;
-    height: 20px;
-}
-.存档-info-list {
-    list-style: none;
-    margin-bottom: 16px;
-}
-.存档-info-list li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: #555;
-    padding: 4px 0;
-}
-.download-btn {
-    display: block;
-    width: 100%;
-    background-color: #004b93;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
-}
-footer {
-    background-color: #004b93;
-    color: white;
-    padding: 20px 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-}
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-}
-.footer-qr {
-    display: flex;
-    gap: 20px;
-}
-.qr-code {
-    text-align: center;
-}
-.qr-code img {
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 4px;
-    margin-bottom: 4px;
-}
-.qr-code p {
-    font-size: 11px;
-}
-/* 移动端适配 768px以下 */
-@media screen and (max-width:768px){
-    * {
-        touch-action: manipulation;
-    }
-    .page-top-tag {
-        right: 10px;
-    }
-    .page-top-tag img {
-        height: 36px;
-        max-width: 160px;
-    }
-    .header-top {
-        padding: 10px 15px;
-    }
-    .logo img {
-        width: 36px;
-        height: 36px;
-    }
-    .logo-text h1 {
-        font-size: 18px;
-    }
-    .logo-text p {
-        font-size: 10px;
-    }
-    .breadcrumb {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    .container {
-        grid-template-columns: 1fr;
-        padding: 10px;
-        gap: 16px;
-    }
-    .section-title {
-        font-size: 16px;
-    }
-    .存档-card {
-        padding: 12px;
-    }
-    .download-btn {
-        padding: 8px;
-        font-size: 13px;
-    }
-    /* 移动端视频高度自适应 */
-    .video-iframe {
-        height: 240px;
-    }
-    footer {
-        padding: 15px;
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-    }
-    .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-    .footer-links a {
-        margin-right: 8px;
-        font-size: 11px;
-    }
-    .footer-qr {
-        gap: 12px;
-    }
-    .qr-code img {
-        width: 50px;
-        height: 50px;
-    }
-    .qr-code p {
-        font-size: 10px;
-    }
-}
-/* 超小屏360px适配 */
-@media screen and (max-width: 360px) {
-    .main-nav ul li a {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
-    .quick-link-list li a {
-        font-size: 13px;
-    }
-    .video-iframe {
-        height: 180px;
-    }
-}
-    </style>
+    <title>关于我们｜联合实验新区</title>
+    <link rel="stylesheet" href="assets/site.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/editorial.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/pages/gy.css?v=20261002-motion-v9" data-page-style="gy">
+    <link rel="stylesheet" href="assets/mobile.css?v=20261002-motion-v9" data-site-responsive>
+    <link rel="stylesheet" href="assets/music-player.css?v=20261002-motion-v9">
+    <script defer src="music/playlist.js"></script>
+    <script defer src="assets/music-player.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site-motion.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/page-features.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site.js?v=20261002-motion-v9"></script>
 </head>
-<body>
-    <!-- 顶部悬浮标识 -->
-    <div class="page-top-tag">
-        <img src="/image/logo.png" width="160" height="50" alt="" />
+<body data-page="gy">
+<div class="page-top-tag" id="site-brand">
+        <img src="/image/logo.png" width="160" height="50" alt="" decoding="async">
     </div>
-    <!-- 头部Logo区域 -->
-    <header class="header-top">
+<header class="header-top" id="site-header">
         <div class="logo">
-            <img src="/image/LZG2logo.png" alt="logo">
+            <img src="/image/LZG2logo.png" alt="logo" decoding="async">
             <div class="logo-text">
                 <h1>联合实验新区</h1>
                 <p>JOINT EXPERIMENTAL NEW AREA</p>
             </div>
         </div>
     </header>
-    <!-- 导航栏（滚动固定核心区域） -->
-    <nav class="main-nav" id="navBar">
+<nav class="main-nav" id="site-nav" aria-label="主导航">
         <ul>
-            <li><a href="zy.html" >首页</a></li>
-            <li><a href="#" class="active">关于我们</a></li>
-            <li><a href="fq.html">分区介绍</a></li>
-            <li><a href="bm.html">部门介绍</a></li>
-            <li><a href="xz.html">存档下载</a></li>
-            <li><a href="da.html">档案管理</a></li>
-            <li><a href="yx.html">影像记录</a></li>
-            <li><a href="xw.html">新闻公告</a></li>
+            <li><a href="zy.html" data-route="zy">首页</a></li>
+            <li><a href="#" class="active" data-route="gy" aria-current="page">关于我们</a></li>
+            <li><a href="fq.html" data-route="fq">分区介绍</a></li>
+            <li><a href="bm.html" data-route="bm">部门介绍</a></li>
+            <li><a href="xz.html" data-route="xz">存档下载</a></li>
+            <li><a href="da.html" data-route="da">档案管理</a></li>
+            <li><a href="yx.html" data-route="yx">影像记录</a></li>
+            <li><a href="xw.html" data-route="xw">新闻公告</a></li>
         </ul>
     </nav>
-    <!-- 面包屑 -->
-    <div class="breadcrumb">
+<div id="page-content" tabindex="-1">
+<main class="gy-about" aria-label="关于联合实验新区">
+    <section class="gy-hero" id="gy-top" data-gy-reveal aria-labelledby="gy-hero-title">
+        <div class="gy-hero-image gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/hero.png" width="1920" height="1051" alt="夕阳下的联合实验新区城市全景" fetchpriority="high" decoding="async"></div>
+        <div class="gy-hero-shade" aria-hidden="true"></div>
+        <div class="gy-hero-lines" aria-hidden="true"></div>
+        <div class="gy-hero-top"><span><i></i>关于我们</span><span>ABOUT THE NEW AREA</span></div>
+        <div class="gy-hero-content"><p class="gy-eyebrow">JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-hero-title">以方块筑梦<br><span>与热爱同行</span></h2><p class="gy-hero-description">一群伙伴，一份热爱。<br>从第一块基石出发，建造我们共同的世界。</p><a class="gy-hero-action" href="#gy-co-build">探索新区的七个主题 <span aria-hidden="true">↘</span></a></div>
+        <div class="gy-hero-side" aria-hidden="true"><span>OUR WORLD</span><strong>共同建造<br>无限可能</strong><span>ONE BLOCK AT A TIME</span></div>
+        <div class="gy-hero-bottom"><a class="gy-scroll-cue" href="#gy-co-build"><span class="gy-scroll-line" aria-hidden="true"></span>向下探索 <span>SCROLL TO DISCOVER</span></a><span class="gy-hero-count">07 THEMES · ONE SHARED WORLD</span></div>
+    </section>
+    <nav class="gy-chapter-nav" aria-label="关于我们主题导航"><div class="gy-nav-inner"><a class="gy-nav-home" href="#gy-top">关于新区 <span aria-hidden="true">↗</span></a><div class="gy-nav-links"><a href="#gy-co-build" data-gy-chapter="gy-co-build"><span>01</span>共建</a>
+<a href="#gy-innovation" data-gy-chapter="gy-innovation"><span>02</span>创新</a>
+<a href="#gy-planning" data-gy-chapter="gy-planning"><span>03</span>规划</a>
+<a href="#gy-infrastructure" data-gy-chapter="gy-infrastructure"><span>04</span>基建</a>
+<a href="#gy-ecology" data-gy-chapter="gy-ecology"><span>05</span>生态</a>
+<a href="#gy-water" data-gy-chapter="gy-water"><span>06</span>水利</a>
+<a href="#gy-vision" data-gy-chapter="gy-vision"><span>07</span>畅想</a></div><span class="gy-nav-counter" aria-hidden="true"><b data-gy-current>01</b> / 07</span></div><div class="gy-reading-progress" aria-hidden="true"></div></nav>
+    <section class="gy-intro gy-width" data-gy-reveal aria-labelledby="gy-intro-title"><div><p class="gy-eyebrow">THIS IS OUR STORY</p><h2 id="gy-intro-title">不止于建造，<br><span>更是一场共同的探索。</span></h2></div><div class="gy-intro-copy"><p>联合实验新区，是我们用方块与热爱慢慢搭建的世界。从最初的小屋，到不断生长的城区，每一条道路、每一栋建筑，都留下伙伴们共同创造的痕迹。</p><p>共建、创新、规划、基建、生态、水利、畅想——七个主题，串起这座新区的现在与未来。</p><span class="gy-small-rule" aria-hidden="true"></span></div></section>
+    <div class="gy-chapters gy-width"><section class="gy-chapter" id="gy-co-build" data-gy-reveal data-gy-effect="left" aria-labelledby="gy-co-build-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">01 / 07</span><span>CO-CREATE</span><span class="gy-chapter-tags">共同创造 / 伙伴同行</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/co-build.png" width="2275" height="1279" alt="新区建设伙伴与方块建筑的合影" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-co-build-title">共建</h2><span>每一份热爱，都在这里相遇。</span></div>
+        <span class="gy-image-label" aria-hidden="true">01 — CO-CREATE</span>
     </div>
-    <div class="container">
-        <!-- 左侧边栏 -->
-        <aside class="left-column">
-            <div class="news-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
-                    发展历程
-                </div>
-                <ul class="news-list">
-					<li>
-                        <p>2025｜大规模扩建</p>
-                        <span>重新规划主城区</span>
-                    </li>
-					<li>
-                        <p>2024｜设立建设规划部</p>
-                        <span>新区管理工作逐步统一</span>
-                    </li>
-					<li>
-                        <p>2023｜三大分区选址收官</p>
-                        <span>规划方案初稿完成</span>
-                    </li>
-					<li>
-                        <p>2022｜主城区启动建设</p>
-                        <span>城区规划初稿完成</span>
-                    </li>
-					<li>
-                        <p>2021｜改称联合实验新区</p>
-                        <span>城区规划初稿完成&nbsp;</span>
-                    </li>
-                    <li>
-                        <p>2020｜主城区启动建设</p>
-                        <span>初代行政大楼开工&nbsp;</span>
-                    </li>
-                    <li>
-                        <p>2019｜小人眼镜实验新区成立</p>
-                        <span>建设立项奠基</span>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-        <!-- 中间主内容：宣传片播放区域 -->
-        <main class="center-column">
-            <div class="section-title">
-                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
-              联合实验新区官方宣传片
-          </div>
-            <div class="video-box">
-    <!-- 六周年宣传片 自动静音播放 -->
-				<iframe class="video-iframe" 
-			src="https://player.bilibili.com/player.html?bvid=BV1HegY6sEEV&page=1&as_wide=1&high_quality=1&danmaku=0&autoplay=1&muted=1" 
-			frameborder="0" 
-			allowfullscreen 
-			allow="autoplay;fullscreen">
-			</iframe>
-			</div>
-			<div class="video-desc">
-			<h3>宣传片介绍｜以方块筑梦六载，怀热忱奔赴远方</h3>
-			<p>六载流光难凉热血之忱，八荒往复犹歌初心之韵
-六年前，梦想的种子破土萌芽，携着未知与期待。从搭建一间小小的房屋开始，几位热血沸腾的伙伴结伴同行，开启了一段如宇宙星尘般漫长的征途。这座倾注无数心血的城市，迎来了属于它的纪念日。
-回首往昔，自第一块基石铺下，一场非凡之旅就此启程。时光荏苒，不知不觉间，紧张繁忙的一年即将落幕。有消沉倦怠的时刻，亦有热血澎湃的瞬间。过去一年的建设进程里，受学业与现实生活影响，建设计划几度停滞。但我们从未轻言放弃：从最初简陋的小屋，到如今宏伟的城区，这片土地见证着我们一路的成长。</p>
-			</div>
-            <div class="about-block contact-block">
-                <h3>联系我们</h3>
-                <ul class="contact-list">
-                    <li>官方交流QQ群：<a href="https://qm.qq.com/q/dQHwMfowp4">点击直达群聊</a></li>
-                    <li>公众号平台：联合实验新区官方公众号</li>
-                    <li>建议提交：右侧快速链接「提交建议」通道</li>
-                </ul>
-            </div>
-        </main>
-        <!-- 右侧边栏 -->
-        <aside class="right-column">
-            <div class="quick-link-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M13 10h-2v2h2v-2zm0-4h-2v6h2V6zm-1 12c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18C5.93 0 0 5.93 0 12s5.93 12 12 12 12-5.93 12-12S18.07 0 12 0z"></path></svg>
-                    快速链接
-                </div>
-                <ul class="quick-link-list">
-                    <li><a href="/webpage/country/scenery.html">风景浏览</a> <span><a href="#">></a></span></li>
-                    <li><a href="https://zh.minecraft.wiki/">我的世界Wiki</a> <span><a href="#">></a></span></li>
-                    <li><a href="#">存档用整合包</a> <span><a href="#">></a></span></li>
-                    <li><a href="#">提交建议</a> <span><a href="#">></a></span></li>
-                    <li><a href="/webpage/country/download.html">其他下载链接</a> <span><a href="#">></a></span></li>
-                </ul>
-            </div>
-            <div class="分区-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                    核心宗旨
-                </div>
-                <p style="font-size:13px;color:#666;margin-bottom:10px;">小人眼镜联合实验新区于2020年由幽谷陌人创建的小城区建设计划，2021年正式更名为联合实验新区并开展大规模建设计划。经历了4年的发展建设如今联合实验新区以成功建设完善主城区主体道路规划，各大管理部门也基本成立。</p>
-<ul class="news-list">
-    <li><p><span style="color:#e53935">创新</span>：突破固有建造思路，探索全新建筑、地形与玩法设计，持续迭代新区内容。</p></li>
-    <li><p><span style="color:#fad325">规制</span>：统一新区管理标准与建设准则，规范建造、运营、玩家行为，保障有序发展。</p></li>
-    <li><p><span style="color:#606060">基建</span>：路网、管线、公共配套、交通枢纽等基础工程，支撑全域区域正常运转。</p></li>
-    <li><p><span style="color:#43a047">生态</span>：统筹绿地、自然景观、动植物资源规划，打造协调可持续的自然城市环境。</p></li>
-    <li><p><span style="color:#1e88e5">水利</span>：河道、水库、灌溉、防洪水系工程，管控全域水资源，服务生产与景观。</p></li>
-</ul>
-            </div>
-        </aside>
+    <div class="gy-chapter-detail"><p>从一间小屋到一座城区，一起构思、一起搭建，让每个人的创意成为新区的一部分。</p><a href="yx.html#team-block">认识建设伙伴<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-innovation" data-gy-reveal data-gy-effect="shutter" aria-labelledby="gy-innovation-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">02 / 07</span><span>INNOVATION</span><span class="gy-chapter-tags">建筑探索 / 持续迭代</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/innovation.png" width="1920" height="1051" alt="新区主城区的建筑群与城市天际线" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-innovation-title">创新</h2><span>让想象，突破方块的边界。</span></div>
+        <span class="gy-image-label" aria-hidden="true">02 — INNOVATION</span>
     </div>
-    <!-- 页脚 -->
-    <footer>
+    <div class="gy-chapter-detail"><p>探索新的建筑语言、地形设计与玩法，在一次次尝试中，让这座城市拥有自己的表达。</p><a href="yx.html">发现新区影像<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-planning" data-gy-reveal data-gy-effect="right" aria-labelledby="gy-planning-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">03 / 07</span><span>PLANNING</span><span class="gy-chapter-tags">全域布局 / 有序生长</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/planning.png" width="1920" height="1051" alt="东台莱德片区的道路与建筑布局航拍" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-planning-title">规划</h2><span>把远方，画进今天的蓝图。</span></div>
+        <span class="gy-image-label" aria-hidden="true">03 — PLANNING</span>
+    </div>
+    <div class="gy-chapter-detail"><p>从全域布局到片区细节，统筹道路、建筑与公共空间，让每一步建设都有方向。</p><a href="fq.html">了解分区规划<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-infrastructure" data-gy-reveal data-gy-effect="up" aria-labelledby="gy-infrastructure-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">04 / 07</span><span>INFRASTRUCTURE</span><span class="gy-chapter-tags">交通路网 / 公共配套</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/infrastructure.png" width="1920" height="1051" alt="新区地铁站的站台与列车" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-infrastructure-title">基建</h2><span>连接每一处，承载每一天。</span></div>
+        <span class="gy-image-label" aria-hidden="true">04 — INFRASTRUCTURE</span>
+    </div>
+    <div class="gy-chapter-detail"><p>完善路网、交通枢纽与公共配套，以扎实的基础工程，支撑新区持续生长。</p><a href="bm.html#gongcheng">走近工程建设<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-ecology" data-gy-reveal data-gy-effect="iris" aria-labelledby="gy-ecology-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">05 / 07</span><span>ECOLOGY</span><span class="gy-chapter-tags">城市绿地 / 自然共生</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/ecology.png" width="1920" height="1051" alt="新区绿树环绕的街巷与步行空间" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-ecology-title">生态</h2><span>在城市之间，留一片自然。</span></div>
+        <span class="gy-image-label" aria-hidden="true">05 — ECOLOGY</span>
+    </div>
+    <div class="gy-chapter-detail"><p>将绿地、街景与自然空间融入建设，让方块世界也有四季、有呼吸、有可以停留的风景。</p><a href="yx.html">漫游新区风光<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-water" data-gy-reveal data-gy-effect="right" aria-labelledby="gy-water-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">06 / 07</span><span>WATER SYSTEMS</span><span class="gy-chapter-tags">水系建设 / 滨水空间</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/water.png" width="1920" height="1051" alt="新区滨水区域的桥梁与水面" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-water-title">水利</h2><span>让水脉，成为城市的脉搏。</span></div>
+        <span class="gy-image-label" aria-hidden="true">06 — WATER SYSTEMS</span>
+    </div>
+    <div class="gy-chapter-detail"><p>统筹河道、水系与沿岸空间，让水资源管理、基础工程和滨水景观相互衔接。</p><a href="bm.html#nongken">了解公共设施<span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="gy-chapter" id="gy-vision" data-gy-reveal data-gy-effect="left" aria-labelledby="gy-vision-title">
+    <header class="gy-chapter-heading"><span class="gy-chapter-index">07 / 07</span><span>WHAT’S NEXT</span><span class="gy-chapter-tags">未来蓝图 / 无限可能</span></header>
+    <div class="gy-chapter-visual">
+        <div class="gy-image-layer" data-gy-parallax><img src="image/backgrounds/gy/vision.png" width="1920" height="1051" alt="新区道路与特色建筑构成的城市远景" loading="lazy" decoding="async"></div>
+        <div class="gy-image-shade" aria-hidden="true"></div>
+        <div class="gy-image-grid" aria-hidden="true"></div>
+        <div class="gy-chapter-caption"><p>JOINT EXPERIMENTAL NEW AREA</p><h2 id="gy-vision-title">畅想</h2><span>下一种可能，由我们一起定义。</span></div>
+        <span class="gy-image-label" aria-hidden="true">07 — WHAT’S NEXT</span>
+    </div>
+    <div class="gy-chapter-detail"><p>故事仍在继续，蓝图仍在展开。带着新的想法加入我们，一起建造属于未来的联合实验新区。</p><a href="https://qm.qq.com/q/dQHwMfowp4">加入我们的共建<span aria-hidden="true">↗</span></a></div>
+</section></div>
+    <section class="gy-film-section" id="gy-film" data-gy-reveal aria-labelledby="gy-film-title"><div class="gy-width"><div class="gy-section-head"><div><p class="gy-eyebrow">THE OFFICIAL FILM</p><h2 id="gy-film-title">让影像，讲述我们的故事。</h2></div><span>联合实验新区官方宣传片</span></div>
+        <div class="gy-film-screen"><a class="gy-film-poster" href="https://www.bilibili.com/video/BV1HegY6sEEV/" target="_blank" rel="noopener noreferrer" data-gy-play aria-label="播放联合实验新区六周年宣传片"><img src="image/jing/shou4.jpg" width="1920" height="1051" alt="新区夕阳城市影像，点击播放六周年宣传片" loading="lazy" decoding="async"><span class="gy-film-poster-shade" aria-hidden="true"></span><span class="gy-film-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z" fill="currentColor"/></svg></span><span class="gy-film-poster-text"><span>OFFICIAL FILM / 六周年纪念</span><strong>以方块筑梦六载<br>怀热忱奔赴远方</strong><span>点击播放宣传片 <i aria-hidden="true">↗</i></span></span></a><iframe class="gy-film-iframe" id="gy-video-frame" title="联合实验新区六周年官方宣传片" data-src="https://player.bilibili.com/player.html?bvid=BV1HegY6sEEV&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&amp;autoplay=1" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe></div>
+        <div class="gy-film-detail"><div><h3>六载流光，初心未改。</h3><p>从搭建一间小小的房屋开始，伙伴们结伴同行，开启了这段漫长的建设征途。虽然建设曾因学业与现实生活而停歇，我们始终带着热忱继续前行。这部宣传片，记录一路成长，也献给每一位共同筑梦的伙伴。</p></div><a href="https://www.bilibili.com/video/BV1HegY6sEEV/" target="_blank" rel="noopener noreferrer">在哔哩哔哩观看 <span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="gy-history gy-width" data-gy-reveal aria-labelledby="gy-history-title"><div class="gy-section-head"><div><p class="gy-eyebrow">THE JOURNEY SO FAR</p><h2 id="gy-history-title">一步一步，走到今天。</h2></div><span>新区发展历程</span></div><ol class="gy-timeline">
+        <li><time>2019</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>小人眼镜实验新区成立</h3><p>建设立项奠基</p></li>
+        <li><time>2020</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>主城区启动建设</h3><p>初代行政大楼开工</p></li>
+        <li><time>2021</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>改称联合实验新区</h3><p>城区规划初稿完成</p></li>
+        <li><time>2022</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>主城区启动建设</h3><p>城区规划初稿完成</p></li>
+        <li><time>2023</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>三大分区选址收官</h3><p>规划方案初稿完成</p></li>
+        <li><time>2024</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>设立建设规划部</h3><p>新区管理工作逐步统一</p></li>
+        <li><time>2025</time><span class="gy-timeline-dot" aria-hidden="true"></span><h3>大规模扩建</h3><p>重新规划主城区</p></li>
+    </ol></section>
+    <section class="gy-contact" data-gy-reveal aria-labelledby="gy-contact-title"><div class="gy-width gy-contact-inner"><div><p class="gy-eyebrow">BUILD THE NEXT CHAPTER</p><h2 id="gy-contact-title">下一块方块，<br>一起放下。</h2><p>欢迎加入官方交流 QQ 群，分享创意、交流建设、提交建议。<br>公众号平台：联合实验新区官方公众号</p><a class="gy-contact-action" href="https://qm.qq.com/q/dQHwMfowp4" target="_blank" rel="noopener noreferrer">加入官方交流群 <span aria-hidden="true">↗</span></a></div><div class="gy-contact-links"><a href="yx.html"><span>继续发现</span>影像记录 <i aria-hidden="true">↗</i></a><a href="xz.html"><span>亲自探索</span>存档下载 <i aria-hidden="true">↗</i></a><a href="xw.html"><span>最新进展</span>新闻公告 <i aria-hidden="true">↗</i></a></div></div></section>
+</main>
+</div>
+<footer id="site-footer">
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">网站地图</a>
@@ -552,28 +164,57 @@ footer {
         </div>
         <div class="footer-qr">
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方交流群">
+                <img src="/image/gzh.jpg" alt="官方交流群" decoding="async">
                 <p>官方交流群</p>
             </div>
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方论坛">
+                <img src="/image/gzh.jpg" alt="官方论坛" decoding="async">
                 <p>官方论坛</p>
             </div>
         </div>
     </footer>
-    <script>
-        // 导航栏滚动固定逻辑
-        const navBar = document.getElementById('navBar');
-        const navOffsetTop = navBar.offsetTop;
-        window.addEventListener('scroll', function() {
-            if(window.scrollY >= navOffsetTop) {
-                navBar.classList.add('nav-fixed');
-            } else {
-                navBar.classList.remove('nav-fixed');
-            }
-        })
-        // 移动端双击缩放禁止
-        document.addEventListener('dblclick', e => e.preventDefault());
-    </script>
+<section class="music-player" id="music-player" data-side="right" aria-label="音乐播放器">
+        <div class="music-header">
+            <button type="button" class="music-drag" aria-label="上下移动播放器" title="按住上下拖动，也可使用方向键"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"></path></svg></button>
+            <div class="music-heading"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"></path><ellipse cx="6" cy="18" rx="3" ry="2"></ellipse><ellipse cx="17" cy="16" rx="3" ry="2"></ellipse></svg>
+                <div><h2>新区音乐角</h2><p class="music-header-subtitle">让世界慢下来</p></div>
+            </div>
+            <button type="button" class="music-volume-toggle" aria-label="调节音量" aria-controls="music-volume-panel" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+            <button type="button" class="music-list-toggle" aria-label="展开或收起歌单" aria-controls="music-playlist" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></button>
+            <button type="button" class="music-dock" aria-label="移动播放器到屏幕左侧" title="移动到左侧"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 4v16M19 12H8m5-5l-5 5 5 5"></path></svg></button>
+            <button type="button" class="music-mini-play" data-music-play aria-label="播放音乐" aria-pressed="false" hidden><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+            <button type="button" class="music-toggle" aria-controls="music-body" aria-expanded="true" aria-label="收起音乐播放器"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+        <div class="music-body" id="music-body">
+            <div class="turntable" aria-hidden="true">
+                <div class="record"><div class="record-surface"></div><div class="record-label"><strong>JOINT AREA</strong><span>33⅓ RPM</span></div></div>
+                <div class="tonearm"><i class="arm-pivot"></i></div>
+            </div>
+            <div class="music-info">
+                <p class="music-kicker">NOW PLAYING</p>
+                <h3 class="music-title">载入歌单…</h3>
+                <p class="music-artist">联合实验新区音乐角</p>
+                <span class="music-track-count">00 / 00</span>
+            </div>
+            <div class="music-progress">
+                <input type="range" class="music-seek" min="0" max="1000" step="1" value="0" aria-label="播放进度" disabled>
+                <div class="music-time"><span class="music-current-time">0:00</span><span class="music-duration">0:00</span></div>
+            </div>
+            <div class="music-transport">
+                <button type="button" class="music-prev" aria-label="上一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5L8 12l11 7z"></path></svg></button>
+                <button type="button" class="music-play" data-music-play aria-label="播放音乐" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+                <button type="button" class="music-next" aria-label="下一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l11 7-11 7z"></path></svg></button>
+            </div>
+            <div class="music-volume-row" id="music-volume-panel" role="group" aria-label="音量控制">
+                <button type="button" class="music-mute" aria-label="静音" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+                <input type="range" class="music-volume" min="0" max="1" step="0.01" value="0.65" aria-label="音乐音量">
+                <output class="music-volume-value">65%</output>
+            </div>
+            <p class="music-status" role="status" aria-live="polite">点击播放，开启音乐</p>
+            <ol class="music-playlist" id="music-playlist" aria-label="播放歌单" hidden></ol>
+        </div>
+        <audio preload="metadata"></audio>
+    </section>
+<p id="route-status" class="route-status" role="status" aria-live="polite" hidden></p>
 </body>
 </html>

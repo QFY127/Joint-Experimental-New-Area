@@ -1,0 +1,97 @@
+/* Shared shell: retain zy's original colors, logo, navigation and footer. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #f5f5f5; position: relative; font-family: "Microsoft Yahei", sans-serif; }
+button, input, select, textarea { font: inherit; }
+#site-brand { position: absolute; z-index: 999; top: 10px; right: 40px; background: transparent; padding: 0; line-height: 0; }
+#site-brand img { width: auto; height: 50px; max-width: 280px; max-height: 80px; display: block; object-fit: contain; }
+#site-header { background: white; display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; border-bottom: 1px solid #eee; }
+#site-header .logo { display: flex; align-items: center; gap: 10px; }
+#site-header .logo img { width: 48px; height: 48px; }
+#site-header .logo-text h1 { font-size: 24px; color: #222; line-height: 1.2; }
+#site-header .logo-text p { font-size: 12px; color: #666; letter-spacing: 1px; }
+#site-nav { position: sticky; top: 0; z-index: 998; width: 100%; background: #004b93; }
+#site-nav ul { display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+#site-nav a { display: block; padding: 12px 30px; color: white; text-decoration: none; font-size: 15px; transition: background-color .2s; }
+#site-nav a:hover, #site-nav a.active { background: #00386f; }
+#site-nav a:focus-visible { outline: 2px solid white; outline-offset: -4px; }
+/* The router controls scroll position. Newly loaded images must not preserve
+ * an anchor from the previous content and move the requested entrance target. */
+#page-content { overflow-anchor: none; }
+#page-content:focus { outline: none; }
+#page-content [data-motion-pending] { opacity: 0; }
+#page-content .motion-css-enter { animation: site-module-enter 1.2s cubic-bezier(.22,.65,.2,1) both; }
+@keyframes site-module-enter { 0% { opacity: 0; transform: translateY(66px); } 25% { opacity: .18; transform: translateY(52px); } 72% { opacity: .64; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes site-module-fade { from { opacity: 0; } to { opacity: 1; } }
+/* CSS fallback for the same full-frame slide and fade used by Web Animations. */
+@keyframes site-carousel-arrive {
+  from { opacity:0; transform:translate3d(var(--carousel-enter-x,100%),0,0); }
+  to { opacity:1; transform:translate3d(0,0,0); }
+}
+@keyframes site-carousel-depart {
+  from { opacity:1; transform:translate3d(0,0,0); }
+  to { opacity:0; transform:translate3d(var(--carousel-exit-x,-100%),0,0); }
+}
+#page-content.site-route-enter { animation: site-route-enter .65s cubic-bezier(.22,.65,.2,1) both; }
+#page-content.site-route-leave { animation: site-route-leave .26s ease both; }
+@keyframes site-route-enter { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes site-route-leave { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-8px); } }
+@keyframes site-route-fade-out { from { opacity: 1; } to { opacity: 0; } }
+body.is-navigating::after { content: ""; position: fixed; inset: 0 0 auto; z-index: 1200; height: 3px; background: linear-gradient(90deg,#004b93,#79cfff,#004b93); transform-origin: left; animation: site-route-progress 1.2s ease-out both; pointer-events: none; }
+@keyframes site-route-progress { from { transform: scaleX(.06); } to { transform: scaleX(.94); } }
+#page-content a, #page-content button { transition: background-color .2s, color .2s, box-shadow .2s; }
+#page-content .department-panel:hover, #page-content .fq-overview-card:hover { box-shadow: 0 12px 30px #004b9320; }
+#page-content [id] { scroll-margin-top: calc(var(--nav-height, 44px) + 12px); }
+#page-content .carousel-section { scroll-margin-top: var(--nav-height, 44px); }
+/* First entrance aligns the carousel with the top of the viewport. The navigation
+ * remains above it and returns to sticky positioning on scroll-up or navigation. */
+body[data-page="zy"].carousel-entry #site-nav { position: relative; top: auto; }
+body[data-page="zy"].carousel-entry #page-content .carousel-section { scroll-margin-top: 0; }
+#page-content .left-column, #page-content .center-column, #page-content .right-column,
+#page-content .download-main, #page-content .news-main { min-width: 0; }
+#site-footer { background: #004b93; color: white; padding: 20px 120px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+#site-footer .footer-links a { color: white; text-decoration: none; margin-right: 15px; }
+#site-footer .footer-qr { display: flex; gap: 20px; }
+#site-footer .qr-code { text-align: center; }
+#site-footer .qr-code img { width: 60px; height: 60px; background: white; border-radius: 4px; margin-bottom: 4px; }
+#site-footer .qr-code p { font-size: 11px; }
+.route-status { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 1100; padding: 10px 16px; border-radius: 6px; color: white; background: #004b93; font-size: 13px; max-width: calc(100vw - 24px); }
+.route-status[hidden] { display: none; }
+/* Preserve the original full-screen entrance; its audio stays alive when entering zy. */
+body[data-page="index"] { background: #000; overflow: hidden; }
+body[data-page="index"] #site-header, body[data-page="index"] #site-brand,
+body[data-page="index"] #site-nav, body[data-page="index"] #site-footer { display: none; }
+body[data-page="index"] #page-content .carousel-wrapper { height: 100vh; height: 100dvh; }
+@media (max-width: 1199px) and (min-width: 769px) {
+  #site-nav a { padding: 12px 20px; }
+  #site-footer { padding-left: 30px; padding-right: 30px; }
+}
+@media (max-width: 768px) {
+  #site-header { padding: 10px 15px; min-height: 57px; }
+  #site-header .logo { min-width: 0; max-width: calc(100% - 108px); }
+  #site-header .logo img { width: 36px; height: 36px; flex-shrink: 0; }
+  #site-header .logo-text h1 { font-size: 18px; white-space: nowrap; }
+  #site-header .logo-text p { font-size: 10px; letter-spacing: 0; white-space: nowrap; }
+  #site-brand { top: 13px; right: 12px; }
+  #site-brand img { width: 96px; height: 30px; }
+  #site-nav ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #site-nav a { text-align: center; padding: 11px 4px; font-size: 13px; white-space: nowrap; }
+  #site-footer { padding: 15px; flex-direction: column; gap: 16px; text-align: center; }
+  #site-footer .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  #site-footer .footer-links a { margin-right: 8px; font-size: 11px; }
+  #site-footer .footer-qr { gap: 12px; }
+  #site-footer .qr-code img { width: 50px; height: 50px; }
+  #site-footer .qr-code p { font-size: 10px; }
+}
+@media (max-width: 380px) {
+  #site-header { padding-left: 10px; padding-right: 10px; }
+  #site-header .logo { gap: 7px; }
+  #site-header .logo-text h1 { font-size: 16px; }
+  #site-header .logo-text p { font-size: 8px; }
+  #site-brand img { width: 82px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #site-nav a { transition: none; }
+  #page-content .motion-css-enter { animation: site-module-fade .26s ease both; }
+  #page-content.site-route-enter { animation: site-module-fade .24s ease both; }
+  #page-content.site-route-leave { animation: site-route-fade-out .14s ease both; }
+}

@@ -1,0 +1,82 @@
+body[data-page="sm"] #page-content .breadcrumb {
+background-color: white;
+            padding: 10px 120px;
+            font-size: 14px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+}
+body[data-page="sm"] #page-content .breadcrumb a {
+color: #004b93;
+            text-decoration: none;
+}
+body[data-page="sm"] #page-content .container {
+padding: 30px 120px;
+            background-color: #fff;
+            min-height: calc(100vh - 320px);
+}
+body[data-page="sm"] #page-content .main-content {
+max-width: 1000px;
+            margin: 0 auto;
+}
+body[data-page="sm"] #page-content .section-title {
+display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #222;
+}
+body[data-page="sm"] #page-content .section-title svg {
+width: 22px;
+            height: 22px;
+            fill: #004b93;
+}
+body[data-page="sm"] #page-content .article-wrap {
+font-size: 15px;
+            line-height: 1.8;
+            color: #444;
+}
+body[data-page="sm"] #page-content .article-date {
+color: #999;
+            font-size: 13px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #eee;
+}
+body[data-page="sm"] #page-content .article-wrap h3 {
+font-size: 17px;
+            color: #004b93;
+            margin: 26px 0 10px;
+}
+body[data-page="sm"] #page-content .article-wrap p {
+margin-bottom: 10px;
+}
+body[data-page="sm"] #page-content .contact-text-list {
+list-style: none;
+            margin: 8px 0 16px 16px;
+}
+body[data-page="sm"] #page-content .contact-text-list li a {
+color: #004b93;
+            text-decoration: none;
+}
+body[data-page="sm"] #page-content .end-tip {
+margin-top: 30px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            font-weight: bold;
+            color: #222;
+}
+@media screen and (max-width:768px) {
+body[data-page="sm"] #page-content .breadcrumb {
+padding: 8px 15px;
+                font-size: 12px;
+}
+body[data-page="sm"] #page-content .container {
+padding: 15px;
+}
+body[data-page="sm"] #page-content .section-title {
+font-size: 18px;
+}
+}
+body[data-page="sm"] #page-content { background:#f7fbff url('../../image/backgrounds/sm/section.png') center top/1600px auto repeat-y; }

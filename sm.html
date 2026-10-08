@@ -2,315 +2,52 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" type="image/png" href="/image/LZG2logo1.png">
     <title>隐私声明 - 我的世界联合实验新区</title>
-    <!-- 原外部privacy.css全部移入此处 -->
-    <style>
-        /* 全局基础样式 复用全站统一规范 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
-        body {
-            background-color: #f5f5f5;
-            position: relative;
-        }
-        .page-top-tag {
-            position: absolute;
-            z-index: 999;
-            top: 10px;
-            right: 40px;
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            line-height: 0;
-        }
-        .page-top-tag img {
-            width: auto;
-            height: 50px;
-            max-width: 280px;
-            max-height: 80px;
-            display: block;
-            object-fit: contain;
-        }
-        /* 头部 */
-        .header-top {
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 40px;
-            border-bottom: 1px solid #eee;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo img {
-            width: 48px;
-            height: 48px;
-        }
-        .logo-text h1 {
-            font-size: 24px;
-            color: #222;
-            line-height: 1.2;
-        }
-        .logo-text p {
-            font-size: 12px;
-            color: #666;
-            letter-spacing: 1px;
-        }
-        /* 导航吸顶样式 统一全站 */
-        .main-nav {
-            background-color: #004b93;
-            width: 100%;
-            transition: all 0.3s ease;
-            z-index: 998;
-        }
-        .nav-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .main-nav ul li a {
-            display: block;
-            padding: 12px 30px;
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: background-color 0.2s;
-        }
-        .main-nav ul li a:hover {
-            background-color: #00386f;
-        }
-        .main-nav ul li a.active {
-            background-color: #00386f;
-        }
-        /* 面包屑 */
-        .breadcrumb {
-            background-color: white;
-            padding: 10px 120px;
-            font-size: 14px;
-            color: #666;
-            border-bottom: 1px solid #eee;
-        }
-        .breadcrumb a {
-            color: #004b93;
-            text-decoration: none;
-        }
-        /* 主体容器 */
-        .container {
-            padding: 30px 120px;
-            background-color: #fff;
-            min-height: calc(100vh - 320px);
-        }
-        .main-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #222;
-        }
-        .section-title svg {
-            width: 22px;
-            height: 22px;
-            fill: #004b93;
-        }
-        /* 文章内容 */
-        .article-wrap {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #444;
-        }
-        .article-date {
-            color: #999;
-            font-size: 13px;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed #eee;
-        }
-        .article-wrap h3 {
-            font-size: 17px;
-            color: #004b93;
-            margin: 26px 0 10px;
-        }
-        .article-wrap p {
-            margin-bottom: 10px;
-        }
-        .contact-text-list {
-            list-style: none;
-            margin: 8px 0 16px 16px;
-        }
-        .contact-text-list li a {
-            color: #004b93;
-            text-decoration: none;
-        }
-        .end-tip {
-            margin-top: 30px;
-            padding-top: 16px;
-            border-top: 1px solid #eee;
-            font-weight: bold;
-            color: #222;
-        }
-        /* 页脚 全站统一 */
-        footer {
-            background-color: #004b93;
-            color: white;
-            padding: 20px 120px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-        }
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-        .footer-links a.active {
-            text-decoration: underline;
-        }
-        .footer-qr {
-            display: flex;
-            gap: 20px;
-        }
-        .qr-code {
-            text-align: center;
-        }
-        .qr-code img {
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            border-radius: 4px;
-            margin-bottom: 4px;
-        }
-        .qr-code p {
-            font-size: 11px;
-        }
-        /* 移动端适配 768px以下 */
-        @media screen and (max-width:768px){
-            * {
-                touch-action: manipulation;
-            }
-            .page-top-tag {
-                right: 10px;
-            }
-            .page-top-tag img {
-                height: 36px;
-                max-width: 160px;
-            }
-            .header-top {
-                padding: 10px 15px;
-            }
-            .logo img {
-                width: 36px;
-                height: 36px;
-            }
-            .logo-text h1 {
-                font-size: 18px;
-            }
-            .logo-text p {
-                font-size: 10px;
-            }
-            .breadcrumb {
-                padding: 8px 15px;
-                font-size: 12px;
-            }
-            .container {
-                padding: 15px;
-            }
-            .section-title {
-                font-size: 18px;
-            }
-            footer {
-                padding: 15px;
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-            .footer-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-            }
-            .footer-links a {
-                margin-right: 8px;
-                font-size: 11px;
-            }
-            .footer-qr {
-                gap: 12px;
-            }
-            .qr-code img {
-                width: 50px;
-                height: 50px;
-            }
-            .qr-code p {
-                font-size: 10px;
-            }
-        }
-        /* 超小屏360px适配 */
-        @media screen and (max-width: 360px) {
-            .main-nav ul li a {
-                padding: 8px 10px;
-                font-size: 12px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/site.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/editorial.css?v=20261002-motion-v9">
+    <link rel="stylesheet" href="assets/pages/sm.css?v=20261002-motion-v9" data-page-style="sm">
+    <link rel="stylesheet" href="assets/mobile.css?v=20261002-motion-v9" data-site-responsive>
+    <link rel="stylesheet" href="assets/music-player.css?v=20261002-motion-v9">
+    <script defer src="music/playlist.js"></script>
+    <script defer src="assets/music-player.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site-motion.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/page-features.js?v=20261002-motion-v9"></script>
+    <script defer src="assets/site.js?v=20261002-motion-v9"></script>
 </head>
-<body>
-    <!-- 顶部悬浮标识 -->
-    <div class="page-top-tag">
-        <img src="/image/logo.png" alt="顶部标识" />
+<body data-page="sm">
+<div class="page-top-tag" id="site-brand">
+        <img src="/image/logo.png" alt="顶部标识" decoding="async">
     </div>
-    <!-- 网站头部 -->
-    <header class="header-top">
+<header class="header-top" id="site-header">
         <div class="logo">
-            <img src="/image/LZG2logo.png" alt="站点logo">
+            <img src="/image/LZG2logo.png" alt="站点logo" decoding="async">
             <div class="logo-text">
                 <h1>联合实验新区</h1>
                 <p>JOINT EXPERIMENTAL NEW AREA</p>
             </div>
         </div>
     </header>
-    <!-- 主导航（和about页面导航统一） -->
-    <nav class="main-nav" id="navBar">
+<nav class="main-nav" id="site-nav" aria-label="主导航">
         <ul>
-            <li><a href="zy.html" >首页</a></li>
-            <li><a href="gy.html">关于我们</a></li>
-            <li><a href="fq.html">分区介绍</a></li>
-            <li><a href="bm.html">部门介绍</a></li>
-            <li><a href="xz.html">存档下载</a></li>
-            <li><a href="da.html">档案管理</a></li>
-            <li><a href="yx.html">影像记录</a></li>
-            <li><a href="xw.html">新闻公告</a></li>
+            <li><a href="zy.html" data-route="zy">首页</a></li>
+            <li><a href="gy.html" data-route="gy">关于我们</a></li>
+            <li><a href="fq.html" data-route="fq">分区介绍</a></li>
+            <li><a href="bm.html" data-route="bm">部门介绍</a></li>
+            <li><a href="xz.html" data-route="xz">存档下载</a></li>
+            <li><a href="da.html" data-route="da">档案管理</a></li>
+            <li><a href="yx.html" data-route="yx">影像记录</a></li>
+            <li><a href="xw.html" data-route="xw">新闻公告</a></li>
         </ul>
     </nav>
-    <!-- 面包屑导航 -->
-    <div class="breadcrumb">
+<div id="page-content" tabindex="-1">
+<div class="breadcrumb">
     </div>
-    <!-- 主体容器 -->
-    <div class="container">
+<div class="container">
         <main class="main-content">
             <div class="section-title">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 20c-4.963 0-9-4.038-9-9s4.037-9 9-9 9 4.038 9 9-4.037 9-9 9zm-1-13v6h2v-6h-2zm0 8v2h2v-2h-2z"></path></svg>
+                <svg viewbox="0 0 24 24" width="20" height="20"><path fill="#004b93" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 20c-4.963 0-9-4.038-9-9s4.037-9 9-9 9 4.038 9 9-4.037 9-9 9zm-1-13v6h2v-6h-2zm0 8v2h2v-2h-2z"></path></svg>
                 隐私声明
             </div>
             <div class="article-wrap">
@@ -358,8 +95,8 @@
             </div>
         </main>
     </div>
-    <!-- 统一页脚 -->
-    <footer>
+</div>
+<footer id="site-footer">
         <div class="footer-left">
             <div class="footer-links">
                 <a href="#">网站地图</a>
@@ -370,28 +107,57 @@
         </div>
         <div class="footer-qr">
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方交流群">
+                <img src="/image/gzh.jpg" alt="官方交流群" decoding="async">
                 <p>官方交流群</p>
             </div>
             <div class="qr-code">
-                <img src="/image/gzh.jpg" alt="官方论坛">
+                <img src="/image/gzh.jpg" alt="官方论坛" decoding="async">
                 <p>官方论坛</p>
             </div>
         </div>
     </footer>
-    <!-- 导航吸顶JS（和about页面一致） -->
-    <script>
-        const navBar = document.getElementById('navBar');
-        const navOffsetTop = navBar.offsetTop;
-        window.addEventListener('scroll', function() {
-            if(window.scrollY >= navOffsetTop) {
-                navBar.classList.add('nav-fixed');
-            } else {
-                navBar.classList.remove('nav-fixed');
-            }
-        })
-        // 禁止双击缩放
-        document.addEventListener('dblclick', e => e.preventDefault());
-    </script>
+<section class="music-player" id="music-player" data-side="right" aria-label="音乐播放器">
+        <div class="music-header">
+            <button type="button" class="music-drag" aria-label="上下移动播放器" title="按住上下拖动，也可使用方向键"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"></path></svg></button>
+            <div class="music-heading"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"></path><ellipse cx="6" cy="18" rx="3" ry="2"></ellipse><ellipse cx="17" cy="16" rx="3" ry="2"></ellipse></svg>
+                <div><h2>新区音乐角</h2><p class="music-header-subtitle">让世界慢下来</p></div>
+            </div>
+            <button type="button" class="music-volume-toggle" aria-label="调节音量" aria-controls="music-volume-panel" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+            <button type="button" class="music-list-toggle" aria-label="展开或收起歌单" aria-controls="music-playlist" aria-expanded="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></button>
+            <button type="button" class="music-dock" aria-label="移动播放器到屏幕左侧" title="移动到左侧"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M4 4v16M19 12H8m5-5l-5 5 5 5"></path></svg></button>
+            <button type="button" class="music-mini-play" data-music-play aria-label="播放音乐" aria-pressed="false" hidden><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+            <button type="button" class="music-toggle" aria-controls="music-body" aria-expanded="true" aria-label="收起音乐播放器"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+        <div class="music-body" id="music-body">
+            <div class="turntable" aria-hidden="true">
+                <div class="record"><div class="record-surface"></div><div class="record-label"><strong>JOINT AREA</strong><span>33⅓ RPM</span></div></div>
+                <div class="tonearm"><i class="arm-pivot"></i></div>
+            </div>
+            <div class="music-info">
+                <p class="music-kicker">NOW PLAYING</p>
+                <h3 class="music-title">载入歌单…</h3>
+                <p class="music-artist">联合实验新区音乐角</p>
+                <span class="music-track-count">00 / 00</span>
+            </div>
+            <div class="music-progress">
+                <input type="range" class="music-seek" min="0" max="1000" step="1" value="0" aria-label="播放进度" disabled>
+                <div class="music-time"><span class="music-current-time">0:00</span><span class="music-duration">0:00</span></div>
+            </div>
+            <div class="music-transport">
+                <button type="button" class="music-prev" aria-label="上一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5L8 12l11 7z"></path></svg></button>
+                <button type="button" class="music-play" data-music-play aria-label="播放音乐" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"></path></svg></button>
+                <button type="button" class="music-next" aria-label="下一首"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l11 7-11 7z"></path></svg></button>
+            </div>
+            <div class="music-volume-row" id="music-volume-panel" role="group" aria-label="音量控制">
+                <button type="button" class="music-mute" aria-label="静音" aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15 8a6 6 0 010 8M18 5a10 10 0 010 14"></path></svg></button>
+                <input type="range" class="music-volume" min="0" max="1" step="0.01" value="0.65" aria-label="音乐音量">
+                <output class="music-volume-value">65%</output>
+            </div>
+            <p class="music-status" role="status" aria-live="polite">点击播放，开启音乐</p>
+            <ol class="music-playlist" id="music-playlist" aria-label="播放歌单" hidden></ol>
+        </div>
+        <audio preload="metadata"></audio>
+    </section>
+<p id="route-status" class="route-status" role="status" aria-live="polite" hidden></p>
 </body>
 </html>
